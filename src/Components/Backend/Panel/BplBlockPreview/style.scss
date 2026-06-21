@@ -1,0 +1,38 @@
+.bPlBlockPreviewWrapper {
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  .bPl-previewBtn {
+    &.bPl-activeBtn {
+      background: #146ef5 !important;
+      color: #fff;
+    }
+  }
+}
+
+.bPl-previewBtn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.labelPro {
+  background-color: #146ef5 !important;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 4px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.activeProBtn {
+  background-color: #fff !important;
+  color: #146ef5 !important;
+  font-size: 10px !important;
+  font-weight: bold !important;
+  padding: 2px 4px !important;
+  border-radius: 4px !important;
+  text-transform: uppercase !important;
+}

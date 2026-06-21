@@ -1,0 +1,7 @@
+# Ignore everything
+bundled
+dist/*
+!dist/*.php
+node_modules
+*.zip
+fs-config.json

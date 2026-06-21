@@ -1,0 +1,57 @@
+$primaryColor: #146ef5;
+
+.wp-block-bigb-image-gallery {
+  > .galleryHoler {
+    display: none;
+  }
+
+  .addGalleryFirst {
+    text-align: center;
+    margin: 0;
+  }
+}
+
+.components-panel__row .itemAction {
+  gap: 11px;
+}
+
+.bPlPanelBody .chooseStyle {
+  margin-top: 16px;
+  margin-bottom: 20px;
+}
+
+.bPlPanelBody .itemAction .removeItem svg,
+.bPlPanelBody .itemAction .duplicateItem svg {
+  margin: 0 !important;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.bPlPanelBody .itemAction .removeItem,
+.bPlPanelBody .itemAction .duplicateItem {
+  gap: 3px;
+  padding: 0px 12px !important;
+}
+
+.bPlPanelBody .addRemoveItems {
+  // padding: 0;
+}
+
+.bPlPanelBody .editItem {
+  margin-top: 3px;
+  margin-bottom: 15px;
+
+  .editItemHeading {
+    font-weight: 600;
+    color: $primaryColor;
+  }
+}
+
+.components-button.components-autocomplete__result.block-editor-autocompleters__block.is-selected {
+  color: #fff;
+  .ig-icon {
+    fill: #fff !important;
+    stroke: #fff !important;
+  }
+}
