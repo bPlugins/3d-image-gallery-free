@@ -56,7 +56,7 @@ if (! defined('ABSPATH')) {
 
 		function defaultContent( $content, $post ) {
 			if ( 'page' === $post->post_type && isset( $_GET['content'] ) ) {
-				return wp_unslash( $_GET['content'] );
+				return wp_kses_post( wp_unslash( $_GET['content'] ) );
 			}
 			return $content;
 		}
