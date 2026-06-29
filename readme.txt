@@ -1,25 +1,40 @@
-=== Image Gallery Block – Create and display photo gallery/photo album. ===
+=== Image Gallery Block ===
 Contributors: bplugins, himur98, abuhayat, charlescormier, freemius
 Donate link: https://www.buymeacoffee.com
-Tags: image gallery block, gallery block, photo gallery, image slider, masonry gallery
+Tags: block, image gallery, photo gallery, masonry gallery, lightbox
 Requires at least: 6.5
 Tested up to: 7.0
-Stable tag: 2.2.11
+Stable tag: 2.3.0
 Requires PHP: 7.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Image Gallery Block helps you create responsive photo galleries, masonry layouts, and 3D sliders. Offers professional layouts and lightbox effects.
+A Gutenberg image gallery plugin for responsive galleries, masonry layouts, lightboxes, and 3D image sliders.
 
 == Description ==
 
-[Image Gallery Block](https://bplugins.com/products/3d-image-gallery/) is a lightweight WordPress image gallery plugin that lets you create responsive photo galleries, grid layouts, and lightbox popups directly inside the Gutenberg block editor.
+[Image Gallery Block](https://bplugins.com/products/3d-image-gallery/) is a lightweight Gutenberg image gallery plugin that lets you create responsive image galleries, photo galleries, masonry galleries, portfolio galleries, and lightbox image galleries directly inside the WordPress block editor.
 
 **[Image Gallery Block](https://bplugins.com/products/3d-image-gallery/)** | **[Pricing](https://bplugins.com/products/3d-image-gallery/pricing/)** | **[Support](https://bplugins.com/support/)** | **[Demo](https://bblockswp.com/demo/image-gallery-default/)**
 
-Display images in elegant grid layouts, stylish cards, or interactive sliders without writing any code. Organize photos using albums, show them in responsive grids with masonry and 3D layouts, and open images in a smooth lightbox popup for a better viewing experience.
+Display images in elegant grid layouts, stylish cards, masonry galleries, or interactive 3D Image Sliders without writing any code. Organize photos using albums, show them in responsive grids with masonry and 3D layouts, and open images in a smooth lightbox popup for a better viewing experience.
 
 This Gutenberg image gallery block is perfect for creating photography portfolios, product galleries, blog image showcases, visual storytelling pages, and image collections on any WordPress website.
+
+Create responsive image galleries, photo galleries, masonry galleries, lightbox galleries, and portfolio galleries for any WordPress website.
+
+=== Perfect For ===
+
+Image Gallery Block is ideal for creating photography portfolios, WooCommerce product galleries, travel photo galleries, blog image galleries, masonry galleries, and responsive lightbox galleries.
+
+- Photography portfolios
+- Product galleries
+- WooCommerce image galleries
+- Travel photo galleries
+- Blog image galleries
+- Portfolio showcases
+- Masonry gallery layouts
+- Lightbox image galleries
 
 === Key Features – Free Version ===
 The free version includes everything needed to build responsive image galleries in the Gutenberg editor.
@@ -42,7 +57,7 @@ The free version includes everything needed to build responsive image galleries 
 == Pro Features Include ==
 
 - **Advanced Gallery Layouts**: Create beautiful gallery designs including Masonry, Dynamic Motion, 3D Parallax, and Hexagonal layouts.
-- **Interactive 3D Slider Galleries**: Display images in engaging 3D slider galleries with navigation controls.
+- **3D Image Slider Galleries**: Display images in engaging 3D Image Slider galleries with navigation controls.
 - **Drag-and-Drop Image Sorting**: Organize gallery images easily using sortable drag-and-drop controls.
 - **Custom Overlay Effects**: Design stylish hover overlays with adjustable colors, margins, and padding.
 - **Card Design Customization**: Control card borders, radius, widths, and layout appearance.
@@ -195,49 +210,60 @@ Build Tools Used: Webpack, Babel, PostCSS, Gulp.
 == Frequently Asked Questions ==
 
 = Is Image Gallery Block free? =
-Yes. The free version includes Classic Grid, Polaroid layouts, lightbox popup, and basic styling. A Pro version is available with advanced features.
 
-= What extra features are included in Pro? =
-Pro unlocks Masonry, Dynamic Motion, 3D Parallax, Hexagonal, and 3D Slider layouts, plus drag-and-drop sorting, overlay effects, and advanced design controls.
+Yes. The free version includes responsive image galleries, lightbox popups. A Pro version is available with advanced features.
 
-= Does it work with any WordPress theme? =
-Yes. It is compatible with all modern WordPress themes.
+= What is the best Gutenberg image gallery plugin? =
 
-= Can I customize the gallery design? =
-Yes. Free users can customize layout and basic styling. Pro users get advanced design controls.
+Image Gallery Block helps you create responsive image galleries and photo galleries directly in the Gutenberg editor. The Pro version adds advanced layouts including Masonry, Dynamic Motion, 3D Parallax, and more.
 
-= Can I create multiple image galleries? =
-Yes. You can create unlimited galleries across your site.
+= Can I create a photo gallery with Gutenberg? =
 
-= Is it mobile-friendly? =
-Yes. The gallery is fully responsive.
+Yes. Image Gallery Block lets you create responsive photo galleries directly in the WordPress Gutenberg editor without additional page builders.
 
-= How many times can I reuse a block? =
-You can use unlimited times as you want.
+= Can I create an image gallery in WordPress without Elementor? =
+
+Yes. Image Gallery Block works directly inside the WordPress Gutenberg editor and does not require Elementor or any page builder.
+
+= Can I create a masonry image gallery in WordPress? =
+
+Yes. The Pro version includes advanced Masonry Image Gallery layouts with responsive column controls.
+
+= Does this plugin include a lightbox image gallery? =
+
+Yes. The free version includes a built-in lightbox popup that allows visitors to view images in an enlarged overlay.
+
+= Can I create a responsive photo gallery? =
+
+Yes. All gallery layouts automatically adapt to desktop, tablet, and mobile devices.
+
+= Does Image Gallery Block work with WooCommerce? =
+
+Yes. You can use Image Gallery Block to create product galleries, product showcases, and visual collections on WooCommerce-powered websites.
 
 = How do I get support? =
-Free users can use the WordPress.org support forum.
-Pro users receive priority email support.
+Free users can get help through the WordPress.org support forum. Pro users receive priority email support from our team.
 
-= Where do I report security bugs found in this plugin? =
-Please report security bugs found in the source code of the Image Gallery Block plugin through the [Patchstack Vulnerability Disclosure Program](https://patchstack.com/database/vdp/9e5fc6a4-e1c2-43ce-be03-f518a3f38622). The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
+= Where do I report security vulnerabilities? =
+
+Please report security vulnerabilities found in the source code of the Image Gallery Block plugin through the [Patchstack Vulnerability Disclosure Program](https://patchstack.com/database/vdp/9e5fc6a4-e1c2-43ce-be03-f518a3f38622). The Patchstack team will assist with verification, CVE assignment, and notify the developers of this plugin.
 
 
 == Screenshots ==
 
-1. Settings
-2. Image Gallery - Default
-3. Image Gallery - Polaroid
-4. Image Gallery - Masonry
-5. Image Gallery - Dynamic Motion
-6. Image Gallery - 3d Parallax
-7. Image Gallery - 3d Slider
-8. Image Gallery - Hexagonal
-9. Image Gallery - Simple Swiper
+1. Image Gallery Block Settings
+2. Responsive Image Gallery
+3. Polaroid Photo Gallery
+4. Masonry Image Gallery
+5. Dynamic Motion Gallery
+6. 3D Parallax Gallery
+7. 3D Image Slider Gallery
+8. Hexagonal Gallery Layout
+9. Responsive Gallery Slider
 
 
 == Changelog ==
-= 2.3.0 - 22 Jun 26 =
+= 2.3.0 - 30 Jun 26 =
 * Added: New Admin Dashboard UI with improved layout and user experience.
 
 = 2.2.11 - 16 Mar 26 =

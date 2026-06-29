@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Image Gallery - Block
  * Description: Create and Display Photo Galleries.
- * Version: 2.2.11
+ * Version: 2.3.0
  * Tested up to: 7.0
  * Requires PHP: 7.4
  * Author: bPlugins
@@ -24,7 +24,7 @@ if (! defined('ABSPATH')) {
         ig_fs()->set_basename( true, __FILE__ );
     } else {
 	// Constant
-	define('BIGB_PLUGIN_VERSION', isset($_SERVER['HTTP_HOST']) && 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '2.2.11');
+	define('BIGB_PLUGIN_VERSION', isset($_SERVER['HTTP_HOST']) && 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '2.3.0');
 	define('BIGB_DIR_URL', plugin_dir_url(__FILE__));
 	define('BIGB_DIR_PATH', plugin_dir_path(__FILE__));
 	// Freemius Lite SDK bootstrap.

@@ -53,6 +53,11 @@ export const dashboardInfo = (info) => {
     },
     changelogs: [
       {
+        version: "2.3.0 - 30 Jun 26",
+        list: ["Add: New Admin Dashboard UI with improved layout and user experience."],
+        type: "new",
+      },
+      {
         version: "2.2.10 - 16 Mar 26",
         list: ["Fix: Dashboard Default Color Scheme"],
         type: "fix",
