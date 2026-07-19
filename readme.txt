@@ -1,7 +1,7 @@
-=== Image Gallery Block ===
+=== Image Gallery Block - Photo Gallery, Masonry & Lightbox ===
 Contributors: bplugins, himur98, abuhayat, charlescormier, freemius
 Donate link: https://www.buymeacoffee.com
-Tags: block, image gallery, photo gallery, masonry gallery, lightbox
+Tags: gallery, image gallery, photo gallery, masonry gallery, lightbox
 Requires at least: 6.5
 Tested up to: 7.0
 Stable tag: 2.3.0
@@ -9,7 +9,7 @@ Requires PHP: 7.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-A Gutenberg image gallery plugin for responsive galleries, masonry layouts, lightboxes, and 3D image sliders.
+Image gallery & photo gallery block for Gutenberg - responsive grids, masonry layouts, lightbox popups, and 3D image sliders.
 
 == Description ==
 

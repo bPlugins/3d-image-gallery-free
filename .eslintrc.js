@@ -15,7 +15,6 @@ module.exports = {
     wp: "readonly",
     jQuery: "readonly",
     pluginAction: "readonly",
-    igbpipecheck: "readonly",
   },
   parserOptions: {
     ecmaFeatures: {

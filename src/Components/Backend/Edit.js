@@ -49,7 +49,9 @@ const Edit = (props) => {
         device={device}
       />
 
-      <div {...useBlockProps({ className: "" })} id={`bigbImageGallery-${clientId}`}>
+      <div
+        {...useBlockProps({ className: "" })}
+        id={`bigbImageGallery-${clientId}`}>
         <Style
           attributes={attributes}
           // id={`bigbImageGallery-${clientId}`}

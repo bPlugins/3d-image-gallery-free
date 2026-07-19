@@ -22,3 +22,8 @@ wp_enqueue_script('bigb-image-gallery-view');
 <div <?php echo get_block_wrapper_attributes(); ?> id="<?php echo esc_attr($id); ?>"
     data-attributes="<?php echo esc_attr($json_attributes); ?>">
 </div>
+<?php
+// Crawlable image fallback + structured data for SEO (the gallery itself is
+// rendered client-side, so the wrapper above is empty in the server HTML).
+ig_render_seo_fallback($attributes);
+?>
