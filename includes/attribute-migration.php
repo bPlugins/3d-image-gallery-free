@@ -4,6 +4,10 @@
  * Centralized functions for migrating block attributes
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly.
+}
+
 if (!function_exists('ig_get_default_card_attributes')) {
     /**
      * Get default card attributes for styleOne

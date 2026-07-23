@@ -1,4 +1,8 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly.
+}
+
 $clientId = isset($attributes['cId']) ? $attributes['cId'] : wp_unique_id();
 $id = 'bigbImageGallery-' . $clientId;
 

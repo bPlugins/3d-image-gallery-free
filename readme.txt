@@ -9,23 +9,23 @@ Requires PHP: 7.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Image gallery & photo gallery block for Gutenberg - responsive grids, masonry layouts, lightbox popups, and 3D image sliders.
+Image gallery & photo gallery block for Gutenberg - responsive grid & Polaroid layouts, photo albums, columns & built-in lightbox popups.
 
 == Description ==
 
-[Image Gallery Block](https://bplugins.com/products/3d-image-gallery/) is a lightweight Gutenberg image gallery plugin that lets you create responsive image galleries, photo galleries, masonry galleries, portfolio galleries, and lightbox image galleries directly inside the WordPress block editor.
+[Image Gallery Block](https://bplugins.com/products/3d-image-gallery/) is a lightweight Gutenberg image gallery plugin that lets you create responsive image galleries, photo galleries, Polaroid galleries, portfolio galleries, and lightbox image galleries directly inside the WordPress block editor.
 
 **[Image Gallery Block](https://bplugins.com/products/3d-image-gallery/)** | **[Pricing](https://bplugins.com/products/3d-image-gallery/pricing/)** | **[Support](https://bplugins.com/support/)** | **[Demo](https://bblockswp.com/demo/image-gallery-default/)**
 
-Display images in elegant grid layouts, stylish cards, masonry galleries, or interactive 3D Image Sliders without writing any code. Organize photos using albums, show them in responsive grids with masonry and 3D layouts, and open images in a smooth lightbox popup for a better viewing experience.
+Display images in elegant grid layouts, stylish cards, or Polaroid-style photo galleries without writing any code. Organize photos using albums, show them in responsive grids, and open images in a smooth lightbox popup for a better viewing experience. Pro unlocks advanced layouts including Masonry, Dynamic Motion, 3D Parallax, and interactive 3D Image Sliders.
 
 This Gutenberg image gallery block is perfect for creating photography portfolios, product galleries, blog image showcases, visual storytelling pages, and image collections on any WordPress website.
 
-Create responsive image galleries, photo galleries, masonry galleries, lightbox galleries, and portfolio galleries for any WordPress website.
+Create responsive image galleries, photo galleries, Polaroid galleries, lightbox galleries, and portfolio galleries for any WordPress website.
 
 === Perfect For ===
 
-Image Gallery Block is ideal for creating photography portfolios, WooCommerce product galleries, travel photo galleries, blog image galleries, masonry galleries, and responsive lightbox galleries.
+Image Gallery Block is ideal for creating photography portfolios, WooCommerce product galleries, travel photo galleries, blog image galleries, Polaroid photo galleries, and responsive lightbox galleries.
 
 - Photography portfolios
 - Product galleries
@@ -33,7 +33,7 @@ Image Gallery Block is ideal for creating photography portfolios, WooCommerce pr
 - Travel photo galleries
 - Blog image galleries
 - Portfolio showcases
-- Masonry gallery layouts
+- Grid & Polaroid layouts
 - Lightbox image galleries
 
 === Key Features – Free Version ===
