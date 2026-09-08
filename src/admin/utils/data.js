@@ -1,4 +1,5 @@
 import { imageGalleryIcon } from "../../utils/icons";
+import welcomeBanner from "../assets/welcomeBanner";
 
 const slug = "3d-image-gallery";
 
@@ -29,14 +30,12 @@ export const dashboardInfo = (info) => {
     licenseActiveNonce,
     uninstallNonce,
     deleteDataOnUninstall,
-    displayOurPlugins: true,
     media: {
       logo: `https://ps.w.org/${slug}/assets/icon-128x128.png`,
       banner: `https://ps.w.org/${slug}/assets/banner-772x250.png`,
-      thumbnail: `https://bplugins.com/wp-content/uploads/2026/01/3d-image-gallery.png`,
-      // thumbnail: `https://bplugins.com/wp-content/uploads/2026/01/3d-image-gallery.png`,
-      //   thumbnail: `https://bplugins.com/wp-content/themes/b-technologies/assets/images/products/${slug}.png`,
-      // proThumbnail: `https://bplugins.com/wp-content/uploads/2026/01/3d-image-gallery.png`,
+      // The Welcome hero's artwork. Vector and bundled -- see the module
+      // for why it is a string rather than an imported .svg.
+      thumbnail: welcomeBanner,
       //   video: "https://www.youtube.com/watch?v=milYZrqLJsE",
       //   isYoutube: true,
     },
@@ -190,6 +189,40 @@ export const welcomeInfo = (adminUrl = "") => ({
             num: 4,
             title: "Add Images & Save",
             body: "Add your images, pick a style, and click <strong>Save</strong> — the gallery appears everywhere that template is used.",
+          },
+        ],
+      },
+      {
+        key: "shortcode",
+        label: "Shortcode",
+        steps: [
+          {
+            num: 1,
+            title: "Create a Gallery",
+            body: "Go to <strong>Image Gallery</strong> in your admin menu and click <strong>Add New</strong>.",
+            link: {
+              url: `${adminUrl}post-new.php?post_type=image-gallery`,
+              label: "Add New Gallery",
+            },
+          },
+          {
+            num: 2,
+            title: "Build & Publish",
+            body: "Add your images, pick a <strong>3D style</strong>, then click <strong>Publish</strong>.",
+          },
+          {
+            num: 3,
+            title: "Copy the Shortcode",
+            body: "Go to <strong>Image Gallery &rsaquo; All Image Gallery</strong> and click the shortcode in the <strong>Shortcode</strong> column to copy it (e.g. <code>[image_gallery id=123]</code>).",
+            link: {
+              url: `${adminUrl}edit.php?post_type=image-gallery`,
+              label: "All Galleries",
+            },
+          },
+          {
+            num: 4,
+            title: "Paste It Anywhere",
+            body: "Drop the shortcode into any post, page, widget, page-builder row or theme template. Edit the gallery once and every copy updates.",
           },
         ],
       },

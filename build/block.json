@@ -1,6 +1,6 @@
 {
   "apiVersion": 2,
-  "version": "2.3.0",
+  "version": "2.3.2",
   "name": "bigb/image-gallery",
   "title": "Image Gallery",
   "description": "Create responsive image galleries, masonry layouts, lightboxes, and 3D image sliders.",
@@ -173,13 +173,76 @@
     "html": false
   },
   "example": {
+    "viewportWidth": 1000,
     "attributes": {
-      "preview": true,
+      "styleSl": "styleDefault",
       "columns": {
-        "desktop": 1,
-        "tablet": 1,
+        "desktop": 3,
+        "tablet": 2,
         "mobile": 1
-      }
+      },
+      "itemHeight": "300px",
+      "columnGap": "20px",
+      "background": {
+        "type": "solid",
+        "color": "transparent"
+      },
+      "gallery": [
+        {
+          "id": 1,
+          "title": "Coastline",
+          "subtitle": "18 photographs",
+          "images": [
+            "data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'%3E%3Crect width='1200' height='800' fill='%23f2c894'/%3E%3Ccircle cx='940' cy='190' r='92' fill='%23f0876a'/%3E%3Cpath d='M0 800 L430 300 L820 800 Z' fill='%23a97d78'/%3E%3Cpath d='M480 800 L900 380 L1200 800 Z' fill='%237d5a63'/%3E%3C/svg%3E"
+          ],
+          "colors": {
+            "color": "#fff",
+            "bgType": "solid",
+            "bg": "#505a64d9"
+          },
+          "btnColors": {
+            "color": "#fff",
+            "bgType": "solid",
+            "bg": "#000a1480"
+          }
+        },
+        {
+          "id": 2,
+          "title": "Highlands",
+          "subtitle": "24 photographs",
+          "images": [
+            "data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'%3E%3Crect width='1200' height='800' fill='%23cfe3d2'/%3E%3Ccircle cx='940' cy='190' r='92' fill='%23f7f2d8'/%3E%3Cpath d='M0 800 L430 300 L820 800 Z' fill='%234b7a5c'/%3E%3Cpath d='M480 800 L900 380 L1200 800 Z' fill='%232f5741'/%3E%3C/svg%3E"
+          ],
+          "colors": {
+            "color": "#fff",
+            "bgType": "solid",
+            "bg": "#505a64d9"
+          },
+          "btnColors": {
+            "color": "#fff",
+            "bgType": "solid",
+            "bg": "#000a1480"
+          }
+        },
+        {
+          "id": 3,
+          "title": "After dark",
+          "subtitle": "11 photographs",
+          "images": [
+            "data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'%3E%3Crect width='1200' height='800' fill='%231a2138'/%3E%3Ccircle cx='940' cy='190' r='92' fill='%23c7d4f0'/%3E%3Cpath d='M0 800 L430 300 L820 800 Z' fill='%23161d33'/%3E%3Cpath d='M480 800 L900 380 L1200 800 Z' fill='%230d1220'/%3E%3C/svg%3E"
+          ],
+          "colors": {
+            "color": "#fff",
+            "bgType": "solid",
+            "bg": "#505a64d9"
+          },
+          "btnColors": {
+            "color": "#fff",
+            "bgType": "solid",
+            "bg": "#000a1480"
+          }
+        }
+      ]
     }
   },
   "editorScript": [

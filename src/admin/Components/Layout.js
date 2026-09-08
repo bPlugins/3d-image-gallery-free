@@ -9,7 +9,6 @@ const navigation = [
 	{ name: 'Pricing', href: '/pricing' },
 	{ name: 'Feature Comparison', href: '/feature-comparison' },
 	{ name: 'Activation', href: '/activation' },
-	{ name: 'Our Plugins', href: '/our-plugins' },
 	{ name: 'Settings', href: '/settings' }
 ];
 

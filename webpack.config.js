@@ -17,6 +17,7 @@ module.exports = {
   entry: {
     ...defaultConfig.entry(),
     "admin/dashboard": "./src/admin/dashboard.js",
+    "admin/post": "./src/admin/post.js",
     "view": "./src/view.js",
   },
   plugins: [...plugins, new ESLintPlugin()],

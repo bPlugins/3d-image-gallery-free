@@ -3,14 +3,14 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
 
-$clientId = isset($attributes['cId']) ? $attributes['cId'] : wp_unique_id();
-$id = 'bigbImageGallery-' . $clientId;
+// Ensure $attributes is defined and is an array
+$attributes = ( isset( $attributes ) && is_array( $attributes ) ) ? $attributes : array();
 
-// Ensure $attributes is an array
-$attributes = is_array($attributes) ? $attributes : [];
+$clientId = isset( $attributes['cId'] ) ? $attributes['cId'] : wp_unique_id();
+$id       = 'bigbImageGallery-' . $clientId;
 
 // Migrate old blocks using centralized utility
-$attributes = ig_migrate_style_one_attributes($attributes);
+$attributes = ig_migrate_style_one_attributes( $attributes );
 
 $json_attributes = wp_json_encode($attributes);
 

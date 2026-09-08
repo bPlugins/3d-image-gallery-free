@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Image Gallery Block
  * Description: Create and display photo gallery/photo album
- * Version: 2.3.0
+ * Version: 2.3.2
  * Tested up to: 7.0
  * Requires PHP: 7.4
  * Author: bPlugins
@@ -19,29 +19,21 @@ if (! defined('ABSPATH')) {
 	exit;
 }
 
-
-  if ( function_exists( 'ig_fs' ) ) {
-        ig_fs()->set_basename( true, __FILE__ );
-    } else {
+if ( function_exists( 'ig_fs' ) ) {
+    ig_fs()->set_basename( true, __FILE__ );
+} else {
 	// Constant
-	define('BIGB_PLUGIN_VERSION', isset($_SERVER['HTTP_HOST']) && 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '2.3.0');
-	define('BIGB_DIR_URL', plugin_dir_url(__FILE__));
-	define('BIGB_DIR_PATH', plugin_dir_path(__FILE__));
+    define('BIGB_PLUGIN_VERSION', isset($_SERVER['HTTP_HOST']) && 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '2.3.2');
+    define('BIGB_DIR_URL', plugin_dir_url(__FILE__));
+    define('BIGB_DIR_PATH', plugin_dir_path(__FILE__));
 	// Freemius Lite SDK bootstrap.
 	require_once BIGB_DIR_PATH . 'includes/fs-lite.php';
-
-	function ig_IsPremium()
-	{
-		return false;
-	}
-
 
 	class BIGBImageGallery
 	{
 		function __construct()
 		{
 			add_action('init', [$this, 'onInit']);
-			add_action('enqueue_block_editor_assets', [$this, 'igbEnqueueBlockEditorAssets']);
 			add_filter( 'default_title', [$this, 'defaultTitle'], 10, 2 );
 			add_filter( 'default_content', [$this, 'defaultContent'], 10, 2 );
 		}
@@ -81,16 +73,16 @@ if (! defined('ABSPATH')) {
 				);
 			}
 		}
-
-		function igbEnqueueBlockEditorAssets()
-		{
-			wp_add_inline_script('bigb-image-gallery-editor-script', 'const igbpipecheck = false;', 'before');
-		}
 	}
 
 	new BIGBImageGallery();
 
 }
 
+require_once BIGB_DIR_PATH . '/includes/PostType.php';
+require_once BIGB_DIR_PATH . '/includes/BlockEditor.php';
 require_once BIGB_DIR_PATH . '/includes/admin/SubMenu.php';
 require_once BIGB_DIR_PATH . '/includes/attribute-migration.php';
+
+// Ready-made sections for the inserter.
+require_once BIGB_DIR_PATH . '/includes/patterns.php';

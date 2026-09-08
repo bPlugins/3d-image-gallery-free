@@ -6,8 +6,8 @@ window.copyBPlAdminShortcode = id => {
 	input.select();
 	input.setSelectionRange(0, 30);
 	document.execCommand('copy');
-	tooltip.innerHTML = wp.i18n.__('Copied Successfully!', 'advanced-post-block');
+	tooltip.innerHTML = wp.i18n.__('Copied Successfully!', 'image-gallery');
 	setTimeout(() => {
-		tooltip.innerHTML = wp.i18n.__('Copy To Clipboard', 'advanced-post-block');
+		tooltip.innerHTML = wp.i18n.__('Copy To Clipboard', 'image-gallery');
 	}, 1500);
 }

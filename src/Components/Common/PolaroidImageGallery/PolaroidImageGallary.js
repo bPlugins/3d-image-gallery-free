@@ -3,7 +3,7 @@ import { Modal } from "../Modal";
 
 const PolaroidImageGallary = ({ attributes }) => {
   const { imagesData, styleSl } = attributes;
-  const { images } = imagesData || {};
+  const images = imagesData?.images || [];
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -28,17 +28,16 @@ const PolaroidImageGallary = ({ attributes }) => {
     );
   };
 
-  // Generate a random rotation between -5 and 5 degrees
-  const getRandomRotation = () => {
-    return Math.floor(Math.random() * 10) - 5;
-  };
+  // A tilt between -5 and 5 degrees, fixed per frame. Drawing it randomly at
+  // render time meant every re-render reshuffled every angle on the wall.
+  const getRotation = (index) => (((index * 7) % 11) - 5);
 
   return (
     <div className={`bigbImageGallery ${styleSl}`}>
       <div className="my-8 polaroid-gallery">
         <div className="gap-8 justify-center polaroid-wrapper">
           {images?.map((image, index) => {
-            const rotation = getRandomRotation();
+            const rotation = getRotation(index);
             return (
               <div
                 key={image?.id}
