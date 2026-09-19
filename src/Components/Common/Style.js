@@ -15,6 +15,8 @@ const Style = ({ attributes, clientId }) => {
   const {
     gallery = [],
     itemHeight,
+    aspectRatio = "original",
+    objectFit = "cover",
     columnGap,
     rowGap,
     background,
@@ -25,6 +27,10 @@ const Style = ({ attributes, clientId }) => {
     styles,
     imagesData,
     styleSl,
+    filter,
+    filterBtnColors,
+    filterBtnActiveColors,
+    filterBtnTypo,
   } = attributes || {};
 
   const {
@@ -267,14 +273,36 @@ const Style = ({ attributes, clientId }) => {
             }
 
             ${gallerySl} .galleryItem {
-              height: ${itemHeight};
+              ${aspectRatio && aspectRatio !== "original" ? `aspect-ratio: ${aspectRatio}; height: auto !important;` : `height: ${itemHeight};`}
               ${getBackgroundCSS(background)}
               box-shadow: ${getShadowCSS(galleryShadow)};
             }
 
+            ${aspectRatio && aspectRatio !== "original" ? `
+            ${gallerySl} .galleryItems .galleryImages img {
+              object-fit: ${objectFit || "cover"} !important;
+            }
+            ` : ""}
+
             ${gallerySl} .galleryItem:hover,
             ${gallerySl} .galleryItem.nowEditing {
               box-shadow: ${getShadowCSS(galleryHoverShadow)};
+            }
+
+            ${mainSl} .igFilterBar {
+              ${filter?.align ? `justify-content: ${filter.align === 'left' ? 'flex-start' : filter.align === 'right' ? 'flex-end' : 'center'};` : ""}
+              ${filter?.margin?.bottom ? `margin-bottom: ${filter.margin.bottom};` : ""}
+            }
+
+            ${mainSl} .igFilterBar .igFilterBtn {
+              ${filterBtnColors?.color ? `color: ${filterBtnColors.color};` : ""}
+              ${filterBtnColors?.bg ? `background-color: ${filterBtnColors.bg};` : ""}
+              ${filterBtnTypo?.fontSize?.desktop ? `font-size: ${filterBtnTypo.fontSize.desktop}px;` : ""}
+            }
+
+            ${mainSl} .igFilterBar .igFilterBtn.active {
+              ${filterBtnActiveColors?.color ? `color: ${filterBtnActiveColors.color};` : ""}
+              ${filterBtnActiveColors?.bg ? `background-color: ${filterBtnActiveColors.bg};` : ""}
             }
 
 
@@ -1039,7 +1067,10 @@ const Style = ({ attributes, clientId }) => {
                   color: ${textColor};
                 }
 
-                ${itemHeaderSl} .btnClose {
+                ${itemHeaderSl} .btnClose,
+                ${itemHeaderSl} .btnFullscreen,
+                ${itemHeaderSl} .btnDownload,
+                ${itemHeaderSl} .btnShare {
                   color: ${btnColor};
                   background: ${btnBG};
                 }

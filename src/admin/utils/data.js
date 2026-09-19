@@ -1,4 +1,4 @@
-import { imageGalleryIcon } from "../../utils/icons";
+import { imageGalleryIcon, mediaHighlightsIcon } from "../../utils/icons";
 import welcomeBanner from "../assets/welcomeBanner";
 
 const slug = "3d-image-gallery";
@@ -30,6 +30,7 @@ export const dashboardInfo = (info) => {
     licenseActiveNonce,
     uninstallNonce,
     deleteDataOnUninstall,
+    displayOurPlugins: true,
     media: {
       logo: `https://ps.w.org/${slug}/assets/icon-128x128.png`,
       banner: `https://ps.w.org/${slug}/assets/banner-772x250.png`,
@@ -52,8 +53,37 @@ export const dashboardInfo = (info) => {
     },
     changelogs: [
       {
+        version: "2.4.0 - 19 Sep 26",
+        list: [
+          "New (Pro): Media Highlights — Facebook-style story albums for photos & videos with a full-screen autoplay story viewer. Available in the Pro version.",
+          "New: Reusable galleries — an Image Gallery post type with a [image_gallery id=123] shortcode you can place anywhere.",
+          "New: The gallery screen keeps the block editor even when Gutenberg is disabled sitewide.",
+          "New: Four ready-made sections in the inserter — Photo album grid, Polaroid photo wall, Portfolio showcase, Product lookbook.",
+          "New: Bulk Add from Media Library — select several photos at once and add them all in one step, instead of one at a time.",
+          "New: Albums & Filter Bar — group images into albums and let visitors filter the gallery with a clickable filter bar.",
+          "New: Image Watermarking — overlay a text or logo watermark on gallery and lightbox images.",
+          "New: Load More Pagination — show a limited number of images up front and reveal the rest on demand.",
+          "New: Lightbox Toolbar — fullscreen, download, and share/copy-link buttons plus an image counter.",
+          "New: Aspect Ratio Control — crop gallery thumbnails to Square, 4:3, 16:9, 3:2, or 9:16.",
+          "New: Right-Click Protection — optionally prevent visitors from right-clicking to save images.",
+          "Improved: gallery tiles and both lightboxes are now fully keyboard-operable with proper ARIA roles and focus handling.",
+          "Improved: gallery and Polaroid thumbnails now lazy-load and carry real alt text.",
+          "Fix: Polaroid photo wall section arrived empty; now ships with six framed photographs.",
+          "Fix: Polaroid wall column count collapsed to one column; now sets 3/2/1 columns per device.",
+          "Fix: Frame captions could be invisible on dark themes.",
+          "Fix: Frame tilt reshuffled on every re-render.",
+          "Fix: A Polaroid gallery with cleared photographs could throw before rendering.",
+          "Fix: The block had no usable inserter preview.",
+          "Fix: Copy-to-clipboard messages used the wrong text domain and could not be translated.",
+          "Fix: block asset caching now uses the plugin's real version so styles update immediately after an update.",
+        ],
+        type: "new",
+      },
+      {
         version: "2.3.0 - 30 Jun 26",
-        list: ["Add: New Admin Dashboard UI with improved layout and user experience."],
+        list: [
+          "Add: New Admin Dashboard UI with improved layout and user experience.",
+        ],
         type: "new",
       },
       {
@@ -166,33 +196,6 @@ export const welcomeInfo = (adminUrl = "") => ({
         ],
       },
       {
-        key: "site-editor",
-        label: "Site Editor",
-        steps: [
-          {
-            num: 1,
-            title: "Open the Site Editor",
-            body: "Go to <strong>Appearance &rsaquo; Editor</strong> to edit your block theme (FSE).",
-            link: { url: `${adminUrl}site-editor.php`, label: "Site Editor" },
-          },
-          {
-            num: 2,
-            title: "Choose a Template",
-            body: "Open the <strong>template</strong> or <strong>template part</strong> (e.g. header, single, archive) where you want the gallery.",
-          },
-          {
-            num: 3,
-            title: "Insert the Image Gallery Block",
-            body: "Click the <strong>+</strong> inserter and search <strong>Image Gallery</strong>, then drop it into the template.",
-          },
-          {
-            num: 4,
-            title: "Add Images & Save",
-            body: "Add your images, pick a style, and click <strong>Save</strong> — the gallery appears everywhere that template is used.",
-          },
-        ],
-      },
-      {
         key: "shortcode",
         label: "Shortcode",
         steps: [
@@ -223,6 +226,66 @@ export const welcomeInfo = (adminUrl = "") => ({
             num: 4,
             title: "Paste It Anywhere",
             body: "Drop the shortcode into any post, page, widget, page-builder row or theme template. Edit the gallery once and every copy updates.",
+          },
+        ],
+      },
+      {
+        key: "elementor",
+        label: "Elementor",
+        steps: [
+          {
+            num: 1,
+            title: "Create a Gallery",
+            body: "Go to <strong>Image Gallery &rsaquo; Add New</strong> to build and publish a gallery, then copy its shortcode.",
+            link: {
+              url: `${adminUrl}post-new.php?post_type=image-gallery`,
+              label: "Add New Gallery",
+            },
+          },
+          {
+            num: 2,
+            title: "Edit with Elementor",
+            body: "Open any post or page in the <strong>Elementor</strong> editor.",
+          },
+          {
+            num: 3,
+            title: "Add Shortcode Widget",
+            body: "Search for the <strong>Shortcode</strong> widget in the Elementor elements panel and drag it into your layout.",
+          },
+          {
+            num: 4,
+            title: "Paste Shortcode",
+            body: "Paste your gallery shortcode (e.g. <code>[image_gallery id=123]</code>) into the widget input field and save your changes.",
+          },
+        ],
+      },
+      {
+        key: "php",
+        label: "PHP",
+        steps: [
+          {
+            num: 1,
+            title: "Get Gallery ID",
+            body: "Go to <strong>Image Gallery &rsaquo; All Image Gallery</strong> and note the <strong>ID</strong> of the gallery you want to embed.",
+            link: {
+              url: `${adminUrl}edit.php?post_type=image-gallery`,
+              label: "All Galleries",
+            },
+          },
+          {
+            num: 2,
+            title: "Copy PHP Function",
+            body: "Copy the WordPress <code>do_shortcode</code> function: <pre><code>&lt;?php echo do_shortcode('[image_gallery id=\"YOUR_ID\"]'); ?&gt;</code></pre>",
+          },
+          {
+            num: 3,
+            title: "Insert in Template",
+            body: "Open your theme or template files (e.g. <code>single.php</code>, <code>page.php</code>) in an editor.",
+          },
+          {
+            num: 4,
+            title: "Replace ID & Save",
+            body: "Paste the code into your PHP file and replace <code>YOUR_ID</code> with the actual ID of your image gallery.",
           },
         ],
       },
@@ -279,6 +342,12 @@ export const demoInfo = {
           url: "https://bblockswp.com/demo/image-gallery-style-seven/",
         },
       ],
+    },
+    {
+      icon: mediaHighlightsIcon,
+      title: "Media Highlights",
+      type: "iframe",
+      url: "https://bblockswp.com/demo/3d-image-gallery-media-highlights/",
     },
 
     // {

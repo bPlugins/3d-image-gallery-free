@@ -1,12 +1,42 @@
-// :root {
-// 	--bpl-dashboard-primary-color: #0B81EE;
-// 	--bpl-dashboard-primary-color-rgb: 11, 129, 238;
-// 	--bpl-dashboard-secondary-color: #8C74FD;
-// 	--bpl-dashboard-secondary-color-rgb: 140, 116, 253;
-// 	--bpl-dashboard-title-color: #070127;
-// 	--bpl-dashboard-title-color-rgb: 7, 1, 39;
-// 	--bpl-dashboard-content-color: #1b2e4b;
-// 	--bpl-dashboard-content-color-rgb: 27, 46, 75;
-// }
+:root {
+	--bpl-dashboard-primary-color: #0B81EE;
+	--bpl-dashboard-primary-color-rgb: 11, 129, 238;
+	--bpl-dashboard-secondary-color: #8C74FD;
+	--bpl-dashboard-secondary-color-rgb: 140, 116, 253;
+	--bpl-dashboard-title-color: #070127;
+	--bpl-dashboard-title-color-rgb: 7, 1, 39;
+	--bpl-dashboard-content-color: #1b2e4b;
+	--bpl-dashboard-content-color-rgb: 27, 46, 75;
+}
 
 @import '../../../bpl-tools/Admin/style.scss';
+
+/*
+ * Demos: tint each card with its category's accent at rest instead of only
+ * on hover -- bpl-tools/Admin/Demos already hands every card `--accent`, this
+ * just lifts the wash onto the card background so a page of cards reads as
+ * grouped at a glance. Written here (not in bpl-tools) since only some
+ * plugins want it; selector is three classes deep to outrank the shared
+ * component's own two-class `.bPlDashboardDemos .card` without !important.
+ */
+.bPlDashboard .bPlDashboardDemos .card {
+	background: #ffffff;
+	background:
+		linear-gradient(
+			150deg,
+			color-mix(in srgb, var(--accent) 16%, transparent) 0%,
+			color-mix(in srgb, var(--accent) 5%, transparent) 46%,
+			transparent 78%
+		),
+		#ffffff;
+	border-color: color-mix(in srgb, var(--accent) 24%, transparent);
+
+	.cardIcon,
+	.cardCat {
+		background: color-mix(in srgb, var(--accent) 20%, #ffffff);
+	}
+
+	&:hover {
+		border-color: var(--accent);
+	}
+}

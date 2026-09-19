@@ -15,6 +15,7 @@ import {
 import General from "./General/General";
 import Style from "./Style/Style";
 import BPlBlockPreview from "../Panel/BplBlockPreview/BplBlockPreview";
+import { AdvertiseCard } from "../../../../../bpl-tools/ProControls";
 
 const Settings = ({
   attributes,
@@ -92,6 +93,8 @@ const Settings = ({
             </>
           )}
         </TabPanel>
+
+        <AdvertiseCard planLink="edit.php?post_type=image-gallery&page=3d-image-gallery-dashboard#/pricing" />
       </InspectorControls>
 
       <BlockControls>

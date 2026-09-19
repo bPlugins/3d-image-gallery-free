@@ -55,3 +55,115 @@ $primaryColor: #146ef5;
     stroke: #fff !important;
   }
 }
+
+/* Album Manager in Inspector */
+.ig-album-manager {
+  margin-top: 10px;
+
+  .ig-album-add-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    align-items: center;
+
+    .components-base-control {
+      flex: 1;
+      margin-bottom: 0;
+    }
+  }
+
+  .ig-album-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+
+    .ig-album-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 8px;
+      background: #f0f2f5;
+      border: 1px solid #dcdcde;
+      border-radius: 4px;
+      font-size: 12px;
+
+      .ig-album-remove {
+        cursor: pointer;
+        padding: 0;
+        min-width: auto;
+        height: auto;
+        color: #757575;
+        &:hover {
+          color: #cc1818;
+        }
+      }
+    }
+  }
+}
+
+.ig-item-albums {
+  margin-top: 10px;
+  margin-bottom: 15px;
+
+  .ig-item-album-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 6px;
+  }
+}
+
+/* Bulk Add Button Group */
+.bulkAddItem {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+/* Style One Inspector Enhancements */
+.ig-bulk-add-btn {
+  width: 100%;
+  justify-content: center;
+  display: flex !important;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+
+.ig-datepicker-input {
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 13px;
+  line-height: normal;
+  color: #1e1e1e;
+  border: 1px solid #949494;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #fff;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  &:focus {
+    border-color: $primaryColor;
+    box-shadow: 0 0 0 1px $primaryColor;
+    outline: none;
+  }
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+  display: block;
+}
+
+.react-datepicker__input-container {
+  width: 100%;
+  display: block;
+}
+
+.ig-item-date-section {
+  background: #f9f9f9;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

@@ -1,8 +1,74 @@
+import { useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./style.scss";
 import Style from "./Components/Common/Style";
 import Gallery from "./Components/Common/Gallery";
 import PolaroidImageGallary from "./Components/Common/PolaroidImageGallery/PolaroidImageGallary";
+import ImageFilter from "./Components/Common/ImageFilter";
+
+const FrontendGallery = ({ attributes }) => {
+  const [activeAlbum, setActiveAlbum] = useState("*");
+  const {
+    cId,
+    gallery,
+    slideSpeed,
+    columns,
+    styleSl,
+    albums = [],
+    filter = {},
+    watermark = {},
+  } = attributes;
+
+  return (
+    <>
+      <Style attributes={attributes} clientId={cId} />
+
+      {styleSl === "styleDefault" && (
+        <div className={`bigbImageGallery ${styleSl}`}>
+          <ImageFilter
+            albums={albums}
+            filter={filter}
+            activeAlbum={activeAlbum}
+            setActiveAlbum={setActiveAlbum}
+          />
+          <Gallery
+            gallery={gallery}
+            slideSpeed={slideSpeed}
+            columns={columns}
+            activeAlbum={activeAlbum}
+            watermark={watermark}
+            disableRightClick={attributes?.disableRightClick}
+            enableLightbox={attributes?.enableLightbox}
+            showLightboxCounter={attributes?.showLightboxCounter}
+            showLightboxFullscreen={attributes?.showLightboxFullscreen}
+            showLightboxDownload={attributes?.showLightboxDownload}
+            showLightboxShare={attributes?.showLightboxShare}
+            enableLoadMore={attributes?.enableLoadMore}
+            imagesPerLoad={attributes?.imagesPerLoad}
+            loadMoreBtnText={attributes?.loadMoreBtnText}
+            loadMoreBtnColors={attributes?.loadMoreBtnColors}
+            loadMoreBtnTypo={attributes?.loadMoreBtnTypo}
+          />
+        </div>
+      )}
+
+      {styleSl === "styleOne" && (
+        <>
+          <ImageFilter
+            albums={albums}
+            filter={filter}
+            activeAlbum={activeAlbum}
+            setActiveAlbum={setActiveAlbum}
+          />
+          <PolaroidImageGallary
+            attributes={attributes}
+            activeAlbum={activeAlbum}
+          />
+        </>
+      )}
+    </>
+  );
+};
 
 document.addEventListener("DOMContentLoaded", () => {
   const allImageGallery = document.querySelectorAll(
@@ -18,31 +84,10 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       attributes = JSON.parse(raw);
     } catch (e) {
-      // console.error("Failed to parse data-attributes JSON", e);
       return e;
     }
 
-    const { cId, gallery, slideSpeed, columns, styleSl } = attributes;
-
-    createRoot(imageGallery).render(
-      <>
-        <Style attributes={attributes} clientId={cId} />
-
-        {styleSl === "styleDefault" && (
-          <div className={`bigbImageGallery ${styleSl}`}>
-            <Gallery
-              gallery={gallery}
-              slideSpeed={slideSpeed}
-              columns={columns}
-            />
-          </div>
-        )}
-
-        {styleSl === "styleOne" && (
-          <PolaroidImageGallary attributes={attributes} />
-        )}
-      </>,
-    );
+    createRoot(imageGallery).render(<FrontendGallery attributes={attributes} />);
 
     imageGallery?.removeAttribute("data-attributes");
   });

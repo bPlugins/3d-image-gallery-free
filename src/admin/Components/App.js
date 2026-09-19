@@ -9,6 +9,7 @@ import Demos from "../../../../bpl-tools/Admin/Demos";
 import Pricing from "../../../../bpl-tools/Admin/Pricing";
 import FeatureCompare from "../../../../bpl-tools/Admin/FeatureCompare";
 import Activation from "../../../../bpl-tools/Admin/Activation";
+import OurPlugins from "../../../../bpl-tools/Admin/OurPlugins";
 import Settings from "../../../../bpl-tools/Admin/Settings";
 import Welcome from "../../../../bpl-tools/Admin/Welcome";
 
@@ -68,6 +69,8 @@ const App = (props) => {
               }
             />
           )}
+
+          <Route path="our-plugins" element={<OurPlugins {...props} />} />
 
           <Route
             path="settings"

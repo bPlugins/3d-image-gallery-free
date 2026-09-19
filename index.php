@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Image Gallery Block
  * Description: Create and display photo gallery/photo album
- * Version: 2.3.2
+ * Version: 2.4.0
  * Tested up to: 7.0
  * Requires PHP: 7.4
  * Author: bPlugins
@@ -23,7 +23,10 @@ if ( function_exists( 'ig_fs' ) ) {
     ig_fs()->set_basename( true, __FILE__ );
 } else {
 	// Constant
-    define('BIGB_PLUGIN_VERSION', isset($_SERVER['HTTP_HOST']) && 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '2.3.2');
+    define('BIGB_PLUGIN_VERSION', (
+        isset($_SERVER['HTTP_HOST'])
+        && 'localhost' === strtok(sanitize_text_field(wp_unslash($_SERVER['HTTP_HOST'])), ':')
+    ) ? time() : '2.4.0');
     define('BIGB_DIR_URL', plugin_dir_url(__FILE__));
     define('BIGB_DIR_PATH', plugin_dir_path(__FILE__));
 	// Freemius Lite SDK bootstrap.
@@ -36,6 +39,18 @@ if ( function_exists( 'ig_fs' ) ) {
 			add_action('init', [$this, 'onInit']);
 			add_filter( 'default_title', [$this, 'defaultTitle'], 10, 2 );
 			add_filter( 'default_content', [$this, 'defaultContent'], 10, 2 );
+			add_filter( 'block_type_metadata', [ $this, 'versionBlockAssets' ] );
+		}
+
+		// block.json's own "version" is what register_block_style_handle()
+		// falls back to for cache-busting once SCRIPT_DEBUG is off (the
+		// normal state on a real site), so keep it pinned to the plugin's
+		// actual version rather than whatever was last hand-edited there.
+		function versionBlockAssets( $metadata ) {
+			if ( isset( $metadata['name'] ) && 0 === strpos( $metadata['name'], 'bigb/' ) ) {
+				$metadata['version'] = BIGB_PLUGIN_VERSION;
+			}
+			return $metadata;
 		}
 
 

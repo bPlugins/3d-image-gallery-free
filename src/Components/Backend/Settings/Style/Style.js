@@ -9,6 +9,7 @@ import {
   Background,
   BoxControl,
   ColorControl,
+  ColorsControl,
   Device,
   Label,
   ShadowControl,
@@ -39,6 +40,11 @@ const Style = ({ setAttributes, attributes, device }) => {
     titleTypo,
     subtitleTypo,
     styleSl,
+    filter,
+    albums,
+    filterBtnColors,
+    filterBtnActiveColors,
+    filterBtnTypo,
   } = attributes;
 
   return (
@@ -112,15 +118,37 @@ const Style = ({ setAttributes, attributes, device }) => {
         )}
 
         {styleSl === "styleOne" && (
-          <>
-            <PanelBody
-              className="bPlPanelBody"
-              title={__("Gallery", "image-gallery")}
-              initialOpen={true}>
-              <PanelRow>
-                <Label className="">{__("Cards Width", "image-gallery")}</Label>
-                <Device />
-              </PanelRow>
+        <>
+          {/* 1. Cards & Grid Layout */}
+          <PanelBody
+            className="bPlPanelBody"
+            title={__("Cards & Grid Layout", "image-gallery")}
+            initialOpen={true}
+          >
+            <PanelRow>
+              <Label>{__("Columns", "image-gallery")}</Label>
+              <Device />
+            </PanelRow>
+            <NumberControl
+              style={{ width: "100%" }}
+              id="columns-select"
+              value={columns?.[device]}
+              onChange={(cols) => {
+                setAttributes({
+                  styles: updateData(styles, cols, "columns", device),
+                });
+              }}
+              min={1}
+              max={12}
+              step={1}
+            />
+
+            <div style={{ marginTop: "16px" }}></div>
+
+            <PanelRow>
+              <Label>{__("Cards Width", "image-gallery")}</Label>
+              <Device />
+            </PanelRow>
             <UnitControl
               value={card?.width?.[device]}
               onChange={(value) => {
@@ -135,10 +163,10 @@ const Style = ({ setAttributes, attributes, device }) => {
               resetFallbackValue={100}
             />
 
-            <div style={{ marginTop: "20px" }}></div>
+            <div style={{ marginTop: "16px" }}></div>
 
             <PanelRow>
-              <Label className="">{__("Images Height", "image-gallery")}</Label>
+              <Label>{__("Images Height", "image-gallery")}</Label>
               <Device />
             </PanelRow>
             <UnitControl
@@ -155,10 +183,10 @@ const Style = ({ setAttributes, attributes, device }) => {
               resetFallbackValue={100}
             />
 
-            <div style={{ marginTop: "20px" }}></div>
+            <div style={{ marginTop: "16px" }}></div>
 
             <PanelRow>
-              <Label className="">{__("Cards Gap", "image-gallery")}</Label>
+              <Label>{__("Cards Gap", "image-gallery")}</Label>
               <Device />
             </PanelRow>
             <UnitControl
@@ -174,29 +202,17 @@ const Style = ({ setAttributes, attributes, device }) => {
               allowReset
               resetFallbackValue={10}
             />
+          </PanelBody>
 
-            <div style={{ marginTop: "20px" }}></div>
-
-            <PanelRow>
-              <Label className="">{__("Columns", "image-gallery")}</Label>
-              <Device />
-            </PanelRow>
-            <NumberControl
-              style={{ width: "100%" }}
-              id="columns-select"
-              value={columns?.[device]}
-              onChange={(columns) => {
-                setAttributes({
-                  styles: updateData(styles, columns, "columns", device),
-                });
-              }}
-              min={1}
-              max={12}
-              step={1}
-            />
-
-            <div style={{ marginTop: "20px" }}></div>
-
+          {/* 2. Card Content & Typography */}
+          <PanelBody
+            className="bPlPanelBody"
+            title={__("Card Content & Typography", "image-gallery")}
+            initialOpen={false}
+          >
+            <div className="ig-panel-section-header">
+              <span className="ig-panel-section-badge">{__("Title", "image-gallery")}</span>
+            </div>
             <Typography
               label={__("Title Typography", "image-gallery")}
               value={title?.typography}
@@ -208,7 +224,7 @@ const Style = ({ setAttributes, attributes, device }) => {
               defaultTypo={title?.typography}
             />
 
-            <div style={{ marginTop: "20px" }}></div>
+            <div style={{ marginTop: "16px" }}></div>
 
             <ColorControl
               label={__("Title Color", "image-gallery")}
@@ -220,10 +236,10 @@ const Style = ({ setAttributes, attributes, device }) => {
               }}
             />
 
-            <div style={{ marginTop: "20px" }}></div>
+            <div style={{ marginTop: "16px" }}></div>
 
             <PanelRow>
-              <Label className="">{__("Title Margin", "image-gallery")}</Label>
+              <Label>{__("Title Margin", "image-gallery")}</Label>
               <Device />
             </PanelRow>
             <BoxControl
@@ -235,8 +251,11 @@ const Style = ({ setAttributes, attributes, device }) => {
               }
             />
 
-            <div style={{ marginTop: "20px" }}></div>
+            <div className="ig-panel-section-divider"></div>
 
+            <div className="ig-panel-section-header">
+              <span className="ig-panel-section-badge">{__("Subtitle / Description", "image-gallery")}</span>
+            </div>
             <Typography
               label={__("Description Typography", "image-gallery")}
               value={description?.typography}
@@ -253,7 +272,7 @@ const Style = ({ setAttributes, attributes, device }) => {
               defaultTypo={description?.typography}
             />
 
-            <div style={{ marginTop: "20px" }}></div>
+            <div style={{ marginTop: "16px" }}></div>
 
             <ColorControl
               label={__("Description Color", "image-gallery")}
@@ -265,12 +284,10 @@ const Style = ({ setAttributes, attributes, device }) => {
               }}
             />
 
-            <div style={{ marginTop: "20px" }}></div>
+            <div style={{ marginTop: "16px" }}></div>
 
             <PanelRow>
-              <Label className="">
-                {__("Description Margin", "image-gallery")}
-              </Label>
+              <Label>{__("Description Margin", "image-gallery")}</Label>
               <Device />
             </PanelRow>
             <BoxControl
@@ -288,8 +305,11 @@ const Style = ({ setAttributes, attributes, device }) => {
               }
             />
 
-            <div style={{ marginTop: "20px" }}></div>
+            <div className="ig-panel-section-divider"></div>
 
+            <div className="ig-panel-section-header">
+              <span className="ig-panel-section-badge">{__("Date Badge", "image-gallery")}</span>
+            </div>
             <Typography
               label={__("Date Typography", "image-gallery")}
               value={date?.typography}
@@ -301,7 +321,7 @@ const Style = ({ setAttributes, attributes, device }) => {
               defaultTypo={date?.typography}
             />
 
-            <div style={{ marginTop: "20px" }}></div>
+            <div style={{ marginTop: "16px" }}></div>
 
             <ColorControl
               label={__("Date Color", "image-gallery")}
@@ -313,10 +333,10 @@ const Style = ({ setAttributes, attributes, device }) => {
               }}
             />
 
-            <div style={{ marginTop: "20px" }}></div>
+            <div style={{ marginTop: "16px" }}></div>
 
             <PanelRow>
-              <Label className="">{__("Date Margin", "image-gallery")}</Label>
+              <Label>{__("Date Margin", "image-gallery")}</Label>
               <Device />
             </PanelRow>
             <BoxControl
@@ -327,10 +347,28 @@ const Style = ({ setAttributes, attributes, device }) => {
                 })
               }
             />
+          </PanelBody>
 
-            <div style={{ marginTop: "20px" }}></div>
+          {/* 3. Card Shadows & Elevation */}
+          <PanelBody
+            className="bPlPanelBody"
+            title={__("Card Shadows & Elevation", "image-gallery")}
+            initialOpen={false}
+          >
+            <ShadowControl
+              label={__("Card Normal Shadow", "image-gallery")}
+              value={shadow}
+              onChange={(value) => {
+                setAttributes({
+                  styles: updateData(styles, value, "shadow"),
+                });
+              }}
+              type="box"
+              defaultValue={shadow}
+            />
 
-            {/* Hover Shadow */}
+            <div style={{ marginTop: "16px" }}></div>
+
             <ShadowControl
               label={__("Card Hover Shadow", "image-gallery")}
               value={hoverShadow}
@@ -342,25 +380,17 @@ const Style = ({ setAttributes, attributes, device }) => {
               type="box"
               defaultValue={hoverShadow}
             />
+          </PanelBody>
 
-            <div style={{ marginTop: "20px" }}></div>
-
-            {/* Shadow control */}
-            <ShadowControl
-              label={__("Card Shadow", "image-gallery")}
-              value={shadow}
-              onChange={(value) => {
-                setAttributes({
-                  styles: updateData(styles, value, "shadow"),
-                });
-              }}
-              type="box"
-              defaultValue={shadow}
-            />
-
-            <div style={{ marginTop: "20px" }}></div>
-
-            {/* Modal */}
+          {/* 4. Lightbox Modal Style */}
+          <PanelBody
+            className="bPlPanelBody"
+            title={__("Lightbox Modal Style", "image-gallery")}
+            initialOpen={false}
+          >
+            <div className="ig-panel-section-header">
+              <span className="ig-panel-section-badge">{__("Modal Title", "image-gallery")}</span>
+            </div>
             <Typography
               label={__("Modal Title Typography", "image-gallery")}
               value={modal?.title?.typography}
@@ -378,7 +408,7 @@ const Style = ({ setAttributes, attributes, device }) => {
               defaultTypo={modal?.title?.typography}
             />
 
-            <div style={{ marginTop: "20px" }}></div>
+            <div style={{ marginTop: "16px" }}></div>
 
             <ColorControl
               label={__("Modal Title Color", "image-gallery")}
@@ -396,8 +426,11 @@ const Style = ({ setAttributes, attributes, device }) => {
               }}
             />
 
-            <div style={{ marginTop: "20px" }}></div>
+            <div className="ig-panel-section-divider"></div>
 
+            <div className="ig-panel-section-header">
+              <span className="ig-panel-section-badge">{__("Modal Description", "image-gallery")}</span>
+            </div>
             <Typography
               label={__("Modal Description Typography", "image-gallery")}
               value={modal?.description?.typography}
@@ -415,7 +448,7 @@ const Style = ({ setAttributes, attributes, device }) => {
               defaultTypo={modal?.description?.typography}
             />
 
-            <div style={{ marginTop: "20px" }}></div>
+            <div style={{ marginTop: "16px" }}></div>
 
             <ColorControl
               label={__("Modal Description Color", "image-gallery")}
@@ -432,79 +465,121 @@ const Style = ({ setAttributes, attributes, device }) => {
                 });
               }}
             />
-            </PanelBody>
-          </>
-        )}
+          </PanelBody>
 
-      {styleSl === "styleOne" && (
+          {/* 5. Container */}
+          <PanelBody
+            className="bPlPanelBody"
+            title={__("Container", "image-gallery")}
+            initialOpen={false}
+          >
+            <PanelRow>
+              <Label>{__("Background", "image-gallery")}</Label>
+              <Device />
+            </PanelRow>
+            <Background
+              value={container?.bg?.[device]}
+              onChange={(value) => {
+                setAttributes({
+                  styles: updateData(styles, value, "container", "bg", device),
+                });
+              }}
+            />
+
+            <div style={{ marginTop: "16px" }}></div>
+
+            <BoxControl
+              label={__("Border Radius", "image-gallery")}
+              values={container?.borderRadius}
+              onChange={(values) =>
+                setAttributes({
+                  styles: updateData(styles, values, "container", "borderRadius"),
+                })
+              }
+            />
+
+            <div style={{ marginTop: "16px" }}></div>
+
+            <PanelRow>
+              <Label>{__("Margin", "image-gallery")}</Label>
+              <Device />
+            </PanelRow>
+            <BoxControl
+              values={container?.margin?.[device]}
+              onChange={(values) => {
+                setAttributes({
+                  styles: updateData(
+                    styles,
+                    values,
+                    "container",
+                    "margin",
+                    device
+                  ),
+                });
+              }}
+            />
+
+            <div style={{ marginTop: "16px" }}></div>
+
+            <PanelRow>
+              <Label>{__("Padding", "image-gallery")}</Label>
+              <Device />
+            </PanelRow>
+            <BoxControl
+              values={container?.padding?.[device]}
+              onChange={(values) => {
+                setAttributes({
+                  styles: updateData(
+                    styles,
+                    values,
+                    "container",
+                    "padding",
+                    device
+                  ),
+                });
+              }}
+            />
+          </PanelBody>
+        </>
+      )}
+
+      {(styleSl === "styleDefault" || styleSl === "styleOne") && filter?.display && albums?.length > 0 && (
         <PanelBody
           className="bPlPanelBody"
-          title={__("Container", "image-gallery")}
+          title={__("Filter Buttons Style", "image-gallery")}
           initialOpen={false}>
-          <PanelRow>
-            <Label className="">{__("", "image-gallery")}</Label>
-            <Device />
-          </PanelRow>
-          <Background
-            value={container?.bg?.[device]}
-            onChange={(value) => {
-              setAttributes({
-                styles: updateData(styles, value, "container", "bg", device),
-              });
+          <ColorsControl
+            label={__("Button Colors", "image-gallery")}
+            value={filterBtnColors}
+            onChange={(val) => setAttributes({ filterBtnColors: val })}
+            defaults={{
+              color: "#444444",
+              bgType: "solid",
+              bg: "#f0f2f5",
             }}
           />
 
-          <div style={{ marginTop: "20px" }}></div>
-
-          <BoxControl
-            label={__("Border Radius", "image-gallery")}
-            values={container?.borderRadius}
-            onChange={(values) =>
-              setAttributes({
-                styles: updateData(styles, values, "container", "borderRadius"),
-              })
+          <ColorsControl
+            className="mt20"
+            label={__("Active Button Colors", "image-gallery")}
+            value={filterBtnActiveColors}
+            onChange={(val) =>
+              setAttributes({ filterBtnActiveColors: val })
             }
-          />
-
-          <div style={{ marginTop: "20px" }}></div>
-
-          <PanelRow>
-            <Label className="">{__("Margin", "image-gallery")}</Label>
-            <Device />
-          </PanelRow>
-          <BoxControl
-            values={container?.margin?.[device]}
-            onChange={(values) => {
-              setAttributes({
-                styles: updateData(
-                  styles,
-                  values,
-                  "container",
-                  "margin",
-                  device
-                ),
-              });
+            defaults={{
+              color: "#ffffff",
+              bgType: "solid",
+              bg: "#146ef5",
             }}
           />
 
-          <div style={{ marginTop: "20px" }}></div>
-
-          <PanelRow>
-            <Label className="">{__("Padding", "image-gallery")}</Label>
-            <Device />
-          </PanelRow>
-          <BoxControl
-            values={container?.padding?.[device]}
-            onChange={(values) => {
-              setAttributes({
-                styles: updateData(
-                  styles,
-                  values,
-                  "container",
-                  "padding",
-                  device
-                ),
-              });
+          <Typography
+            className="mt20"
+            label={__("Button Typography", "image-gallery")}
+            value={filterBtnTypo}
+            onChange={(val) => setAttributes({ filterBtnTypo: val })}
+            defaults={{
+              fontSize: { desktop: 14, tablet: 14, mobile: 14 },
             }}
           />
         </PanelBody>

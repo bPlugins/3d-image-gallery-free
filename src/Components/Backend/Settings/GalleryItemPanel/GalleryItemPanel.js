@@ -3,11 +3,11 @@ import {
   TextareaControl,
   __experimentalNumberControl as NumberControl,
   PanelRow,
-  ToggleControl,
-  __experimentalSpacer as Spacer,
   __experimentalUnitControl as UnitControl,
   TextControl,
+  SelectControl,
   RangeControl,
+  CheckboxControl,
 } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import { produce } from "immer";
@@ -18,7 +18,7 @@ import {
 } from "../../../../../../bpl-tools/Components";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useEffect, useMemo, useState } from "react";
+import { useState } from "react";
 import { format } from "date-fns";
 import { BControlPro } from "../../../../../../bpl-tools/ProControls";
 
@@ -40,8 +40,11 @@ const GalleryPanel = ({
   const InputControlComponent = isFreeStyle ? InputControl : BControlPro;
   const TextareaControlComponent = isFreeStyle ? TextareaControl : BControlPro;
 
-  const [startDate, setStartDate] = useState(new Date());
-  const [dateFormat, setDateFormat] = useState("MM-dd-yyyy");
+  const [startDate, setStartDate] = useState(() => {
+    const existingDate = new Date(item?.date);
+    return !isNaN(existingDate.getTime()) ? existingDate : new Date();
+  });
+  const [dateFormat, setDateFormat] = useState(attributes?.globalDateFormat || "MM-dd-yyyy");
 
   const updateGalleryItems = (property, val, childProperty = null) => {
     const items = attributes[arrKey];
@@ -62,40 +65,23 @@ const GalleryPanel = ({
 
   // Available format options
   const formatOptions = [
-    {
-      value: "MM-dd-yyyy",
-      label: "MM-DD-YYYY",
-    },
-    {
-      value: "yyyy-MM-dd",
-      label: "YYYY-MM-DD",
-    },
-    {
-      value: "dd/MM/yyyy",
-      label: "DD/MM/YYYY",
-    },
-    {
-      value: "MMMM d, yyyy ",
-      label: "Month D, YYYY",
-    },
+    { value: "MM-dd-yyyy", label: "MM-DD-YYYY" },
+    { value: "yyyy-MM-dd", label: "YYYY-MM-DD" },
+    { value: "dd/MM/yyyy", label: "DD/MM/YYYY" },
+    { value: "MMMM d, yyyy ", label: "Month D, YYYY" },
   ];
 
   // Handle format change
-  const handleFormatChange = (event) => {
-    setDateFormat(event.target.value);
+  const handleFormatChange = (newFormat) => {
+    setDateFormat(newFormat);
+    try {
+      updateGalleryItems("date", format(startDate, newFormat));
+    } catch (e) {
+      updateGalleryItems("date", startDate.toISOString());
+    }
   };
 
-  const formattedDate = useMemo(() => {
-    try {
-      return format(startDate, dateFormat);
-    } catch (error) {
-      return "Invalid date";
-    }
-  }, [startDate, dateFormat]);
 
-  useEffect(() => {
-    updateGalleryItems("date", formattedDate);
-  }, [formattedDate]);
 
   const updateImagePos = (index, newX, newY) => {
     const updatedImages = items.map((img, i) =>
@@ -209,6 +195,13 @@ const GalleryPanel = ({
             Component={TextareaControl}
             {...premiumProps}
           />
+          <div style={{ marginTop: "20px" }}></div>
+          <TextControl
+            label={__("Custom Link", "image-gallery")}
+            value={items[index]?.link || ""}
+            onChange={(link) => updateGalleryItems("link", link)}
+            help={__("If provided, clicking this item will open the link.", "image-gallery")}
+          />
         </>
       )}
 
@@ -247,42 +240,64 @@ const GalleryPanel = ({
       {/* Dropdown to select date format */}
       {styleSl === "styleOne" && (
         <>
-          <ToggleControl
-            label={__("Show Date", "image-gallery")}
-            checked={attributes?.showDate}
-            onChange={(showDate) => {
-              setAttributes({ showDate });
-            }}
-          />
-
-          <Spacer />
-
-          {attributes?.showDate && (
-            <>
-              <label htmlFor="format-select">Select Date Format</label>
-              <select
-                style={{ marginTop: "8px", width: "100%" }}
-                id="format-select"
+          {(attributes?.showDate ?? premiumProps?.rootAttributes?.imagesData?.showDate) && (
+            <div className="ig-item-date-section">
+              <SelectControl
+                label={__("Date Format", "image-gallery")}
+                id={`format-select-${index}`}
                 value={dateFormat}
+                options={formatOptions}
                 onChange={handleFormatChange}
-              >
-                {formatOptions.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-
-              <Spacer />
-
-              <div style={{ width: "100%" }}>
-                <DatePicker
-                  selected={startDate}
-                  onChange={(date) => setStartDate(date)}
-                  dateFormat={dateFormat}
-                />
+              />
+              
+              <div style={{ marginTop: "10px" }}>
+                <Label className="mb5">{__("Item Date:", "image-gallery")}</Label>
+                <div style={{ width: "100%", marginTop: "4px" }}>
+                  <DatePicker
+                    className="ig-datepicker-input"
+                    selected={startDate}
+                    onChange={(date) => {
+                      setStartDate(date);
+                      try {
+                        updateGalleryItems("date", format(date, dateFormat));
+                      } catch (e) {
+                        updateGalleryItems("date", date.toISOString());
+                      }
+                    }}
+                    dateFormat={dateFormat}
+                  />
+                </div>
               </div>
-            </>
+            </div>
+          )}
+
+          <div style={{ marginTop: "20px" }}></div>
+
+          {premiumProps?.rootAttributes?.albums?.length > 0 && (
+            <div className="ig-item-albums">
+              <Label className="mb5">
+                {__("Assign to Albums:", "image-gallery")}
+              </Label>
+              <div className="ig-item-album-list">
+                {premiumProps.rootAttributes.albums.map((albumName) => {
+                  const currentAlbs = Array.isArray(item?.albs) ? item.albs : [];
+                  const isChecked = currentAlbs.includes(albumName);
+                  return (
+                    <CheckboxControl
+                      key={albumName}
+                      label={albumName}
+                      checked={isChecked}
+                      onChange={(checked) => {
+                        const nextAlbs = checked
+                          ? [...currentAlbs, albumName]
+                          : currentAlbs.filter((a) => a !== albumName);
+                        updateGalleryItems("albs", nextAlbs);
+                      }}
+                    />
+                  );
+                })}
+              </div>
+            </div>
           )}
         </>
       )}

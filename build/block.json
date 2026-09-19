@@ -1,6 +1,6 @@
 {
   "apiVersion": 2,
-  "version": "2.3.2",
+  "version": "2.4.0",
   "name": "bigb/image-gallery",
   "title": "Image Gallery",
   "description": "Create responsive image galleries, masonry layouts, lightboxes, and 3D image sliders.",
@@ -163,6 +163,118 @@
     "styleSl": {
       "type": "string",
       "default": "styleDefault"
+    },
+    "albums": {
+      "type": "array",
+      "default": []
+    },
+    "filter": {
+      "type": "object",
+      "default": {
+        "display": false,
+        "allText": "All",
+        "align": "center",
+        "margin": {
+          "bottom": "25px"
+        }
+      }
+    },
+    "filterBtnColors": {
+      "type": "object",
+      "default": {
+        "color": "#444444",
+        "bg": "#f0f2f5"
+      }
+    },
+    "filterBtnActiveColors": {
+      "type": "object",
+      "default": {
+        "color": "#ffffff",
+        "bg": "#146ef5"
+      }
+    },
+    "filterBtnTypo": {
+      "type": "object",
+      "default": {
+        "fontSize": {
+          "desktop": 14,
+          "tablet": 14,
+          "mobile": 14
+        }
+      }
+    },
+    "watermark": {
+      "type": "object",
+      "default": {
+        "enable": false,
+        "type": "text",
+        "text": "",
+        "image": "",
+        "position": "bottom-right",
+        "opacity": 0.7,
+        "fontSize": 14,
+        "color": "#ffffff",
+        "applyOn": "both"
+      }
+    },
+    "disableRightClick": {
+      "type": "boolean",
+      "default": false
+    },
+    "enableLightbox": {
+      "type": "boolean",
+      "default": true
+    },
+    "enableLoadMore": {
+      "type": "boolean",
+      "default": false
+    },
+    "imagesPerLoad": {
+      "type": "number",
+      "default": 10
+    },
+    "loadMoreBtnText": {
+      "type": "string",
+      "default": "Load More"
+    },
+    "loadMoreBtnColors": {
+      "type": "object",
+      "default": {
+        "color": "#ffffff",
+        "bgType": "solid",
+        "bg": "#146ef5"
+      }
+    },
+    "loadMoreBtnTypo": {
+      "type": "object",
+      "default": {
+        "fontSize": 16,
+        "borderRadius": 4
+      }
+    },
+    "aspectRatio": {
+      "type": "string",
+      "default": "original"
+    },
+    "objectFit": {
+      "type": "string",
+      "default": "cover"
+    },
+    "showLightboxCounter": {
+      "type": "boolean",
+      "default": true
+    },
+    "showLightboxFullscreen": {
+      "type": "boolean",
+      "default": true
+    },
+    "showLightboxDownload": {
+      "type": "boolean",
+      "default": true
+    },
+    "showLightboxShare": {
+      "type": "boolean",
+      "default": true
     }
   },
   "supports": {
