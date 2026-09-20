@@ -255,7 +255,8 @@ As the external service functionality is handled by bpl-tools as a third-party l
 * Privacy Policy: https://freemius.com/privacy/
 
 == Changelog ==
-= 2.4.0 - 19 September 2026 =
+
+= 2.4.0 - 20 September 2026 =
 * New (Pro): Media Highlights — Facebook-style story albums that group your photos and videos into swipeable, autoplay stories with a full-screen story viewer. Available in the Pro version.
 * **New — reusable galleries and a shortcode.** There is now an **Image Gallery** post type: build a gallery once, publish it, and place it with `[image_gallery id=123]` anywhere a shortcode works — a widget, a page-builder row, a theme template, or six different pages at once. Edit the gallery and every copy updates. The list table has a **Shortcode** column you click to copy. Putting the block straight into a page works exactly as before.
 * **New: the gallery screen keeps the block editor** even on a site where the block editor has been switched off — by the Classic Editor plugin, a "Disable Gutenberg" plugin, or a theme option. The gallery builder IS a block, so on the classic editor that screen was an empty box with no way to build anything. Your posts and pages keep whatever editor you have chosen; only the gallery screen is forced back. If something takes the screen over anyway, it now says so instead of showing an empty box.
@@ -280,6 +281,8 @@ As the external service functionality is handled by bpl-tools as a third-party l
 * **Improved: Image loading.** Gallery and Polaroid thumbnails now lazy-load, and images carry real alt text instead of being decorative-only.
 * Fixed: adding several images to a Default-style gallery in one session (e.g. via Bulk Add) no longer risks a JavaScript error — the gallery's internal item tracking now grows with the gallery instead of staying fixed at its original size.
 * Fixed: block asset caching now uses the plugin's real version instead of a static fallback, so gallery styles update immediately after a plugin update instead of waiting on a stale browser cache.
+* New: activating the plugin now takes you straight to the Help & Demos page, so onboarding starts immediately instead of leaving you on the plugins list.
+* Fixed: an update package built with the wrong internal name could install as a separate copy of the plugin instead of replacing the existing one, which then showed as "Plugin could not be activated because it triggered a fatal error." Update packages are now always named to match.
 
 = 2.3.0 - 30 Jun 26 =
 * Added: New Admin Dashboard UI with improved layout and user experience.
