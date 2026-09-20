@@ -40,6 +40,38 @@ if ( function_exists( 'ig_fs' ) ) {
 			add_filter( 'default_title', [$this, 'defaultTitle'], 10, 2 );
 			add_filter( 'default_content', [$this, 'defaultContent'], 10, 2 );
 			add_filter( 'block_type_metadata', [ $this, 'versionBlockAssets' ] );
+
+			// Redirect to the Help & Demos page on first activation.
+			register_activation_hook( __FILE__, [ $this, 'onActivation' ] );
+			add_action( 'admin_init', [ $this, 'maybeRedirectAfterActivation' ] );
+		}
+
+		/**
+		 * Set a flag so we know a redirect is needed on the next admin page load.
+		 */
+		function onActivation() {
+			update_option( 'bigb_activation_redirect', true );
+		}
+
+		/**
+		 * Redirect to the Help & Demos dashboard page once after activation.
+		 */
+		function maybeRedirectAfterActivation() {
+			if ( ! get_option( 'bigb_activation_redirect', false ) ) {
+				return;
+			}
+
+			delete_option( 'bigb_activation_redirect' );
+
+			// Don't redirect on bulk activate or WP-CLI.
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$activate_multi = isset( $_GET['activate-multi'] ) ? sanitize_text_field( wp_unslash( $_GET['activate-multi'] ) ) : '';
+			if ( wp_doing_ajax() || ( defined( 'WP_CLI' ) && WP_CLI ) || ! empty( $activate_multi ) ) {
+				return;
+			}
+
+			wp_safe_redirect( admin_url( 'edit.php?post_type=image-gallery&page=3d-image-gallery-dashboard' ) );
+			exit;
 		}
 
 		// block.json's own "version" is what register_block_style_handle()

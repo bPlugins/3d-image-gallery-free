@@ -1,2 +1,4027 @@
-/*! For license information please see view.js.LICENSE.txt */
-(()=>{"use strict";var t={338:(t,e,n)=>{var r=n(824);e.H=r.createRoot,r.hydrateRoot},824:t=>{t.exports=window.ReactDOM}},e={};function n(r){var a=e[r];if(void 0!==a)return a.exports;var o=e[r]={exports:{}};return t[r](o,o.exports,n),o.exports}n.n=t=>{var e=t&&t.__esModule?()=>t.default:()=>t;return n.d(e,{a:e}),e},n.d=(t,e)=>{for(var r in e)n.o(e,r)&&!n.o(t,r)&&Object.defineProperty(t,r,{enumerable:!0,get:e[r]})},n.o=(t,e)=>Object.prototype.hasOwnProperty.call(t,e);const r=window.React;var a=n.n(r),o=n(338);const l="@media only screen and (max-width: 1024px)",i="@media only screen and (max-width: 640px)",s="linear-gradient(135deg, #0040E3, #18D4FD)",c=t=>{const e=(t=>{try{const e=new URL(t);return["http:","https:"].includes(e.protocol)?e.toString():null}catch(e){return"string"==typeof t&&t.startsWith("/")&&!t.startsWith("//")?t:null}})(t);return e?`url('${e.replace(/['"()]/g,"")}')`:"none"},d=(t,e)=>{return null==(n=e)||""===n||Array.isArray(n)&&0===n.length||"object"==typeof n&&0===Object.keys(n).length||"string"==typeof n&&""===n.trim()||"number"==typeof n&&0===n?"":`${t}: ${e};`;var n},g=(t,e=!0,n=!0,r=!0)=>{const{type:a="solid",color:o="",gradient:l=s,image:i={},position:g="center center",attachment:m="",repeat:u="no-repeat",size:p="",overlayColor:$=""}=t||{};return"gradient"===a&&n?d("background",l):"image"===a&&r?`background: ${c(i?.url)};\n\t\t\t\t${d("background-color",$)}\n\t\t\t\t${d("background-position",g)}\n\t\t\t\t${d("background-size",p)}\n\t\t\t\t${d("background-repeat",u)}\n\t\t\t\t${d("background-attachment",m)}\n\t\t\t\t${d("background-repeat",u)}\n\t\t\t\tbackground-blend-mode: overlay;`:e&&d("background",o)},m=t=>{const{color:e="",bgType:n="solid",bg:r="",gradient:a=s}=t||{};return`\n\t\t${d("color",e)}\n\t\t${a||r?d("background","gradient"===n?a:r):""}\n\t`},u=(t,e="box")=>{const{hOffset:n="0px",vOffset:r="0px",blur:a="0px",spreed:o="0px",color:l="#7090b0",isInset:i=!1}=t||{},s=`${n} ${r} ${a}`;return("text"===e?`${s} ${l}`:`${s} ${o} ${l} ${i?"inset":""}`)||"none"},p=(t,e,n=!0)=>{const{fontFamily:r="Default",fontCategory:a="sans-serif",fontVariant:o=400,fontWeight:s,isUploadFont:c=!0,fontSize:g={desktop:null,tablet:null,mobile:null},fontStyle:m,textTransform:u,textDecoration:p,lineHeight:$,letterSpace:b}=e||{},h=!n||!r||"Default"===r,y=g?.desktop||g,f=g?.tablet||y,k=g?.mobile||f,x=t=>{const e=String(t);return["px","em","rem","%","vh","vw"].some(t=>e.endsWith(t))?e:"number"==typeof t?`${e}px`:""},v=`\n\t\t${h?"":`font-family: '${r}', ${a};`}\n\t\t${d("font-weight",s)}\n\t\t${d("font-size",x(y))}\n\t\t${d("font-style",m)}\n\t\t${d("text-transform",u)}\n\t\t${d("text-decoration",p)}\n\t\t${d("line-height",$)}\n\t\t${d("letter-spacing",b)}\n\t`,w=o&&400!==o?"400i"===o?":ital@1":o?.includes("00i")?`: ital, wght@1, ${o?.replace("00i","00")} `:`: wght@${o} `:"",E=h?"":`https://fonts.googleapis.com/css2?family=${r?.split(" ").join("+")}${w.replace(/ /g,"")}&display=swap`;return{googleFontLink:!c||h?"":`@import url(${E});`,styles:`${t}{\n\t\t\t${v}\n\t\t}\n\t\t${l} {\n\t\t\t${t}{\n\t\t\t\t${d("font-size",x(f))}\n\t\t\t}\n\t\t}\n\t\t${i} {\n\t\t\t${t}{\n\t\t\t\t${d("font-size",x(k))}\n\t\t\t}\n\t\t}`.replace(/\s+/g," ").trim()}},$=t=>{if(!t)return"";if("string"==typeof t)return t;if("object"==typeof t&&!Array.isArray(t)){const e=["top","right","bottom","left"];return e.map(e=>t[e]||"").every(t=>!t)?"":e.map(e=>t[e]||"0").join(" ")}return""},b=({attributes:t,clientId:e})=>{const{gallery:n=[],itemHeight:a,aspectRatio:o="original",objectFit:s="cover",columnGap:c,rowGap:d,background:b,shadow:h,hoverShadow:y,titleTypo:f,subtitleTypo:k,styles:x,imagesData:v,styleSl:w,filter:E,filterBtnColors:C,filterBtnActiveColors:R,filterBtnTypo:_}=t||{},{title:L,description:z,container:N,columns:S,gap:I,overlayColor:A,shadow:F,hoverShadow:T,image:M,modal:j,date:B,card:D,slider:P,button:H}=x||{},{title:O,description:G}=j||{},{images:W}=v||{},{shadow:U,borderRadius:V,alignItems:q,height:X,width:K,gap:Y}=D||{},{dropShadow:Z}=x?.images||{},J=`#bigbImageGallery-${e} .bigbImageGallery`,Q=`#bigbImageGallery-${e}`,tt=`${Q} .bigbImageGallery.${w} .masonry-gallery`,et=`${tt} .grid`,nt=`${et} .image-container`,rt=`${nt} .title`,at=`${nt} .description`,ot=`${tt} .modal-container .modal .text-content`,lt=`${ot} .title`,it=`${ot} .description`,st=`${Q} .bigbImageGallery.${w} .polaroid-gallery`,ct=`${st} .polaroid-wrapper`,dt=`${ct} .polaroid-container`,gt=`${dt} .polaroid-image`,mt=`${dt} .text-content`,ut=`${mt} .title`,pt=`${mt} .description`,$t=`${mt} .date`,bt=`${st} .modal-container .modal .text-content`,ht=`${bt} .title`,yt=`${bt} .description`,ft=`${Q} .bigbImageGallery.${w} .gallery-container`,kt=`${ft} .gallery-content .gallery-grid`,xt=`${kt} .gallery-item`,vt=`${xt} .gallery-item-content .gallery-overlay`,wt=`${vt} .gallery-title`,Et=`${vt} .gallery-description`,Ct=`${ft} .modal-container .modal .text-content`,Rt=`${Ct} .title`,_t=`${Ct} .description`,Lt=`${Q} .bigbImageGallery.${w} .tdpig__wrapper`,zt=`${Q} .tdpig__cards`,Nt=`${zt} .tdpig__card`,St=`${Nt} .tdpig__card__text`,It=`${St} .tdpig__card__title`,At=`${Q} .bigbImageGallery.${w} .tdsig-container`,Ft=`${At} .tdsig-slider`,Tt=`${Ft} .tdsig-card`,Mt=`${Tt} .text-content h1`,jt=`${Tt} .text-content`,Bt=`${Q} .bigbImageGallery.${w} .hex-container`,Dt=`${Bt} .hex-main`,Pt=`${Q} .bigbImageGallery.${w} .image-carousel-container`,Ht=`${Pt} .image-carousel`,Ot=`${Ht} .swiper-wrapper .swiper-slide`,Gt=`${Ht} .swiper-button`,Wt=`${Gt}.custom-prev`,Ut=`${Gt}.custom-next`,Vt=U?.map(t=>u(t,"box")).join(", ")||"none",qt=t=>t?"string"==typeof t?t:"object"==typeof t?`rgba(${Number.isFinite(t.r)?t.r:0}, ${Number.isFinite(t.g)?t.g:0}, ${Number.isFinite(t.b)?t.b:0}, ${Number.isFinite(t.a)?t.a:1})`:"rgba(0, 0, 0, 0.55)":"rgba(0, 0, 0, 0.55)",Xt=W?.map(t=>{const{width:e,height:n,left:r,right:a,top:o,background:l,id:i}=t;return`\n\n        ${Nt}.tdpig__card-${i} .tdpig__card__img{\n\t\t  ${e?`width: ${e};`:""}\n\t\t  ${n?`height: ${n};`:""}\n\t\t  ${r?`left: ${r};`:""}\n\t\t  ${a?`right: ${a};`:""}\n\t\t  ${o?`top: ${o};`:""}\n\t\t}\n\n\t\t${Nt}.tdpig__card-${i} .tdpig__card__bg {\n\t\t  ${l?`background: url(${l}) center / cover no-repeat;`:""}\n\t  \t}\n\n\n        `}).join("\n"),Kt=F?.map(t=>u(t,"box")).join(", ")||"none",Yt=T?.map(t=>u(t,"box")).join(", ")||"none",Zt=Z?.map(t=>`drop-shadow(${t.hOffset} ${t.vOffset} ${t.blur} ${t.color})`).join(" ");return(0,r.createElement)(r.Fragment,null,(0,r.createElement)("style",{dangerouslySetInnerHTML:{__html:`\n          \n            ${p("",f)?.googleFontLink||""}\n            ${p("",k)?.googleFontLink||""}\n          \n\t\t\t${p("",L?.typography)?.googleFontLink}\n\t\t\t${p("",z?.typography)?.googleFontLink}\n\n     \n      ${p("",B?.typography)?.googleFontLink}\n      ${p("",O?.typography)?.googleFontLink}\n      ${p("",G?.typography)?.googleFontLink}\n\n\n      ${p("",L?.typography)?.googleFontLink}\n\n   \n      ${p("",L?.typography)?.googleFontLink}\n       \n\n\n   \n      ${p(`${J} .galleryHeader h3`,f)?.styles||""}\n      ${p(`${J} .galleryHeader h5`,k)?.styles||""}\n\n  \n\t\t\t${p(rt,L?.typography)?.styles}\n\t\t\t${p(at,z?.typography)?.styles}\n\t\t\t${p(lt,L?.typography)?.styles}\n\t\t\t${p(it,z?.typography)?.styles}\n\n  \n      ${p(ut,L?.typography)?.styles}\n      ${p(pt,z?.typography)?.styles}\n      ${p($t,B?.typography)?.styles}\n      ${p(ht,O?.typography)?.styles}\n      ${p(yt,G?.typography)?.styles}\n\n      ${p(wt,L?.typography)?.styles}\n      ${p(Et,z?.typography)?.styles}\n      ${p(Rt,O?.typography)?.styles}\n      ${p(_t,G?.typography)?.styles}\n\n       ${p(It,L?.typography)?.styles}\n\n\n      ${p(Mt,L?.typography)?.styles}\n\n\n            ${J} .galleryItems {\n              grid-gap: ${d} ${c};\n            }\n\n            ${J} .galleryItem {\n              ${o&&"original"!==o?`aspect-ratio: ${o}; height: auto !important;`:`height: ${a};`}\n              ${g(b)}\n              box-shadow: ${u(h)};\n            }\n\n            ${o&&"original"!==o?`\n            ${J} .galleryItems .galleryImages img {\n              object-fit: ${s||"cover"} !important;\n            }\n            `:""}\n\n            ${J} .galleryItem:hover,\n            ${J} .galleryItem.nowEditing {\n              box-shadow: ${u(y)};\n            }\n\n            ${Q} .igFilterBar {\n              ${E?.align?`justify-content: ${"left"===E.align?"flex-start":"right"===E.align?"flex-end":"center"};`:""}\n              ${E?.margin?.bottom?`margin-bottom: ${E.margin.bottom};`:""}\n            }\n\n            ${Q} .igFilterBar .igFilterBtn {\n              ${C?.color?`color: ${C.color};`:""}\n              ${C?.bg?`background-color: ${C.bg};`:""}\n              ${_?.fontSize?.desktop?`font-size: ${_.fontSize.desktop}px;`:""}\n            }\n\n            ${Q} .igFilterBar .igFilterBtn.active {\n              ${R?.color?`color: ${R.color};`:""}\n              ${R?.bg?`background-color: ${R.bg};`:""}\n            }\n\n\n       \n    ${et}{\n\t\t  grid-template-columns: repeat(${S?.desktop}, minmax(0, 1fr));\n\t\t  grid-auto-flow: dense;\n\t\t  gap: ${I?.desktop};\n\t\t}\n\n\t\t${nt} .bg-gradient-to-t{\n\t\t  background-image: linear-gradient(\n\t\t\tto top,\n\t\t\t${A?.desktop}, transparent\n\t\t  );\t\t\t\t\n\t\t}\n\n\t\t${nt}{\n\t\t  box-shadow: ${Kt};\n\t\t  border-radius: ${$(M?.borderRadius?.desktop)};\n\t\t}\n\n\t\t${nt}:hover{\n\t\t  box-shadow: ${Yt};\n\t\t}\n\n\t\t${lt}{\n\t\t  color: ${L?.color};\n\t\t  margin: ${$(L?.margin?.desktop)};\n\t\t}\n\n\t\t${it}{\n\t\t  color: ${z?.color};\n\t\t  margin: ${$(z?.margin?.desktop)}; \n\t\t}\n\t\t\n\t\t${rt}{\n\t\t  color: ${L?.color};\n\t\t  margin: ${$(L?.margin?.desktop)};\n\t\t}\n\n\t\t${at}{\n\t\t  color: ${z?.color};\n\t\t  margin: ${$(z?.margin?.desktop)};   \n\t\t}\n\n\t\t${tt}{\n\t\t   ${g(N?.bg?.desktop)}\n       \t\tborder-radius: ${N?.borderRadius?.top} ${N?.borderRadius?.right} ${N?.borderRadius?.bottom} ${N?.borderRadius?.left};\n       \t\tpadding: ${$(N?.padding?.desktop)};\n       \t\tmargin: ${$(N?.margin?.desktop)};\n\t\t}\n\n\t\t${l}{\n\t\t\t${rt}{\n\t\t  \t  margin: ${$(L?.margin?.tablet)};\n\t\t\t}\n\n\t\t\t${at}{\n\t\t  \t  margin: ${$(z?.margin?.tablet)};   \n\t\t\t}\n\n\t\t\t${tt}{\n\t\t\t\t${g(N?.bg?.tablet)}\n\t\t\t\tpadding: ${$(N?.padding?.tablet)};\n\t\t\t\tmargin: ${$(N?.margin?.tablet)};\n\t\t\t}\n\n\t\t\t${et}{\n\t\t  \t\tgrid-template-columns: repeat(${S?.tablet}, minmax(0, 1fr));\n\t\t\t\tgap: ${I?.tablet};\n\t\t\t}\n\n      ${nt} .bg-gradient-to-t{\n\t\t    background-image: linear-gradient(\n\t\t\t  to top, ${A?.tablet}, transparent);\t\t\n\t\t  }\n\n      ${nt}{\n        border-radius: ${$(M?.borderRadius?.tablet)};\t\n      }\n\n      ${it}{\n\t\t    margin: ${$(z?.margin?.tablet)}; \n\t\t  }\n\n      ${lt}{\n\t\t    margin: ${$(L?.margin?.tablet)};\n\t\t  }\n\t\t}\n\n\t\t${i}{\n\t\t  \t${rt}{\n\t\t  \t  margin: ${$(L?.margin?.mobile)};\n\t\t\t}\n\n\t\t\t${at}{\n\t\t  \t  margin: ${$(z?.margin?.mobile)};   \n\t\t\t}\n\n\t\t\t${tt}{\n\t\t\t\t${g(N?.bg?.mobile)}\n\t\t\t\tpadding: ${$(N?.padding?.mobile)};\n\t\t\t\tmargin: ${$(N?.margin?.mobile)};\n\t\t\t}\n\n\t\t\t${et}{\n\t\t  \t\tgrid-template-columns: repeat(${S?.mobile}, minmax(0, 1fr));\n\t\t\t\tgap: ${I?.mobile};\n\t\t\t}\n\n      ${nt} .bg-gradient-to-t{\n\t\t  background-image: linear-gradient(\n\t\t\tto top,\n\t\t\t${A?.mobile}, transparent\n\t\t  );\t\t\n\t\t  }\n\n      ${nt}{\n        border-radius: ${$(M?.borderRadius?.mobile)};\t\n      }\n\n      ${it}{\n\t\t    margin: ${$(z?.margin?.mobile)}; \n\t\t  }\n\n      ${lt}{\n\t\t    margin: ${$(L?.margin?.mobile)};\n\t\t  }\n\t\t}\n\n\t\t${dt}{\n\t\t  box-shadow: ${Kt};\n\t\t  width: ${K?.desktop};\n\t\t  overflow: visible;\n\t\t}\n\n\t\t${gt}{\n\t\t  height: ${X?.desktop};\n\t\t}\n\n\t\t${dt}:hover{\n\t\t  box-shadow: ${Yt}\n\t\t}\n\t\t\t\n\t\t${ct} {\n\t\t  grid-template-columns: repeat(${S?.desktop}, minmax(0, 300px));\n\t\t  gap: ${Y?.desktop};\n\t\t}\n\n\t\t${ht}{\n\t\t\tcolor: ${O?.color};\n\t\t\tmargin: ${$(L?.margin?.desktop)};\n\t\t}\n\n\t\t${yt}{\n\t\t\tcolor: ${G?.color};\n\t\t\tmargin: ${$(z?.margin?.desktop)};\n\t\t}\n\n\t\t${ut}{\n\t\t\tcolor: ${L?.color};\n\t\t\tmargin: ${$(L?.margin?.desktop)};\n\t\t}\n\n\t\t${pt}{\n\t\t\tcolor: ${z?.color};\n\t\t\tmargin: ${$(z?.margin?.desktop)};\n\t\t}\n\n\t\t${$t}{\n\t\t\tcolor: ${B?.color};\n\t\t\tmargin: ${$(B?.margin?.desktop)};\n\t\t}\n\n\t\t${st}{\n\t\t\t${g(N?.bg?.desktop)}\n\t\t\t\tborder-radius: ${N?.borderRadius?.top} ${N?.borderRadius?.right} ${N?.borderRadius?.bottom} ${N?.borderRadius?.left};\n\t\t\tpadding: ${$(N?.padding?.desktop)};\n\t\t\tmargin: ${$(N?.margin?.desktop)};\n\t\t}\n\n\n\t\t${l}{\n\t\t\t${ut}{\n\t\t\tmargin: ${$(L?.margin?.tablet)};\n\t\t\t}\n\n\t\t\t${pt}{\n\t\t\tmargin: ${$(z?.margin?.tablet)};\n\t\t\t}\n\n\t\t\t${st}{\n\t\t\t\t${g(N?.bg?.tablet)}\n\t\t\t\tpadding: ${$(N?.padding?.tablet)};\n\t\t\t\tmargin: ${$(N?.margin?.tablet)};\n\t\t\t}\n\n\t\t\t${ct} {\n\t\t\t  grid-template-columns: repeat(${S?.tablet}, minmax(0, 300px));\n\t\t\t  gap: ${Y?.tablet};\n\t\t\t}\n\n\t\t\t${dt}{\n\t\t\t\twidth: ${K?.tablet};\n\t\t\t\toverflow: visible;\n\t\t\t}\n\n\t\t\t${gt}{\n\t\t\t\theight: ${X?.tablet};\n\t\t\t}\n\t\t}\n\n\t\t${i}{\n\t\t\t${ut}{\n\t\t\t  margin: ${$(L?.margin?.mobile)};\n\t\t\t}\n\n\t\t\t${pt}{\n\t\t\t  margin: ${$(z?.margin?.mobile)};\n\t\t\t}\n\n\t\t\t${$t}{\n\t\t\t  margin: ${$(B?.margin?.mobile)};\n\t\t\t}\n\n\t\t\t${st}{\n\t\t\t\t${g(N?.bg?.mobile)}\n\t\t\t\tpadding: ${$(N?.padding?.mobile)};\n\t\t\t\tmargin: ${$(N?.margin?.mobile)};\n\t\t\t}\n\n\t\t\t${ct} {\n\t\t\t  grid-template-columns: repeat(${S?.mobile}, minmax(0, 300px));\n\t\t\t  gap: ${Y?.mobile};\n\t\t\t}\n\n\t\t\t${dt}{\n\t\t\t  width: ${K?.mobile};\n\t\t\t  overflow: visible;\n\t\t\t}\n\n\t\t\t${gt}{\n\t\t\t\theight: ${X?.mobile};\n\t\t\t}\n\t\t}\n\n\n\n\n    ${vt}{\n\t\t  background: linear-gradient(\n\t\t    to top,\n\t\t    ${M?.overlayColor?.desktop},\n\t\t    ${M?.overlayColor?.desktop},\n\t\t    transparent\n\t\t  );\n\t\t}\n\n\t\t${xt} {\n\t\t  box-shadow: ${Kt};\n\t\t  border-radius: ${$(M?.borderRadius?.desktop)};\n\t\t}\n\t\t\n\t\t\t\n\t\t${kt} {\n\t\t  grid-template-columns: repeat(${S?.desktop}, 1fr);\n\t\t}\n\n\t\t${Rt}{\n\t\t  color: ${O?.color};\n\t\t  margin: ${$(L?.margin?.desktop)};\n\t\t}\n\n\t\t${_t}{\n\t\t  color: ${G?.color};\n\t\t  margin: ${$(z?.margin?.desktop)};\n\t\t}\n\n\t\t${wt}{\n\t\t  color: ${L?.color};\n\t\t  margin: ${$(L?.margin?.desktop)};\n\t\t}\n\n\t\t${Et}{\n\t\t  color: ${z?.color};\n\t\t  margin: ${$(z?.margin?.desktop)};\n\t\t}\n\t\t\n\n\t\t${ft}{\n\t\t  ${g(N?.bg?.desktop)}\n\t\t  border-radius: ${N?.borderRadius?.top} ${N?.borderRadius?.right} ${N?.borderRadius?.bottom} ${N?.borderRadius?.left};\n\t\t  padding: ${$(N?.padding?.desktop)};\n\t\t  margin: ${$(N?.margin?.desktop)};\n\t\t  min-height: ${$(N?.height?.desktop)};\n\t\t}\n\n\n\t\t${l}{\n\t\t${Rt}{\n\t\t  margin: ${$(L?.margin?.tablet)};\n\t\t}\n\n\t\t  ${wt}{\n\t\t\tmargin: ${$(L?.margin?.tablet)};\n\t\t  }\n\n\t\t  ${Et}{\n\t\t\tmargin: ${$(z?.margin?.tablet)};\n\t\t  }\n\n\t\t  ${ft}{\n\t\t\t${g(N?.bg?.tablet)}\n\t\t\tpadding: ${$(N?.padding?.tablet)};\n\t\t\tmargin: ${$(N?.margin?.tablet)};\n\t\t\tmin-height: ${$(N?.height?.desktop)};\n\t\t  }\n\n\t\t  ${kt} {\n\t\t\tgrid-template-columns: repeat(${S?.tablet}, 1fr);\n\t\t  }\n\n\t\t  ${xt} {\n\t\t  \tborder-radius: ${$(M?.borderRadius?.tablet)};\n\t\t  }\n\n\t\t  ${_t}{\n\t\t  \tmargin: ${$(z?.margin?.tablet)};\n\t\t  }\n\t\t}\n\n\t\t${i}{\n\t\t  ${Rt}{\n\t\t\tmargin: ${$(L?.margin?.tablet)};\n\t\t  }\n\n\t\t  ${wt}{\n\t\t\tmargin: ${$(L?.margin?.mobile)};\n\t\t  }\n\n\t\t  ${Et}{\n\t\t\tmargin: ${$(z?.margin?.mobile)};\n\t\t  }\n\n\t\t  ${ft}{\n\t\t\t${g(N?.bg?.mobile)}\n\t\t\tpadding: ${$(N?.padding?.mobile)};\n\t\t\tmargin: ${$(N?.margin?.mobile)};\n\t\t\tmin-height: ${$(N?.height?.desktop)};\n\t\t  }\n\n\t\t  ${kt} {\n\t\t\tgrid-template-columns: repeat(${S?.mobile}, 1fr);\n\t\t  }\n\n\t\t  ${xt} {\n\t\t  \tborder-radius: ${$(M?.borderRadius?.mobile)};\n\t\t  }\n\n\t\t  ${_t}{\n\t\t  \tmargin: ${$(z?.margin?.mobile)};\n\t\t  }\n\t\t}\n\n      ${Xt}\n\n\t\t${Lt} {\n\t\t  ${g(N?.bg?.desktop)}\n\t\t  border-radius: ${$(N?.borderRadius?.desktop)};\n\t\t  padding: ${$(N?.padding?.desktop)};\n\t\t  margin: ${$(N?.margin?.desktop)};\n\t\t  max-width: ${$(N?.width?.desktop)};\n\t\t  min-height: ${$(N?.height?.desktop)};\n\t\t  justify-content: ${q};\n\t\t}\n\n\t\t${zt}{\n\t\t  gap: ${Y?.desktop};\n\t\t  justify-items: ${q};\n\t\t  grid-template-columns: repeat(${S?.desktop}, minmax(200px, 1fr));  \n\t\t  width: ${$(K?.desktop)};  \n\t\t}\n\n\n\t\t${St} {\n    \t\tbackground: linear-gradient(to bottom,rgba(0, 0, 0, 0) 0%, ${qt(L?.overlayColor?.desktop)||"rgba(0,0,0,0.55)"} 100%);\n  \t\t}\n\t\t\n\t\t\n\t\t${It} {\n\t\t  color: ${L?.color||"inherit"};\n\t\t  margin: ${$(L?.margin?.desktop)};\n\t\t  padding: ${$(L?.padding?.desktop)};\n\t\t}\n\n\t\t${Nt} {\n\t\t  box-shadow: ${Vt};\n\t\t  border-radius: ${$(V?.desktop)};\n\t\t  width: 100%;\n\t\t  height: ${$(X?.desktop)};\n\t  \t}\n\n\n\t\t${l}{\t\n\t\t  ${zt}{\n\t\t\tgap: ${Y?.tablet};\n\t\t\tgrid-template-columns: repeat(${S?.tablet}, minmax(200px, 1fr)); \n\t\t\twidth: ${$(K?.desktop)};\n\t\t  }\n\n\t\t  ${Nt} {\n\t\t  \tbox-shadow: ${Vt};\n\t\t\t\n\t\t\theight: ${$(X?.tablet)};\n\t\t\twidth: 100%;\n\t\t\tborder-radius: ${$(V?.tablet)};\n\t\t  }\n\n\t\t  ${It} {\n\t\t\tmargin: ${$(L?.margin?.tablet)};\n\t\t\tpadding: ${$(L?.padding?.tablet)};\n\t\t  }\n\n\t\t  ${St} {\n\t\t\tbackground: linear-gradient(to bottom,rgba(0, 0, 0, 0) 0%, ${qt(L?.overlayColor?.tablet)||"rgba(0, 0, 0, 0.55)"} 100%);\n\t\t  }\n\n\t\t  ${Lt} {\n\t\t\tborder-radius: ${$(N?.borderRadius?.tablet)};\n\t\t\tpadding: ${$(N?.padding?.tablet)};\n\t\t\tmargin: ${$(N?.margin?.tablet)};\n\t\t\tmax-width: ${$(N?.width?.tablet)};\n\t\t\tmin-height: ${$(N?.height?.tablet)};\n\t\t\t${g(N?.bg?.tablet)}\n\t\t\tjustify-content: ${q};\n\t\t  }\n\t\t}\n\n\n\t\t${i}{\n\t\t\t${zt}{\n\t\t\t  width: ${$(K?.desktop)};\n\t\t\t  gap: ${Y?.mobile};\n\t\t\t  grid-template-columns: repeat(${S?.mobile}, minmax(200px, 1fr));\n\t\t\t}\n\n\t\t\t${Nt} {\n\t\t\t  box-shadow: ${Vt};\n\t\t\t  width: 100%;\n\t\t\t  height: ${$(X?.mobile)};\n\t\t\t  border-radius: ${$(V?.mobile)};\n\t\t\t}\n\n\t\t\t${It} {\n\t\t\t  margin: ${$(L?.margin?.mobile)};\n\t\t\t  padding: ${$(L?.padding?.mobile)};\n\t\t\t}\n\n\t\t  \t${St} {\n\t\t\t  background: linear-gradient(to bottom,rgba(0, 0, 0, 0) 0%, ${qt(L?.overlayColor?.mobile)||"rgba(0, 0, 0, 0.55)"} 100%);\n\t\t\t}\t\n\t\t\n\t\t\t${Lt} {\n\t\t\t  border-radius: ${$(N?.borderRadius?.mobile)};\n\t\t\t  padding: ${$(N?.padding?.mobile)};\n\t\t\t  margin: ${$(N?.margin?.mobile)};\n\t\t\t  min-height: ${$(N?.height?.mobile)};\n\t\t\t  max-width: ${$(N?.width?.mobile)};\n\t\t\t  ${g(N?.bg?.mobile)}\n\t\t\t  justify-content: ${q};\n\t\t\t}\n\t\t}\n\n \n        ${Mt}{\n          color: ${L?.color};\n        }\n\n        ${jt}{\n         top: ${L?.verticalAlign?.desktop}%;\n         left: ${L?.horizontalAlign?.desktop}%;\n        }\n\n        ${Tt}{\n          border-radius: ${$(M?.borderRadius)};\n          width: ${M?.width?.desktop};\n          min-height: ${M?.height?.desktop};\n          left: ${M?.horizontalAlign?.desktop};\n          background-color: ${M?.overlayColor?.desktop};\n        }\n\n        ${Ft}{\n          top: ${M?.verticalAlign?.desktop};\n          min-height: ${P?.height?.desktop};\n        }\n\n        ${At}{\n          ${g(N?.bg?.desktop)}\n\t\t\t\t  border-radius: ${N?.borderRadius?.top} ${N?.borderRadius?.right} ${N?.borderRadius?.bottom} ${N?.borderRadius?.left};\n\t\t\t    min-height: ${N?.height?.desktop};\n\t\t\t    margin: ${$(N?.margin?.desktop)};\n        }\n\n        ${l}{\n          ${At}{\n            ${g(N?.bg?.tablet)}\n            min-height: ${N?.height?.tablet};\n            margin: ${$(N?.margin?.tablet)};\n          }\n\n          ${Ft}{\n            top: ${M?.verticalAlign?.tablet};\n            min-height: ${P?.height?.tablet};\n          }\n\n          ${Tt}{\n            width: ${M?.width?.tablet};\n            min-height: ${M?.height?.tablet};\n            left: ${M?.horizontalAlign?.tablet};\n            background-color: ${M?.overlayColor?.tablet};\n          }\n\n          ${jt}{\n            top: ${L?.verticalAlign?.tablet}%;\n            left: ${L?.horizontalAlign?.tablet}%;\n          }\n\n        }\n\n        ${i}{\n          ${At}{\n            ${g(N?.bg?.mobile)}\n            min-height: ${N?.height?.mobile};\n            margin: ${$(N?.margin?.mobile)};\n          }\n\n          ${Ft}{\n            top: ${M?.verticalAlign?.mobile};\n            min-height: ${P?.height?.mobile};\n          }\n\n          ${Tt}{\n            width: ${M?.width?.mobile};\n            min-height: ${M?.height?.mobile};\n            left: ${M?.horizontalAlign?.mobile};\n            background-color: ${M?.overlayColor?.mobile};\n          }\n\n          ${jt}{\n            top: ${L?.verticalAlign?.mobile}%;\n            left: ${L?.horizontalAlign?.mobile}%;\n          }\n        }\n\n\n\n\n            ${Bt} {\n          border-radius: ${$(N?.borderRadius?.desktop)};\n          padding: ${$(N?.padding?.desktop)};\n          margin: ${$(N?.margin?.desktop)};\n          ${g(N?.bg?.desktop)}\n        }\n        \n        ${Dt}{\n          filter: ${Zt};\n          font: clamp(0.5rem, 2vw, ${x?.images?.size?.desktop}) sans-serif;\n          grid-gap: calc(0.5 * ${x?.images?.gap?.desktop} * 1.7320508076) ${x?.images?.gap?.desktop};\n        }\n\n\n        ${l}{\n          ${Dt}{\n          font: clamp(0.5rem, 2vw, ${x?.images?.size?.tablet}) sans-serif;\n          grid-gap: calc(0.5 * ${x?.images?.gap?.tablet} * 1.7320508076) ${x?.images?.gap?.tablet};\n        }\n\n        ${Bt} {\n          border-radius: ${$(N?.borderRadius?.tablet)};\n          padding: ${$(N?.padding?.tablet)};\n          margin: ${$(N?.margin?.tablet)};\n          ${g(N?.bg?.tablet)}\n        }\n        }\n\n        ${i}{\n          ${Dt}{\n          font: clamp(0.5rem, 2vw, ${x?.images?.size?.mobile}) sans-serif;\n          grid-gap: calc(0.5 * ${x?.images?.gap?.mobile} * 1.7320508076) ${x?.images?.gap?.mobile};\n          }\n\n          ${Bt} {\n          border-radius: ${$(N?.borderRadius?.mobile)};\n          padding: ${$(N?.padding?.mobile)};\n          margin: ${$(N?.margin?.mobile)};\n          ${g(N?.bg?.mobile)}\n        }\n        }\n\n\n        ${Ot} img{\n\t\t  border-radius: ${$(M?.borderRadius?.desktop)};\n\t\t}\n\t\t\n\t\t${Wt}, ${Ut}{\n\t\t ${m(H?.btnColor?.normal)};\n\t\t  border-radius: ${$(H?.borderRadius?.desktop)};\n\t\t  width: ${H?.size?.desktop?.width};\n\t\t  height: ${H?.size?.desktop?.height};\n\t\t}\n\n\t\t${Ut}{\n\t\t  right: ${H?.horizontalPosition?.desktop};\n\t\t  top: ${H?.verticalPosition?.desktop};\n\t\t}\n\n\t\t${Wt}{\n\t\t  left: ${H?.horizontalPosition?.desktop};\n\t\t  top: ${H?.verticalPosition?.desktop};\n\t\t}\n\n\t\t${Wt} svg, ${Ut} svg {\n\t\t\tfill: ${H?.btnColor?.normal?.color};\n\t\t\twidth: ${H?.iconSize?.desktop};\n\t\t\theight: ${H?.iconSize?.desktop};\n\t\t}\n\n\t\t${Wt}:hover, ${Ut}:hover{\n\t\t  ${m(H?.btnColor?.hover)};\n\t\t  \n\t\t}\n\n\t\t${Wt}:hover svg, ${Ut}:hover svg {\n\t\t  fill: ${H?.btnColor?.hover?.color};\n\t\t}\n\n\t\t${Pt}{\n\t\t  height: ${N?.height?.desktop};\n\t\t}\n\n\t\t${l}{\n\t\t\t${Ot} img{\n\t\t  \t\tborder-radius: ${$(M?.borderRadius?.tablet)};\n\t\t\t}\n\n\t\t\t${Wt}, ${Ut}{\n\t\t\t\tborder-radius: ${$(H?.borderRadius?.tablet)};\n\t\t\t\twidth: ${H?.size?.tablet?.width};\n\t\t\t\theight: ${H?.size?.tablet?.height};\n\t\t\t}\n\n\t\t\t${Wt} svg, ${Ut} svg {\n\t\t\t\twidth: ${H?.iconSize?.tablet};\n\t\t\t\theight: ${H?.iconSize?.tablet};\n\t\t\t}\n\n\t\t\t${Pt}{\n\t\t  \t\theight: ${N?.height?.tablet};\n\t\t\t}\n\n\t\t\t${Ut}{\n\t\t\t\tright: ${H?.horizontalPosition?.tablet};\n\t\t\t\ttop: ${H?.verticalPosition?.tablet};\n\t\t\t}\n\n\t\t\t${Wt}{\n\t\t\t\tleft: ${H?.horizontalPosition?.tablet};\n\t\t\t\ttop: ${H?.verticalPosition?.tablet};\n\t\t\t}\n\t\t}\n\n\n\t\t${i}{\n\t\t\t${Ot} img{\n\t\t  \t\tborder-radius: ${$(M?.borderRadius?.mobile)};\n\t\t\t}\n\n\t\t\t${Wt}, ${Ut}{\n\t\t\t\tborder-radius: ${$(H?.borderRadius?.mobile)};\n\t\t\t\twidth: ${H?.size?.mobile?.width};\n\t\t\t\theight: ${H?.size?.mobile?.height};\n\t\t\t}\n\n\t\t\t${Wt} svg, ${Ut} svg {\n\t\t\t\twidth: ${H?.iconSize?.mobile};\n\t\t\t\theight: ${H?.iconSize?.mobile};\n\t\t\t}\n\n\t\t\t${Pt}{\n\t\t  \t\theight: ${N?.height?.mobile};\n\t\t\t}\n\n\t\t\t${Ut}{\n\t\t\t\tright: ${H?.horizontalPosition?.mobile};\n\t\t\t\ttop: ${H?.verticalPosition?.mobile};\n\t\t\t}\n\n\t\t\t${Wt}{\n\t\t\t\tleft: ${H?.horizontalPosition?.mobile};\n\t\t\t\ttop: ${H?.verticalPosition?.mobile};\n\t\t\t}\n\t\t\t\n\t\t}\n          \n\t\t\t\n          `.replace(/\s+/g," ")}}),(0,r.createElement)("style",{dangerouslySetInnerHTML:{__html:n?.map((t,e)=>{const{colors:n={},btnColors:r={}}=t,a=`${J} #galleryItem-${e} .galleryHeader`,o=`${J} #galleryItem-${e} .galleryFooter`,l="gradient"===n.bgType?n.gradient||"transparent":n.bg||"transparent",i=n.color||"#000",s=r.color||"#fff",c="gradient"===r.bgType?r.gradient||"transparent":r.bg||"transparent";return`\n                ${a}::before,\n                ${o}::before {\n                  background: ${l};\n                }\n\n                ${a} h3,\n                ${a} h5 {\n                  color: ${i};\n                }\n\n                ${a} .btnClose,\n                ${a} .btnFullscreen,\n                ${a} .btnDownload,\n                ${a} .btnShare {\n                  color: ${s};\n                  background: ${c};\n                }\n\n                ${o} nav.controls .control,\n                ${o} nav.controls .controlDot {\n                  background: ${c};\n                }\n\n                ${o} nav.controls .controlDot::after {\n                  background: ${s};\n                }\n\n                ${o} nav.controls .controlArrow {\n                  color: ${s};\n                }\n\n\n\n              `.replace(/\s+/g," ")}).join(" ")}}))},h=window.wp.i18n,y=({watermark:t,location:e="gallery"})=>{if(!t||!t.enable)return null;const{type:n="text",text:a="",image:o="",position:l="bottom-right",opacity:i=.7,fontSize:s=14,color:c="#ffffff",applyOn:d="both"}=t;if("gallery"===d&&"popup"===e)return null;if("popup"===d&&"gallery"===e)return null;const g=`igWatermark--${l}`,m={opacity:Number(i)||.7};return"image"===n&&o?(0,r.createElement)("div",{className:`igWatermark igWatermark--image ${g}`,style:m},(0,r.createElement)("img",{src:o,alt:"Watermark"})):a?(0,r.createElement)("div",{className:`igWatermark igWatermark--text ${g}`,style:{...m,fontSize:`${s||14}px`,color:c||"#ffffff"}},(0,r.createElement)("span",null,a)):null},f=({images:t,imgIndex:e=0,wrapper:n,container:a,loadCount:o,altText:l="",eager:i=!1,watermark:s=null,location:c="gallery"})=>(0,r.createElement)("div",{className:"galleryImages",ref:a,style:{position:"relative"}},t?.length>0&&t.map((s,c)=>(0,r.createElement)("img",{key:c,className:e===c?"imageVisible":"",src:s,alt:t.length>1?`${l} ${c+1}`.trim():l,loading:i?"eager":"lazy",decoding:"async",onLoad:()=>{o.current++,o.current===t.length&&(a.current?.classList.add("galleryImagesLoaded"),n.current?.querySelector(".galleryLoader")?.classList.remove("visible"))}})),s&&(0,r.createElement)(y,{watermark:s,location:c})),k=()=>(0,r.createElement)("span",{className:"galleryLoader visible"},[...Array(5)].map((t,e)=>(0,r.createElement)("span",{key:e,className:"bar"}))),x=({title:t,subtitle:e,onClick:n,counter:a,onFullscreen:o,isFullscreen:l,onDownload:i,onShare:s})=>(0,r.createElement)("header",{className:"galleryHeader"},(0,r.createElement)("div",{className:"galleryHeadings"},(0,r.createElement)("h3",null,t),(0,r.createElement)("h5",null,e)),a&&(0,r.createElement)("span",{className:"galleryLightboxCounter",style:{margin:"0 12px 0 auto",fontSize:"13px",fontWeight:"600",padding:"4px 12px",borderRadius:"9999px",backgroundColor:"rgba(0, 0, 0, 0.6)",color:"#ffffff",letterSpacing:"0.5px",backdropFilter:"blur(4px)",alignSelf:"center",flexShrink:0}},a),(0,r.createElement)("div",{className:"galleryHeaderActions",style:{display:"inline-flex",alignItems:"center",gap:"6px",marginLeft:a?"0":"auto",flexShrink:0,position:"relative",zIndex:5}},s&&(0,r.createElement)("button",{className:"btnShare",onClick:s,"aria-label":(0,h.__)("Share image link","image-gallery"),style:{width:"24px",height:"24px",display:"inline-flex",alignItems:"center",justifyContent:"center",border:0,borderRadius:"50%",cursor:"pointer",padding:0,lineHeight:1,alignSelf:"center",flexShrink:0}},(0,r.createElement)("svg",{xmlns:"http://www.w3.org/2000/svg",width:"13",height:"13",viewBox:"0 0 24 24",fill:"currentColor"},(0,r.createElement)("path",{d:"M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"}))),i&&(0,r.createElement)("button",{className:"btnDownload",onClick:i,"aria-label":(0,h.__)("Download image","image-gallery"),style:{width:"24px",height:"24px",display:"inline-flex",alignItems:"center",justifyContent:"center",border:0,borderRadius:"50%",cursor:"pointer",padding:0,lineHeight:1,alignSelf:"center",flexShrink:0}},(0,r.createElement)("svg",{xmlns:"http://www.w3.org/2000/svg",width:"13",height:"13",viewBox:"0 0 24 24",fill:"currentColor"},(0,r.createElement)("path",{d:"M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"}))),o&&(0,r.createElement)("button",{className:"btnFullscreen",onClick:o,"aria-label":l?(0,h.__)("Exit full screen","image-gallery"):(0,h.__)("Full screen","image-gallery"),style:{width:"24px",height:"24px",display:"inline-flex",alignItems:"center",justifyContent:"center",border:0,borderRadius:"50%",cursor:"pointer",padding:0,lineHeight:1,alignSelf:"center",flexShrink:0}},l?(0,r.createElement)("svg",{xmlns:"http://www.w3.org/2000/svg",width:"14",height:"14",viewBox:"0 0 24 24",fill:"currentColor"},(0,r.createElement)("path",{d:"M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"})):(0,r.createElement)("svg",{xmlns:"http://www.w3.org/2000/svg",width:"14",height:"14",viewBox:"0 0 24 24",fill:"currentColor"},(0,r.createElement)("path",{d:"M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"}))),n&&(0,r.createElement)("button",{className:"btnClose",onClick:n,"aria-label":(0,h.__)("Close","image-gallery")},(0,r.createElement)("svg",{xmlns:"http://www.w3.org/2000/svg",width:"20",height:"20",viewBox:"0 0 24 24",fill:"currentColor"},(0,r.createElement)("path",{d:"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"}))))),v=({gallery:t=[],slideSpeed:e,columns:n,isPopup:o=!0,editActiveIndex:l=null,setEditActiveIndex:i=null,activeAlbum:s="*",watermark:c={},disableRightClick:d=!1,enableLightbox:g=!0,showLightboxCounter:m=!0,showLightboxFullscreen:u=!0,showLightboxDownload:p=!0,showLightboxShare:$=!0,enableLoadMore:b=!1,imagesPerLoad:y=10,loadMoreBtnText:v="Load More",loadMoreBtnColors:w,loadMoreBtnTypo:E})=>{const C=(0,r.useRef)(null),R=(0,r.useRef)(new Map),_=(0,r.useRef)(!0),L=(0,r.useMemo)(()=>t.map((t,e)=>({...t,originalIndex:e})).filter(t=>!s||"*"===s||Array.isArray(t?.albs)&&t.albs.includes(s)),[t,s]),[z,N]=(0,r.useState)(b?y:t.length);(0,r.useEffect)(()=>{b&&N(y)},[b,y,s]);const S=b?L.slice(0,z):L;(0,r.useLayoutEffect)(()=>{if(_.current)return void(_.current=!1);const t=C.current;if(!t)return;const e=R.current,n=t.getBoundingClientRect(),r=t.querySelectorAll(".galleryItem[data-item-key]");e&&e.size>0&&r.forEach((t,r)=>{const a=t.dataset.itemKey,o=e.get(a),l=t.getBoundingClientRect();if(o){const e=o.left-(l.left-n.left),r=o.top-(l.top-n.top);(Math.abs(e)>1||Math.abs(r)>1)&&(t.style.transform=`translate(${e}px, ${r}px)`,t.style.transition="none",t.getBoundingClientRect(),t.style.transition="transform 0.4s cubic-bezier(0.2, 0, 0.2, 1)",t.style.transform="")}else{const e=30*r;t.style.opacity="0",t.style.transform="scale(0.85)",t.style.transition="none",t.getBoundingClientRect(),t.style.transition=`transform 0.4s cubic-bezier(0.2, 0, 0.2, 1) ${e}ms, opacity 0.4s ease ${e}ms`,t.style.opacity="1",t.style.transform="scale(1)"}});const a=new Map;r.forEach(t=>{const e=t.dataset.itemKey;a.set(e,{left:t.getBoundingClientRect().left-n.left,top:t.getBoundingClientRect().top-n.top})}),R.current=a},[s,S]);const I=(0,r.useRef)(null),A=(0,r.useRef)(null),F=(0,r.useRef)(),T=(0,r.useRef)(0),M=(0,r.useRef)(0),[j,B]=(0,r.useState)(null),[D,P]=(0,r.useState)(0),H=t[j];M.current=H?.images?.length||0;const O=(0,r.useRef)([]),G=(0,r.useRef)([]),W=(0,r.useRef)([]),U=(0,r.useRef)([]);for(;O.current.length<t.length;)O.current.push(0);for(;G.current.length<t.length;)G.current.push(a().createRef());for(;W.current.length<t.length;)W.current.push(a().createRef());for(;U.current.length<t.length;)U.current.push({current:0});(0,r.useEffect)(()=>{const n=[];return t.forEach((t,r)=>{!t?.images||t.images.length<=1||(n[r]=setInterval(()=>{O.current[r]++,O.current[r]>=t.images.length&&(O.current[r]=0);const e=G.current[r]?.current;e&&e.childNodes.forEach((t,e)=>{t.classList.toggle("imageVisible",e===O.current[r])})},1e3*e+200*r))}),()=>n.forEach(clearInterval)},[t,e]);const{start:V}=((t,e)=>{const n=(0,r.useRef)(),a=(0,r.useCallback)(()=>clearInterval(n.current),[]),o=(0,r.useCallback)(r=>{const o=()=>{n.current=setInterval(t,e)};a(),+r>0?setTimeout(o,r):o()},[]);return(0,r.useEffect)(()=>(o(0),a),[]),{intervalRef:n,start:o,stop:a}})(()=>{P(t=>t>=M.current-1?0:t+1)},1e3*e),q=(0,r.useCallback)((t,e,n=!1)=>{n&&t();const r=M.current;r<=0||P((e%r+r)%r)},[]),X=(0,r.useCallback)(t=>{if(!S.length)return;const e=S.findIndex(t=>t.originalIndex===j);if(-1===e)return;const n=(e+t+S.length)%S.length,r=S[n].originalIndex;B(r),P(0),T.current=0},[S,j]),K=(0,r.useRef)(null),Y=(0,r.useCallback)(e=>{const n=t[e];n?.link?window.location.href=n.link:g||!o?(K.current=W.current[e]?.current||null,B(e),i&&i(e),o&&I.current?.classList.add("active")):i&&i(e)},[t,g,o,i]);(0,r.useEffect)(()=>{o&&null!==j&&I.current&&requestAnimationFrame(()=>{I.current?.classList.add("active")})},[o,j]);const[Z,J]=(0,r.useState)(!1);(0,r.useEffect)(()=>{const t=()=>{J(Boolean(document.fullscreenElement))};return document.addEventListener("fullscreenchange",t),()=>{document.removeEventListener("fullscreenchange",t)}},[]);const Q=(0,r.useCallback)(()=>{document.fullscreenElement?document.exitFullscreen?.():I.current?.requestFullscreen?.()},[]),[tt,et]=(0,r.useState)(null),nt=(0,r.useRef)({x:0,y:0}),rt=(0,r.useCallback)(t=>{t.touches&&1===t.touches.length&&(nt.current={x:t.touches[0].clientX,y:t.touches[0].clientY})},[]),at=(0,r.useCallback)(t=>{if(!t.changedTouches||0===t.changedTouches.length)return;const e=t.changedTouches[0].clientX-nt.current.x,n=t.changedTouches[0].clientY-nt.current.y;Math.abs(e)>50&&Math.abs(e)>1.2*Math.abs(n)&&(e<0?M.current>1?q(V,D+1,!0):X(1):M.current>1?q(V,D-1,!0):X(-1))},[D,X,q,V]),ot=(0,r.useCallback)((t,e)=>{t&&fetch(t).then(t=>t.blob()).then(n=>{const r=window.URL.createObjectURL(n),a=document.createElement("a");a.style.display="none",a.href=r;const o=t.split(".").pop().split(/[#?]/)[0]||"jpg";a.download=`${e?e.replace(/[^a-z0-9]/gi,"_").toLowerCase():"image"}.${o}`,document.body.appendChild(a),a.click(),window.URL.revokeObjectURL(r),document.body.removeChild(a)}).catch(()=>{const n=document.createElement("a");n.href=t,n.download=e||"image",n.target="_blank",document.body.appendChild(n),n.click(),document.body.removeChild(n)})},[]),lt=(0,r.useCallback)((t,e)=>{if(t)if(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)&&navigator.share)navigator.share({title:e||document.title,url:t}).catch(()=>{et((0,h.__)("Link copied to clipboard!","image-gallery")),setTimeout(()=>et(null),2500),navigator.clipboard?.writeText&&navigator.clipboard.writeText(t).catch(()=>{})});else if(et((0,h.__)("Link copied to clipboard!","image-gallery")),setTimeout(()=>et(null),2500),navigator.clipboard?.writeText)navigator.clipboard.writeText(t).catch(()=>{const e=document.createElement("input");e.value=t,document.body.appendChild(e),e.select(),document.execCommand("copy"),document.body.removeChild(e)});else{const e=document.createElement("input");e.value=t,document.body.appendChild(e),e.select(),document.execCommand("copy"),document.body.removeChild(e)}},[]),it=(0,r.useCallback)(()=>{document.fullscreenElement&&document.exitFullscreen?.().catch(()=>{}),J(!1),setTimeout(()=>{B(null)},750),I.current?.classList.remove("active"),T.current=0,K.current?.focus?.()},[]);return(0,r.useEffect)(()=>{if(!o||null===j)return;I.current?.querySelector(".btnClose")?.focus();const t=t=>{"Escape"===t.key?it():"ArrowLeft"===t.key?M.current>1?q(V,D-1,!0):S.length>1&&X(-1):"ArrowRight"===t.key&&(M.current>1?q(V,D+1,!0):S.length>1&&X(1))};return document.addEventListener("keydown",t),()=>document.removeEventListener("keydown",t)},[o,j,D,it,q,V,S.length,X]),(0,r.createElement)(r.Fragment,null,(0,r.createElement)("div",{ref:C,className:`galleryItems columns-${n?.desktop||3} columns-tablet-${n?.tablet||2} columns-mobile-${n?.mobile||1}`,onContextMenu:t=>d&&t.preventDefault()},S.map(t=>{const e=t.originalIndex;return(0,r.createElement)("div",{key:e,"data-item-key":`item-${e}`,className:"galleryItem "+(null!==l&&e===l?"bPlNowEditing":""),id:`galleryItem-${e}`,onClick:()=>Y(e),ref:W.current[e],role:o?"button":void 0,tabIndex:o?0:void 0,"aria-label":o?t?.title||(0,h.__)("Open image","image-gallery"):void 0,onKeyDown:o?t=>{"Enter"!==t.key&&" "!==t.key||(t.preventDefault(),Y(e))}:void 0},(0,r.createElement)(f,{images:t?.images||[],wrapper:W.current[e],container:G.current[e],loadCount:U.current[e],altText:t?.title||(0,h.__)("Gallery image","image-gallery"),watermark:c,location:"gallery"}),(0,r.createElement)(k,null),(0,r.createElement)(x,{title:t?.title||"",subtitle:t?.subtitle||""}))})),b&&z<L.length&&(0,r.createElement)("div",{style:{textAlign:"center",marginTop:"30px",marginBottom:"30px"}},(0,r.createElement)("button",{className:"bPlButton",style:{padding:"10px 24px",cursor:"pointer",background:"gradient"===w?.bgType?w?.gradient:w?.bg||"#146ef5",color:w?.color||"#fff",border:"none",borderRadius:`${void 0!==E?.borderRadius?E.borderRadius:4}px`,fontSize:`${void 0!==E?.fontSize?E.fontSize:16}px`},onClick:()=>N(t=>t+y)},v)),o&&g&&H&&(0,r.createElement)("div",{className:"popupGallery",ref:I,onTouchStart:rt,onTouchEnd:at,role:"dialog","aria-modal":"true","aria-label":H?.title||(0,h.__)("Image viewer","image-gallery")},(0,r.createElement)("div",{className:"popupContent"},(0,r.createElement)("div",{className:"galleryItem "+(null!==l&&j===l?"nowEditing":""),id:`galleryItem-${j}`,ref:A},(0,r.createElement)(f,{images:H?.images||[],imgIndex:D,wrapper:A,container:F,loadCount:T,altText:H?.title||(0,h.__)("Gallery image","image-gallery"),eager:!0,watermark:c,location:"popup"}),(0,r.createElement)(k,null),(()=>{const t=S.findIndex(t=>t.originalIndex===j),e=(H?.images?.length||0)>1,n=H?.images?.[D]||H?.images?.[0],a="string"==typeof n?n:n?.url,o=m?e?`${D+1} / ${H.images.length}`:S.length>0&&-1!==t?`${t+1} / ${S.length}`:null:null;return(0,r.createElement)(r.Fragment,null,(0,r.createElement)(x,{title:H?.title||"",subtitle:H?.subtitle||"",onClick:it,counter:o,onFullscreen:u?Q:null,isFullscreen:Z,onDownload:p&&a?()=>ot(a,H?.title):null,onShare:$&&a?()=>lt(a,H?.title):null}),e?(0,r.createElement)("footer",{className:"galleryFooter"},(0,r.createElement)("nav",{className:"controls"},(0,r.createElement)("button",{className:"control controlArrow","aria-label":(0,h.__)("Previous image","image-gallery"),onClick:()=>q(V,D-1,!0)},"←"),H.images.map((t,e)=>(0,r.createElement)("button",{key:e,className:"control controlDot "+(e===D?"controlDotActive":""),"aria-label":(0,h.sprintf)((0,h.__)("Go to image %d","image-gallery"),e+1),"aria-current":e===D?"true":void 0,onClick:()=>q(V,e)})),(0,r.createElement)("button",{className:"control controlArrow","aria-label":(0,h.__)("Next image","image-gallery"),onClick:()=>q(V,D+1,!0)},"→"))):S.length>1?(0,r.createElement)("footer",{className:"galleryFooter"},(0,r.createElement)("nav",{className:"controls"},(0,r.createElement)("button",{className:"control controlArrow","aria-label":(0,h.__)("Previous gallery item","image-gallery"),onClick:()=>X(-1)},"←"),S.map((e,n)=>(0,r.createElement)("button",{key:n,className:"control controlDot "+(n===t?"controlDotActive":""),"aria-label":(0,h.sprintf)((0,h.__)("Go to item %d","image-gallery"),n+1),"aria-current":n===t?"true":void 0,onClick:()=>{const t=S[n];t&&(B(t.originalIndex),P(0),T.current=0)}})),(0,r.createElement)("button",{className:"control controlArrow","aria-label":(0,h.__)("Next gallery item","image-gallery"),onClick:()=>X(1)},"→"))):null)})())),tt&&(0,r.createElement)("div",{className:"lightboxToast",style:{position:"absolute",bottom:"32px",left:"50%",transform:"translateX(-50%)",backgroundColor:"rgba(0, 0, 0, 0.8)",color:"#ffffff",padding:"8px 16px",borderRadius:"8px",fontSize:"14px",fontWeight:"500",zIndex:50,backdropFilter:"blur(6px)",boxShadow:"0 4px 12px rgba(0,0,0,0.3)",pointerEvents:"none"}},tt)))},w=t=>{const e=(t=>t.replace(/^([A-Z])|[\s-_]+(\w)/g,(t,e,n)=>n?n.toUpperCase():e.toLowerCase()))(t);return e.charAt(0).toUpperCase()+e.slice(1)},E=(...t)=>t.filter((t,e,n)=>Boolean(t)&&""!==t.trim()&&n.indexOf(t)===e).join(" ").trim(),C=t=>{for(const e in t)if(e.startsWith("aria-")||"role"===e||"title"===e)return!0};var R={xmlns:"http://www.w3.org/2000/svg",width:24,height:24,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round"};const _=(0,r.forwardRef)(({color:t="currentColor",size:e=24,strokeWidth:n=2,absoluteStrokeWidth:a,className:o="",children:l,iconNode:i,...s},c)=>(0,r.createElement)("svg",{ref:c,...R,width:e,height:e,stroke:t,strokeWidth:a?24*Number(n)/Number(e):n,className:E("lucide",o),...!l&&!C(s)&&{"aria-hidden":"true"},...s},[...i.map(([t,e])=>(0,r.createElement)(t,e)),...Array.isArray(l)?l:[l]])),L=(t,e)=>{const n=(0,r.forwardRef)(({className:n,...a},o)=>{return(0,r.createElement)(_,{ref:o,iconNode:e,className:E(`lucide-${l=w(t),l.replace(/([a-z0-9])([A-Z])/g,"$1-$2").toLowerCase()}`,`lucide-${t}`,n),...a});var l});return n.displayName=w(t),n},z=L("share-2",[["circle",{cx:"18",cy:"5",r:"3",key:"gq8acd"}],["circle",{cx:"6",cy:"12",r:"3",key:"w7nqdw"}],["circle",{cx:"18",cy:"19",r:"3",key:"1xt0gg"}],["line",{x1:"8.59",x2:"15.42",y1:"13.51",y2:"17.49",key:"47mynk"}],["line",{x1:"15.41",x2:"8.59",y1:"6.51",y2:"10.49",key:"1n3mei"}]]),N=L("download",[["path",{d:"M12 15V3",key:"m9g1x1"}],["path",{d:"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4",key:"ih7n3h"}],["path",{d:"m7 10 5 5 5-5",key:"brsn70"}]]),S=L("minimize-2",[["path",{d:"m14 10 7-7",key:"oa77jy"}],["path",{d:"M20 10h-6V4",key:"mjg0md"}],["path",{d:"m3 21 7-7",key:"tjx5ai"}],["path",{d:"M4 14h6v6",key:"rmj7iw"}]]),I=L("maximize-2",[["path",{d:"M15 3h6v6",key:"1q9fwt"}],["path",{d:"m21 3-7 7",key:"1l2asr"}],["path",{d:"m3 21 7-7",key:"tjx5ai"}],["path",{d:"M9 21H3v-6",key:"wtvkvv"}]]),A=L("x",[["path",{d:"M18 6 6 18",key:"1bl5f8"}],["path",{d:"m6 6 12 12",key:"d8bk6v"}]]),F=L("chevron-left",[["path",{d:"m15 18-6-6 6-6",key:"1wnfg3"}]]),T=L("chevron-right",[["path",{d:"m9 18 6-6-6-6",key:"mthhwq"}]]),M=({isOpen:t,onClose:e,currentImage:n,currentIndex:a=0,totalImages:o=0,showCounter:l=!0,showFullscreen:i=!0,showDownload:s=!0,showShare:c=!0,onPrev:d,onNext:g,watermark:m=null})=>{const u=(0,r.useRef)(null),p=(0,r.useRef)(null),$=(0,r.useRef)(null),[b,f]=(0,r.useState)(!1),[k,x]=(0,r.useState)(null),v=(0,r.useRef)({x:0,y:0});(0,r.useEffect)(()=>{const t=()=>{f(Boolean(document.fullscreenElement))};return document.addEventListener("fullscreenchange",t),()=>{document.removeEventListener("fullscreenchange",t)}},[]);const w=()=>{document.fullscreenElement&&document.exitFullscreen?.().catch(()=>{}),e()};return(0,r.useEffect)(()=>{const e=e=>{t&&("Escape"===e.key?w():"ArrowLeft"===e.key?d():"ArrowRight"===e.key&&g())},n=t=>{u.current&&!u.current.contains(t.target)&&w()};return document.addEventListener("keydown",e),document.addEventListener("mousedown",n),()=>{document.removeEventListener("keydown",e),document.removeEventListener("mousedown",n)}},[t,e,d,g]),(0,r.useEffect)(()=>{t?($.current=document.activeElement,p.current?.focus()):$.current?.focus?.()},[t]),t&&n?(0,r.createElement)("div",{className:"fixed modal-container inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 transition-opacity duration-300",role:"dialog","aria-modal":"true","aria-label":n?.title||(0,h.__)("Image viewer","image-gallery")},(0,r.createElement)("div",{ref:u,onTouchStart:t=>{t.touches&&1===t.touches.length&&(v.current={x:t.touches[0].clientX,y:t.touches[0].clientY})},onTouchEnd:t=>{if(!t.changedTouches||0===t.changedTouches.length)return;const e=t.changedTouches[0].clientX-v.current.x,n=t.changedTouches[0].clientY-v.current.y;Math.abs(e)>50&&Math.abs(e)>1.2*Math.abs(n)&&(e<0?g():d())},className:"relative max-w-5xl w-full max-h-screen overflow-hidden p-4 flex flex-col modal"},l&&o>0&&(0,r.createElement)("div",{className:"polaroid-modal-counter",style:{position:"absolute",top:"16px",left:"16px",zIndex:20,padding:"4px 12px",backgroundColor:"rgba(0, 0, 0, 0.6)",color:"#ffffff",fontSize:"13px",fontWeight:"600",borderRadius:"9999px",letterSpacing:"0.5px",backdropFilter:"blur(4px)"}},a+1," / ",o),(0,r.createElement)("div",{className:"absolute top-4 right-4 z-10 flex items-center",style:{display:"flex",alignItems:"center",gap:"8px",top:"1rem",right:"1rem",zIndex:20}},c&&(0,r.createElement)("button",{onClick:()=>((t,e)=>{if(t)if(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)&&navigator.share)navigator.share({title:e||document.title,url:t}).catch(()=>{x((0,h.__)("Link copied to clipboard!","image-gallery")),setTimeout(()=>x(null),2500),navigator.clipboard?.writeText&&navigator.clipboard.writeText(t).catch(()=>{})});else if(x((0,h.__)("Link copied to clipboard!","image-gallery")),setTimeout(()=>x(null),2500),navigator.clipboard?.writeText)navigator.clipboard.writeText(t).catch(()=>{const e=document.createElement("input");e.value=t,document.body.appendChild(e),e.select(),document.execCommand("copy"),document.body.removeChild(e)});else{const e=document.createElement("input");e.value=t,document.body.appendChild(e),e.select(),document.execCommand("copy"),document.body.removeChild(e)}})("string"==typeof n?n:n?.url,n?.title),"aria-label":(0,h.__)("Share image link","image-gallery"),className:"p-2 bg-black bg-opacity-50 icon-white rounded-full hover:bg-opacity-75 transition-all duration-200"},(0,r.createElement)(z,{size:24})),s&&(0,r.createElement)("button",{onClick:()=>{return t="string"==typeof n?n:n?.url,e=n?.title,void(t&&fetch(t).then(t=>t.blob()).then(n=>{const r=window.URL.createObjectURL(n),a=document.createElement("a");a.style.display="none",a.href=r;const o=t.split(".").pop().split(/[#?]/)[0]||"jpg";a.download=`${e?e.replace(/[^a-z0-9]/gi,"_").toLowerCase():"image"}.${o}`,document.body.appendChild(a),a.click(),window.URL.revokeObjectURL(r),document.body.removeChild(a)}).catch(()=>{const n=document.createElement("a");n.href=t,n.download=e||"image",n.target="_blank",document.body.appendChild(n),n.click(),document.body.removeChild(n)}));var t,e},"aria-label":(0,h.__)("Download image","image-gallery"),className:"p-2 bg-black bg-opacity-50 icon-white rounded-full hover:bg-opacity-75 transition-all duration-200"},(0,r.createElement)(N,{size:24})),i&&(0,r.createElement)("button",{onClick:()=>{document.fullscreenElement?document.exitFullscreen?.():u.current?.requestFullscreen?.()},"aria-label":b?(0,h.__)("Exit full screen","image-gallery"):(0,h.__)("Full screen","image-gallery"),className:"p-2 bg-black bg-opacity-50 icon-white rounded-full hover:bg-opacity-75 transition-all duration-200"},b?(0,r.createElement)(S,{size:24}):(0,r.createElement)(I,{size:24})),(0,r.createElement)("button",{ref:p,onClick:w,"aria-label":(0,h.__)("Close","image-gallery"),className:"p-2 bg-black bg-opacity-50 icon-white rounded-full hover:bg-opacity-75 transition-all duration-200"},(0,r.createElement)(A,{size:24}))),k&&(0,r.createElement)("div",{className:"modalToast",style:{position:"absolute",bottom:"24px",left:"50%",transform:"translateX(-50%)",backgroundColor:"rgba(0, 0, 0, 0.8)",color:"#ffffff",padding:"8px 16px",borderRadius:"8px",fontSize:"14px",fontWeight:"500",zIndex:50,backdropFilter:"blur(6px)",boxShadow:"0 4px 12px rgba(0,0,0,0.3)",pointerEvents:"none"}},k),(0,r.createElement)("div",{className:"flex items-center justify-between w-full h-full"},(0,r.createElement)("button",{onClick:d,"aria-label":(0,h.__)("Previous image","image-gallery"),className:"p-2 bg-black bg-opacity-50 icon-white rounded-full hover:bg-opacity-75 transition-all duration-200"},(0,r.createElement)(F,{size:32})),(0,r.createElement)("div",{className:"overflow-hidden flex-1 mx-4 h-full flex items-center justify-center",style:{position:"relative"}},(0,r.createElement)("img",{src:n?.url,alt:n?.title,decoding:"async",className:"max-h-[80vh] object-contain transition-transform duration-300"}),m&&(0,r.createElement)(y,{watermark:m,location:"popup"})),(0,r.createElement)("button",{onClick:g,"aria-label":(0,h.__)("Next image","image-gallery"),className:"p-2 bg-black bg-opacity-50 icon-white rounded-full hover:bg-opacity-75 transition-all duration-200"},(0,r.createElement)(T,{size:32}))),(0,r.createElement)("div",{className:"text-white text-center text-content pt-4"},(0,r.createElement)("h3",{className:"text-xl font-medium text-white title truncate"},n?.title),n?.description&&(0,r.createElement)("p",{className:"text-gray-300 mt-1 text-sm description"},n?.description)))):null},j=({attributes:t,activeAlbum:e="*"})=>{const{imagesData:n,styleSl:a,watermark:o={},disableRightClick:l=!1,enableLightbox:i=!0,showLightboxCounter:s=!0,showLightboxFullscreen:c=!0,showLightboxDownload:d=!0,showLightboxShare:g=!0,enableLoadMore:m=!1,imagesPerLoad:u=10,loadMoreBtnText:p="Load More",loadMoreBtnColors:$,loadMoreBtnTypo:b}=t,f=n?.images||[],k=e&&"*"!==e?f.filter(t=>Array.isArray(t?.albs)&&t.albs.includes(e)):f,[x,v]=(0,r.useState)(!1),[w,E]=(0,r.useState)(0),[C,R]=(0,r.useState)(m?u:f.length);(0,r.useEffect)(()=>{m&&R(u)},[m,u,e]);const _=m?k.slice(0,C):k,L=t=>{const e=_[t];e?.link?window.location.href=e.link:i&&(E(t),v(!0))};return(0,r.createElement)("div",{className:`bigbImageGallery ${a}`},(0,r.createElement)("div",{className:"my-8 polaroid-gallery",onContextMenu:t=>l&&t.preventDefault()},(0,r.createElement)("div",{className:"gap-8 justify-center polaroid-wrapper"},_?.map((t,e)=>{const a=(t=>7*t%11-5)(e);return(0,r.createElement)("div",{key:t?.id,className:"w-72 polaroid-container bg-white border-8 border-white shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer",style:{transform:`rotate(${a}deg)`,transition:"transform 0.3s ease"},onClick:()=>L(e),role:"button",tabIndex:0,"aria-label":t?.title||(0,h.__)("Open image","image-gallery"),onKeyDown:t=>{"Enter"!==t.key&&" "!==t.key||(t.preventDefault(),L(e))},onMouseEnter:t=>{t.currentTarget.style.transform="rotate(0deg) scale(1.05)",t.currentTarget.style.zIndex="10"},onMouseLeave:t=>{t.currentTarget.style.transform=`rotate(${a}deg)`,t.currentTarget.style.zIndex="0"}},(0,r.createElement)("div",{className:"polaroid-image overflow-hidden",style:{position:"relative"}},(0,r.createElement)("img",{src:t?.url,alt:t?.title,loading:"lazy",decoding:"async",className:"w-full h-full object-cover"}),o&&(0,r.createElement)(y,{watermark:o,location:"gallery"})),(0,r.createElement)("div",{className:"p-4 text-content bg-white"},(0,r.createElement)("h3",{className:"title font-medium text-gray-900"},t?.title),t?.description&&(0,r.createElement)("p",{className:"description text-sm text-gray-600 mt-1"},t.description),n?.showDate&&(0,r.createElement)("p",{className:"date text-xs text-gray-400 mt-2 font-mono"},t.date)))})),m&&C<k.length&&(0,r.createElement)("div",{style:{textAlign:"center",marginTop:"30px",marginBottom:"30px"}},(0,r.createElement)("button",{className:"bPlButton",style:{padding:"10px 24px",cursor:"pointer",background:"gradient"===$?.bgType?$?.gradient:$?.bg||"#146ef5",color:$?.color||"#fff",border:"none",borderRadius:`${void 0!==b?.borderRadius?b.borderRadius:4}px`,fontSize:`${void 0!==b?.fontSize?b.fontSize:16}px`},onClick:()=>R(t=>t+u)},p)),(0,r.createElement)(M,{isOpen:x,onClose:()=>{v(!1)},currentImage:k[w],currentIndex:w,totalImages:k.length,showCounter:s,showFullscreen:c,showDownload:d,showShare:g,images:k,onNext:()=>{E(t=>t===k.length-1?0:t+1)},onPrev:()=>{E(t=>0===t?k.length-1:t-1)},watermark:o})))},B=({albums:t=[],filter:e={},activeAlbum:n="*",setActiveAlbum:a})=>{if(!e?.display||!Array.isArray(t)||0===t.length)return null;const{allText:o=(0,h.__)("All","image-gallery"),align:l="center",margin:i={}}=e;return(0,r.createElement)("div",{className:"igFilterBar",style:{textAlign:l,marginBottom:i?.bottom||"25px"}},(0,r.createElement)("button",{type:"button",className:"igFilterBtn "+("*"===n?"active":""),onClick:()=>a("*"),"aria-pressed":"*"===n},o),t.map((t,e)=>{if(!t||!t.trim())return null;const o=n===t;return(0,r.createElement)("button",{key:e,type:"button",className:"igFilterBtn "+(o?"active":""),onClick:()=>a(t),"aria-pressed":o},t)}))},D=({attributes:t})=>{const[e,n]=(0,r.useState)("*"),{cId:a,gallery:o,slideSpeed:l,columns:i,styleSl:s,albums:c=[],filter:d={},watermark:g={}}=t;return(0,r.createElement)(r.Fragment,null,(0,r.createElement)(b,{attributes:t,clientId:a}),"styleDefault"===s&&(0,r.createElement)("div",{className:`bigbImageGallery ${s}`},(0,r.createElement)(B,{albums:c,filter:d,activeAlbum:e,setActiveAlbum:n}),(0,r.createElement)(v,{gallery:o,slideSpeed:l,columns:i,activeAlbum:e,watermark:g,disableRightClick:t?.disableRightClick,enableLightbox:t?.enableLightbox,showLightboxCounter:t?.showLightboxCounter,showLightboxFullscreen:t?.showLightboxFullscreen,showLightboxDownload:t?.showLightboxDownload,showLightboxShare:t?.showLightboxShare,enableLoadMore:t?.enableLoadMore,imagesPerLoad:t?.imagesPerLoad,loadMoreBtnText:t?.loadMoreBtnText,loadMoreBtnColors:t?.loadMoreBtnColors,loadMoreBtnTypo:t?.loadMoreBtnTypo})),"styleOne"===s&&(0,r.createElement)(r.Fragment,null,(0,r.createElement)(B,{albums:c,filter:d,activeAlbum:e,setActiveAlbum:n}),(0,r.createElement)(j,{attributes:t,activeAlbum:e})))};document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll(".wp-block-bigb-image-gallery").forEach(t=>{const e=t?.dataset?.attributes;if(!e||"undefined"===e)return;let n;try{n=JSON.parse(e)}catch(t){return t}(0,o.H)(t).render((0,r.createElement)(D,{attributes:n})),t?.removeAttribute("data-attributes")})})})();
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "../bpl-tools/Components/Mask/assets/shapes/blob.svg":
+/*!***********************************************************!*\
+  !*** ../bpl-tools/Components/Mask/assets/shapes/blob.svg ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ReactComponent: () => (/* binding */ SvgBlob),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _path;
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+
+var SvgBlob = function SvgBlob(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", _extends({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 121,
+    height: 89
+  }, props), _path || (_path = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+    d: "M100.016 7.397c-9.77-6.177-26.708-11.063-35.59-3.684-7.442 6.177-2.38 15.204-9.416 21.59-10.6 9.614-28.159-5.442-41.858 2.632C.676 35.255-4.28 59.149 4.278 73.798c13.137 22.524 53.13 13.854 61.194 12.106 4.5-.993 53.495-12.265 55.469-42.705.957-14.946-9.841-28.78-20.925-35.802"
+  })));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjEuMDAwMiIgaGVpZ2h0PSI4OSIgdmlld0JveD0iMCAwIDEyMS4wMDAyIDg5Ij48cGF0aCBkPSJNMTAwLjAxNiw3LjM5NzJDOTAuMjQ1MiwxLjIyLDczLjMwODQtMy42NjYzLDY0LjQyNTUsMy43MTI2LDU2Ljk4MzYsOS44OSw2Mi4wNDY5LDE4LjkxNzQsNTUuMDEsMjUuMzAzMmMtMTAuNiw5LjYxMzQtMjguMTU4OS01LjQ0MjMtNDEuODU4NCwyLjYzMThDLjY3NTcsMzUuMjU0My00LjI3OTEsNTkuMTQ4OSw0LjI3ODEsNzMuNzk3NWMxMy4xMzY5LDIyLjUyNCw1My4xMywxMy44NTQxLDYxLjE5MzYsMTIuMTA2MSw0LjUwMDctLjk5MzEsNTMuNDk1My0xMi4yNjUsNTUuNDY5My00Mi43MDQzQzEyMS44OTgsMjguMjUyOCwxMTEuMSwxNC40MTg1LDEwMC4wMTYsNy4zOTcyWiIvPjwvc3ZnPg==");
+
+/***/ }),
+
+/***/ "../bpl-tools/Components/Mask/assets/shapes/circle.svg":
+/*!*************************************************************!*\
+  !*** ../bpl-tools/Components/Mask/assets/shapes/circle.svg ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ReactComponent: () => (/* binding */ SvgCircle),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _circle;
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+
+var SvgCircle = function SvgCircle(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", _extends({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 89,
+    height: 89
+  }, props), _circle || (_circle = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("circle", {
+    cx: 44.5,
+    cy: 44.5,
+    r: 44.5
+  })));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4OSIgaGVpZ2h0PSI4OSIgdmlld0JveD0iMCAwIDg5IDg5Ij48Y2lyY2xlIGN4PSI0NC41IiBjeT0iNDQuNSIgcj0iNDQuNSIvPjwvc3ZnPg==");
+
+/***/ }),
+
+/***/ "../bpl-tools/Components/Mask/assets/shapes/flower.svg":
+/*!*************************************************************!*\
+  !*** ../bpl-tools/Components/Mask/assets/shapes/flower.svg ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ReactComponent: () => (/* binding */ SvgFlower),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _path;
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+
+var SvgFlower = function SvgFlower(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", _extends({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 89,
+    height: 89
+  }, props), _path || (_path = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+    d: "m76.133 44.475 6.33-6.328a22.349 22.349 0 0 0-31.613-31.6l-6.318 6.318-6.372-6.318a22.352 22.352 0 1 0-31.612 31.61l6.318 6.318-6.318 6.372a22.352 22.352 0 0 0 31.612 31.61l6.318-6.318 6.372 6.253a22.349 22.349 0 0 0 31.612-31.6Z"
+  })));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4OSIgaGVpZ2h0PSI4OSIgdmlld0JveD0iMCAwIDg5IDg5Ij48cGF0aCBkPSJNNzYuMTMzMiw0NC40NzUybDYuMzI4OS02LjMyODVBMjIuMzQ4NiwyMi4zNDg2LDAsMCwwLDUwLjg1LDYuNTQ3NEw0NC41MzIsMTIuODY1MSwzOC4xNiw2LjU0NzRhMjIuMzUyNCwyMi4zNTI0LDAsMSwwLTMxLjYxMiwzMS42MWw2LjMxODEsNi4zMTc3TDYuNTQ3OCw1MC44NDdhMjIuMzUyNCwyMi4zNTI0LDAsMCwwLDMxLjYxMiwzMS42MWw2LjMxODEtNi4zMTc3TDUwLjg1LDgyLjM5MjJhMjIuMzQ4NiwyMi4zNDg2LDAsMCwwLDMxLjYxMi0zMS41OTkzWiIvPjwvc3ZnPg==");
+
+/***/ }),
+
+/***/ "../bpl-tools/Components/Mask/assets/shapes/hexagon.svg":
+/*!**************************************************************!*\
+  !*** ../bpl-tools/Components/Mask/assets/shapes/hexagon.svg ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ReactComponent: () => (/* binding */ SvgHexagon),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _path;
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+
+var SvgHexagon = function SvgHexagon(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", _extends({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 103,
+    height: 89
+  }, props), _path || (_path = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+    d: "M77.211 0H25.752L0 44.505 25.752 89h51.46L103 44.505ZM61.77 62.261H41.222L30.939 44.504 41.222 26.74h20.547l10.283 17.766Z"
+  })));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDMiIGhlaWdodD0iODkiIHZpZXdCb3g9IjAgMCAxMDMgODkiPjxwYXRoIGQ9Ik03Ny4yMTE0LDBIMjUuNzUyM0wwLDQ0LjUwNDUsMjUuNzUyMyw4OUg3Ny4yMTE0TDEwMyw0NC41MDQ1Wk02MS43NjkxLDYyLjI2MUg0MS4yMjE4TDMwLjkzOTEsNDQuNTA0NSw0MS4yMjE4LDI2LjczOUg2MS43NjkxTDcyLjA1MTksNDQuNTA0NVoiLz48L3N2Zz4=");
+
+/***/ }),
+
+/***/ "../bpl-tools/Components/Mask/assets/shapes/sketch.svg":
+/*!*************************************************************!*\
+  !*** ../bpl-tools/Components/Mask/assets/shapes/sketch.svg ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ReactComponent: () => (/* binding */ SvgSketch),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _path;
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+
+var SvgSketch = function SvgSketch(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", _extends({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 91.114,
+    height: 89
+  }, props), _path || (_path = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+    d: "m82.175 37.527 1.612-1.612c.948-.949-6.37-5.931-7.05-6.378a45 45 0 0 0-5.776-3.325c-.247-.115-.602-.3-.987-.478q1.781-1.897 3.586-3.771c.949-.98-6.363-5.923-7.05-6.37a44 44 0 0 0-5.76-3.332l-.293-.147 1.396-1.542c.94-1.05-6.332-5.9-7.05-6.37a44 44 0 0 0-5.76-3.34c-.54-.247-2.314-1.265-2.847-.687q-13.458 14.993-28.08 28.891c-7.844 7.45-16.567 15.58-18.11 26.87-.115.825 1.327 1.974 1.744 2.314a41 41 0 0 0 5.314 4.057 44 44 0 0 0 5.76 3.34c.64.293 2.176 1.203 2.847.686l2.074-1.558c1.45 1.859 5.97 4.72 6.671 5.175l1.489.956a257 257 0 0 0-4.435 5.622c-.91 1.188 6.263 5.862 7.05 6.37a44 44 0 0 0 5.76 3.332c.602.278 2.23 1.234 2.846.694l9.255-8.098c.825 2.568 14.569 11.63 15.672 9.972L91.06 45.362c.632-.948-4.335-5.036-8.885-7.835"
+  })));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MS4xMTQzIiBoZWlnaHQ9Ijg4Ljk5OTkiIHZpZXdCb3g9IjAgMCA5MS4xMTQzIDg4Ljk5OTkiPjxwYXRoIGQ9Ik04Mi4xNzQ5LDM3LjUyNjZsMS42MTE5LTEuNjExOWMuOTQ4Ni0uOTQ4Ny02LjM3LTUuOTMwOS03LjA0OTItNi4zNzgyYTQ1LjE1MTYsNDUuMTUxNiwwLDAsMC01Ljc3NjYtMy4zMjQxYy0uMjQ2OC0uMTE1Ny0uNjAxNi0uMzAwOC0uOTg3Mi0uNDc4MnExLjc4MTYtMS44OTcyLDMuNTg2My0zLjc3MTNjLjk0ODYtLjk4LTYuMzYyOC01LjkyMzItNy4wNDkyLTYuMzcwNUE0NC4xNTc5LDQ0LjE1NzksMCwwLDAsNjAuNzUsMTIuMjYwNmwtLjI5My0uMTQ2NSwxLjM5NTktMS41NDI1Yy45NDA5LTEuMDQ4OS02LjMzMTktNS45LTcuMDQ5Mi02LjM3QTQ0LjIxMiw0NC4yMTIsMCwwLDAsNDkuMDQyMi44NjE2Yy0uNTQtLjI0NjctMi4zMTM3LTEuMjY0OC0yLjg0NTgtLjY4NjRRMzIuNzM4MSwxNS4xNjgyLDE4LjExNTQsMjkuMDY2Yy03Ljg0MzYsNy40NS0xNi41NjYzLDE1LjU3OTEtMTguMTA4OCwyNi44Ny0uMTE1Ny44MjUzLDEuMzI2NSwxLjk3NDQsMS43NDMsMi4zMTM4YTQwLjc5OSw0MC43OTksMCwwLDAsNS4zMTM5LDQuMDU2Nyw0NC4yMTc0LDQ0LjIxNzQsMCwwLDAsNS43NjExLDMuMzRjLjY0LjI5MzEsMi4xNzUsMS4yMDMxLDIuODQ1OS42ODY0bDIuMDc0Ny0xLjU1NzljMS40NSwxLjg1ODcsNS45Njk0LDQuNzIsNi42NzEyLDUuMTc1bDEuNDg4NS45NTY0QzI0LjQwMSw3Mi43NjQ3LDIyLjkyLDc0LjYzMTEsMjEuNDcsNzYuNTI4M2MtLjkxLDEuMTg3OCw2LjI2MjUsNS44NjE1LDcuMDQ5Miw2LjM3YTQ0LjE2MzMsNDQuMTYzMywwLDAsMCw1Ljc2MTEsMy4zMzE4Yy42MDE2LjI3NzYsMi4yMjg5LDEuMjM0LDIuODQ1OS42OTQxbDkuMjU1LTguMDk4Yy44MjUyLDIuNTY4MiwxNC41Njg3LDExLjYzLDE1LjY3MTYsOS45NzIxTDkxLjA2LDQ1LjM2MjRDOTEuNjkyLDQ0LjQxMzgsODYuNzI1Miw0MC4zMjYyLDgyLjE3NDksMzcuNTI2NloiLz48L3N2Zz4=");
+
+/***/ }),
+
+/***/ "../bpl-tools/Components/Mask/assets/shapes/triangle.svg":
+/*!***************************************************************!*\
+  !*** ../bpl-tools/Components/Mask/assets/shapes/triangle.svg ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ReactComponent: () => (/* binding */ SvgTriangle),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _path;
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+
+var SvgTriangle = function SvgTriangle(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", _extends({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 103,
+    height: 89
+  }, props), _path || (_path = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+    d: "M77.255 44.505 51.5 0 25.755 44.505 0 89h103z"
+  })));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDMiIGhlaWdodD0iODkiIHZpZXdCb3g9IjAgMCAxMDMgODkiPjxwb2x5Z29uIHBvaW50cz0iNzcuMjU1IDQ0LjUwNSA1MS41IDAgMjUuNzU1IDQ0LjUwNSAwIDg5IDUxLjUgODkgMTAzIDg5IDc3LjI1NSA0NC41MDUiLz48L3N2Zz4=");
+
+/***/ }),
+
+/***/ "../bpl-tools/utils/common.js":
+/*!************************************!*\
+  !*** ../bpl-tools/utils/common.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   SVGSanitizer: () => (/* binding */ SVGSanitizer),
+/* harmony export */   escapeHTML: () => (/* binding */ escapeHTML),
+/* harmony export */   isExist: () => (/* binding */ isExist),
+/* harmony export */   sanitizeHTML: () => (/* binding */ sanitizeHTML),
+/* harmony export */   sanitizeInput: () => (/* binding */ sanitizeInput),
+/* harmony export */   sanitizeURL: () => (/* binding */ sanitizeURL)
+/* harmony export */ });
+const isExist = value => {
+  if (value === undefined || value === null || value === '') {
+    return false;
+  }
+  if (Array.isArray(value) && value.length === 0) {
+    return false;
+  }
+  if (typeof value === 'object' && Object.keys(value).length === 0) {
+    return false;
+  }
+  if (typeof value === 'string' && value.trim() === '') {
+    return false;
+  }
+  if (typeof value === 'number' && value === 0) {
+    return false;
+  }
+  return true;
+};
+const escapeHTML = (input = '') => {
+  if (!input) {
+    return '';
+  }
+
+  // Regular expression to match all HTML tags and their attributes
+  return input?.replace(/<([a-z][a-z0-9]*)\b([^>]*)>/gi, (match, tagName, attrs) => {
+    // List of allowed tags and their attributes
+    const allowedTags = ['b', 'strong', 'i', 'em', 'span', 'a', 'br'];
+    const allowedAttrs = ['style', 'href', 'target', 'rel', 'class'];
+
+    // If the tag is allowed, keep it, but sanitize its attributes
+    if (allowedTags.includes(tagName.toLowerCase())) {
+      // Process the tag's attributes
+      const sanitizedAttrs = attrs.replace(/([a-z0-9-]+)=["'][^"']*["']/gi, (attrMatch, attrName) => {
+        // Only keep allowed attributes
+        if (allowedAttrs.includes(attrName.toLowerCase())) {
+          return attrMatch; // Keep allowed attributes as they are
+        }
+        return ''; // Remove any other attributes
+      });
+      return `<${tagName}${sanitizedAttrs}>`;
+    }
+    return match?.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  });
+};
+const sanitizeURL = inputUrl => {
+  try {
+    const url = new URL(inputUrl);
+
+    // 1. Check for safe protocols
+    if (!['http:', 'https:'].includes(url.protocol)) {
+      return null;
+    } else {
+      // 2. Strip query and fragment for safety
+      // url.search = '';
+      // url.hash = '';
+
+      return url.toString();
+    }
+  } catch (err) {
+    if (typeof inputUrl === 'string' && inputUrl.startsWith('/') && !inputUrl.startsWith('//')) {
+      return inputUrl;
+    } else {
+      return null;
+    }
+  }
+};
+const sanitizeHTML = input => {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(input, 'text/html');
+  const allowedTags = ['b', 'strong', 'i', 'em', 'span', 'a', 'br'];
+  const allowedAttrs = ['style', 'href', 'target', 'rel', 'class'];
+  doc.body.querySelectorAll('*').forEach(node => {
+    // Remove disallowed tags
+    if (!allowedTags.includes(node.tagName.toLowerCase())) {
+      node.remove();
+      return;
+    }
+
+    // Loop through attributes and sanitize
+    [...node.attributes].forEach(attr => {
+      if (!allowedAttrs.includes(attr.name)) {
+        node.removeAttribute(attr.name);
+      }
+
+      // if (attr.name === 'href' && attr.value.trim().toLowerCase().startsWith('javascript:')) {
+      // 	node.removeAttribute('href');
+      // }
+
+      if (attr.name === 'href') {
+        const sanitizeHref = sanitizeURL(attr.value);
+        if (sanitizeHref) {
+          node.setAttribute('href', sanitizeHref);
+        } else {
+          node.removeAttribute('href');
+        }
+      }
+    });
+  });
+  return doc.body.innerHTML;
+};
+const sanitizeInput = input => {
+  return input.replace(/[<>]/g, '').replace(/javascript:/gi, '').replace(/on\w+=/gi, '').trim();
+};
+
+//-------- Sanitize SVG ----------//
+class SVGSanitizer {
+  constructor(options = {}) {
+    this.defaultOptions = {
+      allowedTags: ['svg', 'g', 'path', 'rect', 'circle', 'ellipse', 'line', 'polyline', 'polygon', 'text', 'tspan', 'defs', 'clipPath', 'mask', 'linearGradient', 'radialGradient', 'stop', 'style', 'title', 'desc'],
+      allowedAttributes: ['id', 'class', 'style', 'transform', 'd', 'x', 'y', 'width', 'height', 'cx', 'cy', 'r', 'rx', 'ry', 'points', 'x1', 'y1', 'x2', 'y2', 'fill', 'stroke', 'stroke-width', 'stroke-linecap', 'stroke-linejoin', 'opacity', 'fill-opacity', 'stroke-opacity', 'viewBox', 'preserveAspectRatio', 'xmlns', 'xmlns:xlink'],
+      allowedProtocols: ['http', 'https', 'data'],
+      removeScripts: true,
+      removeEvents: true,
+      removeExternalResources: true,
+      sanitizeStyle: true
+    };
+    this.options = {
+      ...this.defaultOptions,
+      ...options
+    };
+  }
+  sanitize(svgString) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(svgString, 'image/svg+xml');
+    this.removeScripts(doc);
+    this.sanitizeElements(doc);
+    const serializer = new XMLSerializer();
+    return serializer.serializeToString(doc.documentElement);
+  }
+
+  // ✅ New method: sanitize from File object
+  async sanitizeFile(file) {
+    const response = await fetch(file);
+    const svgText = await response.text();
+    // console.log(svgText)
+    return this.sanitize(`${svgText}`);
+    // return "";
+  }
+  removeScripts(doc) {
+    if (this.options.removeScripts) {
+      const scripts = doc.querySelectorAll('script');
+      scripts.forEach(script => script.remove());
+      const allElements = doc.querySelectorAll('*');
+      allElements.forEach(el => {
+        if (el.tagName.toLowerCase().includes('script')) {
+          el.remove();
+        }
+      });
+    }
+  }
+  sanitizeElements(doc) {
+    const allElements = doc.querySelectorAll('*');
+    allElements.forEach(element => {
+      const tagName = element.tagName.toLowerCase();
+      if (!this.options.allowedTags.includes(tagName)) {
+        element.remove();
+        return;
+      }
+      this.sanitizeAttributes(element);
+    });
+  }
+  sanitizeAttributes(element) {
+    const attributes = Array.from(element.attributes);
+    attributes.forEach(attr => {
+      const attrName = attr.name.toLowerCase();
+      const attrValue = attr.value;
+      if (this.options.removeEvents && attrName.startsWith('on')) {
+        element.removeAttribute(attrName);
+        return;
+      }
+      if (this.options.removeExternalResources) {
+        if ((attrName === 'href' || attrName === 'xlink:href') && !this.isAllowedUrl(attrValue)) {
+          element.removeAttribute(attrName);
+          return;
+        }
+      }
+      const baseAttrName = attrName.replace('xlink:', '');
+      if (!this.options.allowedAttributes.includes(baseAttrName)) {
+        element.removeAttribute(attrName);
+        return;
+      }
+      if (attrName === 'style' && this.options.sanitizeStyle) {
+        this.sanitizeStyleAttribute(element, attrValue);
+      }
+    });
+  }
+  isAllowedUrl(url) {
+    if (url.startsWith('data:') || url.startsWith('#')) {
+      return true;
+    }
+    try {
+      const parsedUrl = new URL(url);
+      return this.options.allowedProtocols.includes(parsedUrl.protocol.replace(':', ''));
+    } catch {
+      return false;
+    }
+  }
+  sanitizeStyleAttribute(element, styleValue) {
+    const safeStyle = styleValue.replace(/expression\(|javascript:|url\(javascript:/gi, '').replace(/behavior\s*:/gi, '').replace(/binding\s*:/gi, '');
+    element.setAttribute('style', safeStyle);
+  }
+}
+
+/***/ }),
+
+/***/ "../bpl-tools/utils/data.js":
+/*!**********************************!*\
+  !*** ../bpl-tools/utils/data.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   contentColor: () => (/* binding */ contentColor),
+/* harmony export */   deskBreakpoint: () => (/* binding */ deskBreakpoint),
+/* harmony export */   gradient: () => (/* binding */ gradient),
+/* harmony export */   mobileBreakpoint: () => (/* binding */ mobileBreakpoint),
+/* harmony export */   primaryColor: () => (/* binding */ primaryColor),
+/* harmony export */   primaryColor100: () => (/* binding */ primaryColor100),
+/* harmony export */   primaryColor1000: () => (/* binding */ primaryColor1000),
+/* harmony export */   primaryColor200: () => (/* binding */ primaryColor200),
+/* harmony export */   primaryColor300: () => (/* binding */ primaryColor300),
+/* harmony export */   primaryColor400: () => (/* binding */ primaryColor400),
+/* harmony export */   primaryColor500: () => (/* binding */ primaryColor500),
+/* harmony export */   primaryColor600: () => (/* binding */ primaryColor600),
+/* harmony export */   primaryColor700: () => (/* binding */ primaryColor700),
+/* harmony export */   primaryColor800: () => (/* binding */ primaryColor800),
+/* harmony export */   primaryColor900: () => (/* binding */ primaryColor900),
+/* harmony export */   secondaryColor: () => (/* binding */ secondaryColor),
+/* harmony export */   tabBreakpoint: () => (/* binding */ tabBreakpoint),
+/* harmony export */   titleColor: () => (/* binding */ titleColor)
+/* harmony export */ });
+const deskBreakpoint = '@media only screen and (min-width: 1025px)';
+const tabBreakpoint = '@media only screen and (max-width: 1024px)';
+const mobileBreakpoint = '@media only screen and (max-width: 640px)';
+const primaryColor = '#146EF5';
+const primaryColor100 = '#e7f0fe';
+const primaryColor200 = '#b6d2fc';
+const primaryColor300 = '#85b4fa';
+const primaryColor400 = '#5495f8';
+const primaryColor500 = '#2377f6';
+const primaryColor600 = '#095edc';
+const primaryColor700 = '#0749ab';
+const primaryColor800 = '#05347a';
+const primaryColor900 = '#031f49';
+const primaryColor1000 = '#010a18';
+const secondaryColor = '#FF7A00';
+const titleColor = '#070127';
+const contentColor = '#485781';
+const gradient = 'linear-gradient(135deg, #0040E3, #18D4FD)';
+
+/***/ }),
+
+/***/ "../bpl-tools/utils/getCSS.js":
+/*!************************************!*\
+  !*** ../bpl-tools/utils/getCSS.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getAdvBGCSS: () => (/* binding */ getAdvBGCSS),
+/* harmony export */   getBackgroundCSS: () => (/* binding */ getBackgroundCSS),
+/* harmony export */   getBorderBoxCSS: () => (/* binding */ getBorderBoxCSS),
+/* harmony export */   getBorderCSS: () => (/* binding */ getBorderCSS),
+/* harmony export */   getBoxCSS: () => (/* binding */ getBoxCSS),
+/* harmony export */   getColorsCSS: () => (/* binding */ getColorsCSS),
+/* harmony export */   getGradientCSS: () => (/* binding */ getGradientCSS),
+/* harmony export */   getIconCSS: () => (/* binding */ getIconCSS),
+/* harmony export */   getMaskCSS: () => (/* binding */ getMaskCSS),
+/* harmony export */   getMultiShadowCSS: () => (/* binding */ getMultiShadowCSS),
+/* harmony export */   getOverlayCSS: () => (/* binding */ getOverlayCSS),
+/* harmony export */   getSeparatorCSS: () => (/* binding */ getSeparatorCSS),
+/* harmony export */   getShadowCSS: () => (/* binding */ getShadowCSS),
+/* harmony export */   getSpaceCSS: () => (/* binding */ getSpaceCSS),
+/* harmony export */   getTransformCSS: () => (/* binding */ getTransformCSS),
+/* harmony export */   getTypoCSS: () => (/* binding */ getTypoCSS),
+/* harmony export */   isValidCSS: () => (/* binding */ isValidCSS)
+/* harmony export */ });
+/* harmony import */ var _Components_Mask_assets_shapes_blob_svg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Components/Mask/assets/shapes/blob.svg */ "../bpl-tools/Components/Mask/assets/shapes/blob.svg");
+/* harmony import */ var _Components_Mask_assets_shapes_circle_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Components/Mask/assets/shapes/circle.svg */ "../bpl-tools/Components/Mask/assets/shapes/circle.svg");
+/* harmony import */ var _Components_Mask_assets_shapes_flower_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Components/Mask/assets/shapes/flower.svg */ "../bpl-tools/Components/Mask/assets/shapes/flower.svg");
+/* harmony import */ var _Components_Mask_assets_shapes_hexagon_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Components/Mask/assets/shapes/hexagon.svg */ "../bpl-tools/Components/Mask/assets/shapes/hexagon.svg");
+/* harmony import */ var _Components_Mask_assets_shapes_sketch_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Components/Mask/assets/shapes/sketch.svg */ "../bpl-tools/Components/Mask/assets/shapes/sketch.svg");
+/* harmony import */ var _Components_Mask_assets_shapes_triangle_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Components/Mask/assets/shapes/triangle.svg */ "../bpl-tools/Components/Mask/assets/shapes/triangle.svg");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./common */ "../bpl-tools/utils/common.js");
+/* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./data */ "../bpl-tools/utils/data.js");
+
+
+
+
+
+
+
+const safeCSSUrl = url => {
+  const sanitized = (0,_common__WEBPACK_IMPORTED_MODULE_6__.sanitizeURL)(url);
+  if (!sanitized) {
+    return 'none';
+  }
+  const cleanUrl = sanitized.replace(/['"()]/g, '');
+  return `url('${cleanUrl}')`;
+};
+
+const isValidCSS = (p, v) => (0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(v) ? `${p}: ${v};` : '';
+const getBackgroundCSS = (bg, isSolid = true, isGradient = true, isImage = true) => {
+  const {
+    type = 'solid',
+    color = '',
+    gradient = _data__WEBPACK_IMPORTED_MODULE_7__.gradient,
+    image = {},
+    position = 'center center',
+    attachment = '',
+    repeat = 'no-repeat',
+    size = '',
+    overlayColor = ''
+  } = bg || {};
+  const styles = 'gradient' === type && isGradient ? isValidCSS('background', gradient) : 'image' === type && isImage ? `background: ${safeCSSUrl(image?.url)};
+				${isValidCSS('background-color', overlayColor)}
+				${isValidCSS('background-position', position)}
+				${isValidCSS('background-size', size)}
+				${isValidCSS('background-repeat', repeat)}
+				${isValidCSS('background-attachment', attachment)}
+				${isValidCSS('background-repeat', repeat)}
+				background-blend-mode: overlay;` : isSolid && isValidCSS('background', color);
+  return styles;
+};
+const getBorderCSS = border => {
+  const {
+    width = '',
+    style = 'solid',
+    color = '',
+    side = 'all',
+    radius = ''
+  } = border || {};
+  const borderSideCheck = s => {
+    const bSide = side?.toLowerCase();
+    return bSide?.includes('all') || bSide?.includes(s);
+  };
+  const borderCSS = `${width} ${style} ${color}`;
+  const styles = `
+		${!width || parseInt(width) === 0 ? '' : ['top', 'right', 'bottom', 'left'].map(side => borderSideCheck(side) ? `border-${side}: ${borderCSS};` : '').join('')}
+		${isValidCSS('border-radius', radius)}
+	`;
+  return styles;
+};
+const getBorderBoxCSS = border => {
+  if (!border) return '';
+  const generateBorderCSS = borderObj => {
+    const {
+      color = '#000000',
+      style = 'solid',
+      width = '0px'
+    } = borderObj;
+    return `${width} ${style} ${color}`;
+  };
+  if ('object' === typeof border && !Array.isArray(border)) {
+    if (border.hasOwnProperty('top') || border.hasOwnProperty('right') || border.hasOwnProperty('bottom') || border.hasOwnProperty('left')) {
+      const sides = ['top', 'right', 'bottom', 'left'];
+      return sides.map(side => border[side] ? `border-${side}: ${generateBorderCSS(border[side])};` : '').join(' ').trim();
+    } else {
+      return isValidCSS('border', generateBorderCSS(border));
+    }
+  }
+  return '';
+};
+const getColorsCSS = colors => {
+  const {
+    color = '',
+    bgType = 'solid',
+    bg = '',
+    gradient = _data__WEBPACK_IMPORTED_MODULE_7__.gradient
+  } = colors || {};
+  const styles = `
+		${isValidCSS('color', color)}
+		${gradient || bg ? isValidCSS('background', 'gradient' === bgType ? gradient : bg) : ''}
+	`;
+  return styles;
+};
+const getIconCSS = (icon, isSize = true, isColor = true) => {
+  const {
+    fontSize = 16,
+    colorType = 'solid',
+    color = 'inherit',
+    gradient = _data__WEBPACK_IMPORTED_MODULE_7__.gradient
+  } = icon || {};
+  const colorCSS = 'gradient' === colorType ? `color: transparent; background-image: ${gradient}; -webkit-background-clip: text; background-clip: text;` : isValidCSS('color', color);
+  const styles = `
+		${!fontSize || !isSize ? '' : isValidCSS('font-size', fontSize ? `${fontSize}px` : '')}
+		${isColor ? colorCSS : ''}
+	`;
+  return styles;
+};
+const getMultiShadowCSS = (value, type = 'box') => {
+  let styles = '';
+  value?.map((item, index) => {
+    const {
+      hOffset = '0px',
+      vOffset = '0px',
+      blur = '0px',
+      spreed = '0px',
+      color = '#e7f0fe',
+      isInset = false
+    } = item || {};
+    const inset = isInset ? 'inset' : '';
+    const offsetBlur = `${hOffset} ${vOffset} ${blur}`;
+    const isComa = index + 1 >= value.length ? '' : ', ';
+    styles += 'text' === type ? `${offsetBlur} ${color}${isComa}` : `${offsetBlur} ${spreed} ${color} ${inset}${isComa}`;
+  });
+  return styles || '';
+};
+const getSeparatorCSS = separator => {
+  const {
+    width = '50%',
+    height = '2px',
+    style = 'solid',
+    color = _data__WEBPACK_IMPORTED_MODULE_7__.primaryColor300
+  } = separator || {};
+  const styles = `
+		${isValidCSS('width', width)}
+		${0 === parseInt(height) ? '' : `border-top: ${height} ${style} ${color};`}
+	`;
+  return styles;
+};
+const getShadowCSS = (shadow, type = 'box') => {
+  const {
+    hOffset = '0px',
+    vOffset = '0px',
+    blur = '0px',
+    spreed = '0px',
+    color = '#7090b0',
+    isInset = false
+  } = shadow || {};
+  const inset = isInset ? 'inset' : '';
+  const offsetBlur = `${hOffset} ${vOffset} ${blur}`;
+  const styles = 'text' === type ? `${offsetBlur} ${color}` : `${offsetBlur} ${spreed} ${color} ${inset}`;
+  return styles || 'none';
+};
+const getSpaceCSS = space => {
+  const {
+    side = 2,
+    vertical = '0px',
+    horizontal = '0px',
+    top = '0px',
+    right = '0px',
+    bottom = '0px',
+    left = '0px'
+  } = space || {};
+  const styles = 2 === side ? `${vertical} ${horizontal}` : `${top} ${right} ${bottom} ${left}`;
+  return styles;
+};
+const getTypoCSS = (selector, typo, isFamily = true) => {
+  const {
+    fontFamily = 'Default',
+    fontCategory = 'sans-serif',
+    fontVariant = 400,
+    fontWeight,
+    isUploadFont = true,
+    fontSize = {
+      desktop: null,
+      tablet: null,
+      mobile: null
+    },
+    fontStyle,
+    textTransform,
+    textDecoration,
+    lineHeight,
+    letterSpace
+  } = typo || {};
+  const isEmptyFamily = !isFamily || !fontFamily || 'Default' === fontFamily;
+  const desktopFontSize = fontSize?.desktop || fontSize;
+  const tabletFontSize = fontSize?.tablet || desktopFontSize;
+  const mobileFontSize = fontSize?.mobile || tabletFontSize;
+  const checkUnit = size => {
+    const value = String(size);
+    const units = ['px', 'em', 'rem', '%', 'vh', 'vw'];
+    if (units.some(unit => value.endsWith(unit))) {
+      return value;
+    } else if (typeof size === 'number') {
+      return `${value}px`;
+    }
+    return '';
+  };
+  const styles = `
+		${isEmptyFamily ? '' : `font-family: '${fontFamily}', ${fontCategory};`}
+		${isValidCSS('font-weight', fontWeight)}
+		${isValidCSS('font-size', checkUnit(desktopFontSize))}
+		${isValidCSS('font-style', fontStyle)}
+		${isValidCSS('text-transform', textTransform)}
+		${isValidCSS('text-decoration', textDecoration)}
+		${isValidCSS('line-height', lineHeight)}
+		${isValidCSS('letter-spacing', letterSpace)}
+	`;
+
+  // Google font link
+  const linkQuery = !fontVariant || 400 === fontVariant ? '' : '400i' === fontVariant ? ':ital@1' : fontVariant?.includes('00i') ? `: ital, wght@1, ${fontVariant?.replace('00i', '00')} ` : `: wght@${fontVariant} `;
+  const link = isEmptyFamily ? '' : `https://fonts.googleapis.com/css2?family=${fontFamily?.split(' ').join('+')}${linkQuery.replace(/ /g, '')}&display=swap`;
+  return {
+    googleFontLink: !isUploadFont || isEmptyFamily ? '' : `@import url(${link});`,
+    styles: `${selector}{
+			${styles}
+		}
+		${_data__WEBPACK_IMPORTED_MODULE_7__.tabBreakpoint} {
+			${selector}{
+				${isValidCSS('font-size', checkUnit(tabletFontSize))}
+			}
+		}
+		${_data__WEBPACK_IMPORTED_MODULE_7__.mobileBreakpoint} {
+			${selector}{
+				${isValidCSS('font-size', checkUnit(mobileFontSize))}
+			}
+		}`.replace(/\s+/g, ' ').trim()
+  };
+};
+const getBoxCSS = val => {
+  if (!val) return '';
+  if (typeof val === 'string') return val;
+  if (typeof val === 'object' && !Array.isArray(val)) {
+    const order = ['top', 'right', 'bottom', 'left'];
+    const values = order.map(side => val[side] || '');
+    const allEmpty = values.every(value => !value);
+    return allEmpty ? '' : order.map(side => val[side] || '0').join(' ');
+  }
+  return '';
+};
+
+// Murad Wahid
+const getGradientCSS = gradient => {
+  const {
+    type = 'linear',
+    radialType = 'ellipse',
+    colors = [],
+    centerPositions = {
+      x: 0,
+      y: 0
+    },
+    angel = 0
+  } = gradient || {};
+  if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(gradient)) {
+    const gradientColors = colors?.map(({
+      color,
+      position
+    }) => `${color} ${position}%`);
+    const liner = `linear-gradient(${angel}deg, ${gradientColors})`;
+    const radial = `radial-gradient(${radialType} at ${centerPositions?.x}% ${centerPositions?.y}%,${gradientColors})`;
+    return isValidCSS('background', type === 'radial' ? radial : liner);
+  }
+  return '';
+};
+const getImagePosition = img => {
+  const {
+    position = 'center center',
+    xPosition = 0,
+    yPosition = 0,
+    attachment = '',
+    repeat = 'no-repeat',
+    size = 'cover',
+    customSize = '0px'
+  } = img || {};
+  const cd = v => 'initial' !== v || (0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(v);
+  return `
+		${cd(position) ? `background-position: ${'custom' === position ? `${xPosition} ${yPosition}` : position};` : ''}
+		${attachment && cd(attachment) ? `background-attachment: ${attachment};` : ''}
+		${cd(repeat) ? `background-repeat: ${repeat};` : ''}
+		${cd(size) ? `background-size: ${'custom' === size ? `${customSize} auto` : size};` : ''}
+	`;
+};
+const getImageCSS = (img = {}) => {
+  if (img) {
+    return {
+      desktop: (0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(img.url) ? `background-image: ${safeCSSUrl(img.url)}; ${getImagePosition(img?.desktop)}` : '',
+      tablet: (0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(img.url) ? getImagePosition(img?.tablet) : '',
+      mobile: (0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(img.url) ? getImagePosition(img?.mobile) : ''
+    };
+  }
+  return '';
+};
+const getVideoCSS = (video, selector) => {
+  const {
+    url,
+    loop
+  } = video || {};
+  const parentEl = document.querySelector(selector);
+  const el = parentEl?.querySelector('.bPlVideo');
+  const videoEl = document.createElement('video');
+  videoEl.muted = true;
+  videoEl.autoplay = true;
+  videoEl.classList.add('bPlVideo');
+  if (!el) {
+    if (parentEl && url) {
+      const sanitizedUrl = (0,_common__WEBPACK_IMPORTED_MODULE_6__.sanitizeURL)(url);
+      if (sanitizedUrl) {
+        const sourceEl = document.createElement('source');
+        sourceEl.src = sanitizedUrl;
+        videoEl.appendChild(sourceEl);
+        parentEl.appendChild(videoEl);
+      }
+    }
+  }
+  videoEl.loop = loop;
+  videoEl.play();
+  return `${selector} .bPlVideo{
+		left: 0;
+		min-height: 100%;
+		min-width: 100%;
+		position: absolute;
+		width: -webkit-fill-available;
+		top: 0;
+		z-index: 0;
+	}`;
+};
+const getAdvBGCSS = (background, selector, isHover = false) => {
+  const {
+    type = 'color',
+    color,
+    gradient,
+    img,
+    video
+  } = background || {};
+  const bgCSS = type === 'color' ? isValidCSS('background', color) : type === 'gradient' ? getGradientCSS(gradient) : type === 'image' ? getImageCSS(img).desktop : '';
+  const tablet = type === 'image' ? getImageCSS(img).tablet : '';
+  const mobile = type === 'image' ? getImageCSS(img).mobile : '';
+  const sl = isHover ? `${selector}:hover` : selector;
+  return `
+		${type === 'video' ? getVideoCSS(video, selector) : ''}
+
+		${bgCSS ? `${sl}{
+			${bgCSS}
+		}` : ''}
+
+		${tablet ? `${_data__WEBPACK_IMPORTED_MODULE_7__.tabBreakpoint} {
+			${sl}{
+				${tablet}
+			}
+		}` : ''}
+
+		${mobile ? `${_data__WEBPACK_IMPORTED_MODULE_7__.mobileBreakpoint} {
+			${sl}{
+				${mobile}
+			}
+		}` : ''}
+	`.replace(/\s+/g, ' ').trim();
+};
+const getOverlayCSS = (overlay, selector, isHover = false) => {
+  const {
+    isEnabled,
+    colors,
+    opacity = 1,
+    blend,
+    filter = '',
+    blur = 0,
+    brightness = 100,
+    contrast = 100,
+    saturation = 100,
+    hue = 0,
+    position = {
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0
+    },
+    zIndex = -1
+  } = overlay || {};
+  const filterCSSValue = `${100 !== brightness ? `brightness(${brightness}%)` : ''} ${100 !== contrast ? `contrast(${contrast}%)` : ''} ${100 !== saturation ? `saturate(${saturation}%)` : ''} ${0 !== blur ? `blur(${blur}px)` : ''} ${0 !== hue ? `hue-rotate(${hue}deg)` : ''}`;
+  const filterCSS = `${filter}: ${filter ? filterCSSValue : ''}; -webkit-${filter}: ${filter ? filterCSSValue : ''};`;
+  const sl = isHover ? `${selector}:hover::after` : `${selector}::after`;
+  return isEnabled ? `
+		${selector}{
+			position:relative;
+			z-index:1;
+		}
+		${selector}::after{
+			content: '';
+			position: absolute;
+			top:${(0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(position.top) ? position.top : 0};
+			right:${(0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(position.right) ? position.right : 0};
+			bottom:${(0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(position.bottom) ? position.bottom : 0};
+			left:${(0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(position.left) ? position.left : 0};
+			z-index:${zIndex};
+		}
+		${getAdvBGCSS(colors, sl, false)}
+		${sl}{
+			${isValidCSS('opacity', opacity)}
+			${isValidCSS('mix-blend-mode', blend)}
+			${filterCSS}
+		}
+	`.replace(/\s+/g, ' ').trim() : '';
+};
+const getTransformCSS = (transform, selector, isHover = false) => {
+  const generateTransformCSS = (value, device = 'desktop') => {
+    if (!(0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(value)) return '';
+    const {
+      skew,
+      scale,
+      rotate,
+      offset,
+      flipX,
+      flipY
+    } = value;
+    const {
+      threeDRotate
+    } = rotate || {};
+    const {
+      isProportion
+    } = scale || {};
+    const transforms = [];
+    //skew
+    if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(skew)) {
+      if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(skew?.[device]?.x)) transforms.push(`skewX(${skew[device].x}deg)`);
+      if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(skew?.[device]?.y)) transforms.push(`skewY(${skew[device].y}deg)`);
+    }
+    //scale
+    if (isProportion) {
+      if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(scale?.[device]?.scale)) transforms.push(`scale(${scale[device].scale})`);
+    } else {
+      if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(scale?.[device]?.x)) transforms.push(`scaleX(${scale[device].x})`);
+      if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(scale?.[device]?.y)) transforms.push(`scaleY(${scale[device].y})`);
+    }
+
+    //rotate
+    if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(rotate)) {
+      if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(rotate?.[device]?.z)) transforms.push(`rotateZ(${rotate[device].z}deg)`);
+      if (threeDRotate) {
+        if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(rotate?.[device]?.x)) transforms.push(`rotateX(${rotate[device].x}deg)`);
+        if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(rotate?.[device]?.y)) transforms.push(`rotateY(${rotate[device].y}deg)`);
+      }
+    }
+
+    //offset
+    if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(offset)) {
+      if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(offset?.[device]?.x)) transforms.push(`translateX(${offset[device].x})`);
+      if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(offset?.[device]?.y)) transforms.push(`translateY(${offset[device].y})`);
+    }
+
+    //flip
+    if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(flipX)) transforms.push(flipX ? 'scaleX(-1)' : '');
+    if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(flipY)) transforms.push(flipY ? 'scaleY(-1)' : '');
+    if (transforms.length === 0) return '';
+    return isValidCSS('transform', transforms.join(' '));
+  };
+  const sl = isHover ? `${selector}:hover` : selector;
+  // ${isExist(hover?.transition)?`transition:transform ${hover.transition}ms ease-in-out`:'' }
+
+  return `
+		${sl} {
+			${generateTransformCSS(transform, 'desktop')}
+		}
+		${_data__WEBPACK_IMPORTED_MODULE_7__.tabBreakpoint}{
+			${sl} {
+				${generateTransformCSS(transform, 'tablet')}
+			}
+		}
+		${_data__WEBPACK_IMPORTED_MODULE_7__.mobileBreakpoint}{
+			${sl} {
+				${generateTransformCSS(transform, 'mobile')}
+			}
+		}
+	`;
+};
+const getMaskCSS = mask => {
+  const {
+    isMask = false,
+    shape = {
+      type: 'circle'
+    },
+    size = {
+      type: 'contain',
+      scale: '100%'
+    },
+    position = {
+      type: 'center center',
+      x: 50,
+      y: 50
+    },
+    repeat = 'no-repeat'
+  } = mask || {};
+  const svgShape = [{
+    svg: _Components_Mask_assets_shapes_circle_svg__WEBPACK_IMPORTED_MODULE_1__["default"],
+    type: 'circle'
+  }, {
+    svg: _Components_Mask_assets_shapes_flower_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
+    type: 'flower'
+  }, {
+    svg: _Components_Mask_assets_shapes_sketch_svg__WEBPACK_IMPORTED_MODULE_4__["default"],
+    type: 'sketch'
+  }, {
+    svg: _Components_Mask_assets_shapes_triangle_svg__WEBPACK_IMPORTED_MODULE_5__["default"],
+    type: 'triangle'
+  }, {
+    svg: _Components_Mask_assets_shapes_blob_svg__WEBPACK_IMPORTED_MODULE_0__["default"],
+    type: 'blob'
+  }, {
+    svg: _Components_Mask_assets_shapes_hexagon_svg__WEBPACK_IMPORTED_MODULE_3__["default"],
+    type: 'hexagon'
+  }];
+  const getShape = type => svgShape.find(e => e.type === type);
+  return isMask ? `-webkit-mask-image: ${shape.type === 'custom' ? safeCSSUrl(shape.url) : `url(${getShape(shape.type).svg})`};
+		-webkit-mask-size: ${size.type === 'custom' ? size.scale : size.type};
+		${position.type === 'custom' ? `${isValidCSS('-webkit-mask-position-x', position.x)}
+			${isValidCSS('-webkit-mask-position-y', position.y)}` : `${isValidCSS('-webkit-mask-position', position.type)}`}
+		${size.type !== 'cover' ? `-webkit-mask-repeat: ${repeat};` : ''}` : '';
+};
+
+/***/ }),
+
+/***/ "./node_modules/lucide-react/dist/esm/Icon.js":
+/*!****************************************************!*\
+  !*** ./node_modules/lucide-react/dist/esm/Icon.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Icon)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _defaultAttributes_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./defaultAttributes.js */ "./node_modules/lucide-react/dist/esm/defaultAttributes.js");
+/* harmony import */ var _shared_src_utils_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./shared/src/utils.js */ "./node_modules/lucide-react/dist/esm/shared/src/utils.js");
+/**
+ * @license lucide-react v0.525.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+
+
+
+
+
+const Icon = (0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(
+  ({
+    color = "currentColor",
+    size = 24,
+    strokeWidth = 2,
+    absoluteStrokeWidth,
+    className = "",
+    children,
+    iconNode,
+    ...rest
+  }, ref) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(
+    "svg",
+    {
+      ref,
+      ..._defaultAttributes_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+      width: size,
+      height: size,
+      stroke: color,
+      strokeWidth: absoluteStrokeWidth ? Number(strokeWidth) * 24 / Number(size) : strokeWidth,
+      className: (0,_shared_src_utils_js__WEBPACK_IMPORTED_MODULE_2__.mergeClasses)("lucide", className),
+      ...!children && !(0,_shared_src_utils_js__WEBPACK_IMPORTED_MODULE_2__.hasA11yProp)(rest) && { "aria-hidden": "true" },
+      ...rest
+    },
+    [
+      ...iconNode.map(([tag, attrs]) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(tag, attrs)),
+      ...Array.isArray(children) ? children : [children]
+    ]
+  )
+);
+
+
+//# sourceMappingURL=Icon.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/lucide-react/dist/esm/createLucideIcon.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/lucide-react/dist/esm/createLucideIcon.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ createLucideIcon)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _shared_src_utils_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./shared/src/utils.js */ "./node_modules/lucide-react/dist/esm/shared/src/utils.js");
+/* harmony import */ var _Icon_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Icon.js */ "./node_modules/lucide-react/dist/esm/Icon.js");
+/**
+ * @license lucide-react v0.525.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+
+
+
+
+
+const createLucideIcon = (iconName, iconNode) => {
+  const Component = (0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(
+    ({ className, ...props }, ref) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Icon_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      ref,
+      iconNode,
+      className: (0,_shared_src_utils_js__WEBPACK_IMPORTED_MODULE_2__.mergeClasses)(
+        `lucide-${(0,_shared_src_utils_js__WEBPACK_IMPORTED_MODULE_2__.toKebabCase)((0,_shared_src_utils_js__WEBPACK_IMPORTED_MODULE_2__.toPascalCase)(iconName))}`,
+        `lucide-${iconName}`,
+        className
+      ),
+      ...props
+    })
+  );
+  Component.displayName = (0,_shared_src_utils_js__WEBPACK_IMPORTED_MODULE_2__.toPascalCase)(iconName);
+  return Component;
+};
+
+
+//# sourceMappingURL=createLucideIcon.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/lucide-react/dist/esm/defaultAttributes.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/lucide-react/dist/esm/defaultAttributes.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ defaultAttributes)
+/* harmony export */ });
+/**
+ * @license lucide-react v0.525.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+
+var defaultAttributes = {
+  xmlns: "http://www.w3.org/2000/svg",
+  width: 24,
+  height: 24,
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 2,
+  strokeLinecap: "round",
+  strokeLinejoin: "round"
+};
+
+
+//# sourceMappingURL=defaultAttributes.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/lucide-react/dist/esm/icons/chevron-left.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/lucide-react/dist/esm/icons/chevron-left.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   __iconNode: () => (/* binding */ __iconNode),
+/* harmony export */   "default": () => (/* binding */ ChevronLeft)
+/* harmony export */ });
+/* harmony import */ var _createLucideIcon_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../createLucideIcon.js */ "./node_modules/lucide-react/dist/esm/createLucideIcon.js");
+/**
+ * @license lucide-react v0.525.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+
+
+
+const __iconNode = [["path", { d: "m15 18-6-6 6-6", key: "1wnfg3" }]];
+const ChevronLeft = (0,_createLucideIcon_js__WEBPACK_IMPORTED_MODULE_0__["default"])("chevron-left", __iconNode);
+
+
+//# sourceMappingURL=chevron-left.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/lucide-react/dist/esm/icons/chevron-right.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/lucide-react/dist/esm/icons/chevron-right.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   __iconNode: () => (/* binding */ __iconNode),
+/* harmony export */   "default": () => (/* binding */ ChevronRight)
+/* harmony export */ });
+/* harmony import */ var _createLucideIcon_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../createLucideIcon.js */ "./node_modules/lucide-react/dist/esm/createLucideIcon.js");
+/**
+ * @license lucide-react v0.525.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+
+
+
+const __iconNode = [["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]];
+const ChevronRight = (0,_createLucideIcon_js__WEBPACK_IMPORTED_MODULE_0__["default"])("chevron-right", __iconNode);
+
+
+//# sourceMappingURL=chevron-right.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/lucide-react/dist/esm/icons/download.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/lucide-react/dist/esm/icons/download.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   __iconNode: () => (/* binding */ __iconNode),
+/* harmony export */   "default": () => (/* binding */ Download)
+/* harmony export */ });
+/* harmony import */ var _createLucideIcon_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../createLucideIcon.js */ "./node_modules/lucide-react/dist/esm/createLucideIcon.js");
+/**
+ * @license lucide-react v0.525.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+
+
+
+const __iconNode = [
+  ["path", { d: "M12 15V3", key: "m9g1x1" }],
+  ["path", { d: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4", key: "ih7n3h" }],
+  ["path", { d: "m7 10 5 5 5-5", key: "brsn70" }]
+];
+const Download = (0,_createLucideIcon_js__WEBPACK_IMPORTED_MODULE_0__["default"])("download", __iconNode);
+
+
+//# sourceMappingURL=download.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/lucide-react/dist/esm/icons/maximize-2.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/lucide-react/dist/esm/icons/maximize-2.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   __iconNode: () => (/* binding */ __iconNode),
+/* harmony export */   "default": () => (/* binding */ Maximize2)
+/* harmony export */ });
+/* harmony import */ var _createLucideIcon_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../createLucideIcon.js */ "./node_modules/lucide-react/dist/esm/createLucideIcon.js");
+/**
+ * @license lucide-react v0.525.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+
+
+
+const __iconNode = [
+  ["path", { d: "M15 3h6v6", key: "1q9fwt" }],
+  ["path", { d: "m21 3-7 7", key: "1l2asr" }],
+  ["path", { d: "m3 21 7-7", key: "tjx5ai" }],
+  ["path", { d: "M9 21H3v-6", key: "wtvkvv" }]
+];
+const Maximize2 = (0,_createLucideIcon_js__WEBPACK_IMPORTED_MODULE_0__["default"])("maximize-2", __iconNode);
+
+
+//# sourceMappingURL=maximize-2.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/lucide-react/dist/esm/icons/minimize-2.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/lucide-react/dist/esm/icons/minimize-2.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   __iconNode: () => (/* binding */ __iconNode),
+/* harmony export */   "default": () => (/* binding */ Minimize2)
+/* harmony export */ });
+/* harmony import */ var _createLucideIcon_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../createLucideIcon.js */ "./node_modules/lucide-react/dist/esm/createLucideIcon.js");
+/**
+ * @license lucide-react v0.525.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+
+
+
+const __iconNode = [
+  ["path", { d: "m14 10 7-7", key: "oa77jy" }],
+  ["path", { d: "M20 10h-6V4", key: "mjg0md" }],
+  ["path", { d: "m3 21 7-7", key: "tjx5ai" }],
+  ["path", { d: "M4 14h6v6", key: "rmj7iw" }]
+];
+const Minimize2 = (0,_createLucideIcon_js__WEBPACK_IMPORTED_MODULE_0__["default"])("minimize-2", __iconNode);
+
+
+//# sourceMappingURL=minimize-2.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/lucide-react/dist/esm/icons/share-2.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/lucide-react/dist/esm/icons/share-2.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   __iconNode: () => (/* binding */ __iconNode),
+/* harmony export */   "default": () => (/* binding */ Share2)
+/* harmony export */ });
+/* harmony import */ var _createLucideIcon_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../createLucideIcon.js */ "./node_modules/lucide-react/dist/esm/createLucideIcon.js");
+/**
+ * @license lucide-react v0.525.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+
+
+
+const __iconNode = [
+  ["circle", { cx: "18", cy: "5", r: "3", key: "gq8acd" }],
+  ["circle", { cx: "6", cy: "12", r: "3", key: "w7nqdw" }],
+  ["circle", { cx: "18", cy: "19", r: "3", key: "1xt0gg" }],
+  ["line", { x1: "8.59", x2: "15.42", y1: "13.51", y2: "17.49", key: "47mynk" }],
+  ["line", { x1: "15.41", x2: "8.59", y1: "6.51", y2: "10.49", key: "1n3mei" }]
+];
+const Share2 = (0,_createLucideIcon_js__WEBPACK_IMPORTED_MODULE_0__["default"])("share-2", __iconNode);
+
+
+//# sourceMappingURL=share-2.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/lucide-react/dist/esm/icons/x.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/lucide-react/dist/esm/icons/x.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   __iconNode: () => (/* binding */ __iconNode),
+/* harmony export */   "default": () => (/* binding */ X)
+/* harmony export */ });
+/* harmony import */ var _createLucideIcon_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../createLucideIcon.js */ "./node_modules/lucide-react/dist/esm/createLucideIcon.js");
+/**
+ * @license lucide-react v0.525.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+
+
+
+const __iconNode = [
+  ["path", { d: "M18 6 6 18", key: "1bl5f8" }],
+  ["path", { d: "m6 6 12 12", key: "d8bk6v" }]
+];
+const X = (0,_createLucideIcon_js__WEBPACK_IMPORTED_MODULE_0__["default"])("x", __iconNode);
+
+
+//# sourceMappingURL=x.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/lucide-react/dist/esm/shared/src/utils.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/lucide-react/dist/esm/shared/src/utils.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   hasA11yProp: () => (/* binding */ hasA11yProp),
+/* harmony export */   mergeClasses: () => (/* binding */ mergeClasses),
+/* harmony export */   toCamelCase: () => (/* binding */ toCamelCase),
+/* harmony export */   toKebabCase: () => (/* binding */ toKebabCase),
+/* harmony export */   toPascalCase: () => (/* binding */ toPascalCase)
+/* harmony export */ });
+/**
+ * @license lucide-react v0.525.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+
+const toKebabCase = (string) => string.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
+const toCamelCase = (string) => string.replace(
+  /^([A-Z])|[\s-_]+(\w)/g,
+  (match, p1, p2) => p2 ? p2.toUpperCase() : p1.toLowerCase()
+);
+const toPascalCase = (string) => {
+  const camelCase = toCamelCase(string);
+  return camelCase.charAt(0).toUpperCase() + camelCase.slice(1);
+};
+const mergeClasses = (...classes) => classes.filter((className, index, array) => {
+  return Boolean(className) && className.trim() !== "" && array.indexOf(className) === index;
+}).join(" ").trim();
+const hasA11yProp = (props) => {
+  for (const prop in props) {
+    if (prop.startsWith("aria-") || prop === "role" || prop === "title") {
+      return true;
+    }
+  }
+};
+
+
+//# sourceMappingURL=utils.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/react-dom/client.js":
+/*!******************************************!*\
+  !*** ./node_modules/react-dom/client.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+
+var m = __webpack_require__(/*! react-dom */ "react-dom");
+if (false) // removed by dead control flow
+{} else {
+  var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+  exports.createRoot = function(c, o) {
+    i.usingClientEntryPoint = true;
+    try {
+      return m.createRoot(c, o);
+    } finally {
+      i.usingClientEntryPoint = false;
+    }
+  };
+  exports.hydrateRoot = function(c, h, o) {
+    i.usingClientEntryPoint = true;
+    try {
+      return m.hydrateRoot(c, h, o);
+    } finally {
+      i.usingClientEntryPoint = false;
+    }
+  };
+}
+
+
+/***/ }),
+
+/***/ "./src/Components/Common/Gallery.js":
+/*!******************************************!*\
+  !*** ./src/Components/Common/Gallery.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Watermark__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Watermark */ "./src/Components/Common/Watermark.js");
+
+
+
+
+const useInterval = (callback, time, delay) => {
+  const intervalRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
+  const stop = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(() => clearInterval(intervalRef.current), []);
+  const start = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(delay => {
+    const _start = () => {
+      intervalRef.current = setInterval(callback, time);
+    };
+    stop();
+    if (+delay > 0) {
+      setTimeout(_start, delay);
+    } else {
+      _start();
+    }
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    start(delay);
+    return stop;
+  }, []);
+  return {
+    intervalRef,
+    start,
+    stop
+  };
+};
+const GalleryImages = ({
+  images,
+  imgIndex = 0,
+  wrapper,
+  container,
+  loadCount,
+  altText = "",
+  eager = false,
+  watermark = null,
+  location = "gallery"
+}) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  className: "galleryImages",
+  ref: container,
+  style: {
+    position: "relative"
+  }
+}, images?.length > 0 && images.map((image, i) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+  key: i,
+  className: imgIndex === i ? "imageVisible" : "",
+  src: image,
+  alt: images.length > 1 ? `${altText} ${i + 1}`.trim() : altText,
+  loading: eager ? "eager" : "lazy",
+  decoding: "async",
+  onLoad: () => {
+    loadCount.current++;
+    if (loadCount.current === images.length) {
+      container.current?.classList.add("galleryImagesLoaded");
+      wrapper.current?.querySelector(".galleryLoader")?.classList.remove("visible");
+    }
+  }
+})), watermark && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Watermark__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  watermark: watermark,
+  location: location
+}));
+const GalleryLoader = () => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+  className: "galleryLoader visible"
+}, [...Array(5)].map((_, i) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+  key: i,
+  className: "bar"
+})));
+const GalleryHeader = ({
+  title,
+  subtitle,
+  onClick,
+  counter,
+  onFullscreen,
+  isFullscreen,
+  onDownload,
+  onShare
+}) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("header", {
+  className: "galleryHeader"
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  className: "galleryHeadings"
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h5", null, subtitle)), counter && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+  className: "galleryLightboxCounter",
+  style: {
+    margin: "0 12px 0 auto",
+    fontSize: "13px",
+    fontWeight: "600",
+    padding: "4px 12px",
+    borderRadius: "9999px",
+    backgroundColor: "rgba(0, 0, 0, 0.6)",
+    color: "#ffffff",
+    letterSpacing: "0.5px",
+    backdropFilter: "blur(4px)",
+    alignSelf: "center",
+    flexShrink: 0
+  }
+}, counter), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  className: "galleryHeaderActions",
+  style: {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "6px",
+    marginLeft: counter ? "0" : "auto",
+    flexShrink: 0,
+    position: "relative",
+    zIndex: 5
+  }
+}, onShare && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  className: "btnShare",
+  onClick: onShare,
+  "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Share image link", "image-gallery"),
+  style: {
+    width: "24px",
+    height: "24px",
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    border: 0,
+    borderRadius: "50%",
+    cursor: "pointer",
+    padding: 0,
+    lineHeight: 1,
+    alignSelf: "center",
+    flexShrink: 0
+  }
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  width: "13",
+  height: "13",
+  viewBox: "0 0 24 24",
+  fill: "currentColor"
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+  d: "M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"
+}))), onDownload && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  className: "btnDownload",
+  onClick: onDownload,
+  "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Download image", "image-gallery"),
+  style: {
+    width: "24px",
+    height: "24px",
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    border: 0,
+    borderRadius: "50%",
+    cursor: "pointer",
+    padding: 0,
+    lineHeight: 1,
+    alignSelf: "center",
+    flexShrink: 0
+  }
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  width: "13",
+  height: "13",
+  viewBox: "0 0 24 24",
+  fill: "currentColor"
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+  d: "M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"
+}))), onFullscreen && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  className: "btnFullscreen",
+  onClick: onFullscreen,
+  "aria-label": isFullscreen ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Exit full screen", "image-gallery") : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Full screen", "image-gallery"),
+  style: {
+    width: "24px",
+    height: "24px",
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    border: 0,
+    borderRadius: "50%",
+    cursor: "pointer",
+    padding: 0,
+    lineHeight: 1,
+    alignSelf: "center",
+    flexShrink: 0
+  }
+}, isFullscreen ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  width: "14",
+  height: "14",
+  viewBox: "0 0 24 24",
+  fill: "currentColor"
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+  d: "M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"
+})) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  width: "14",
+  height: "14",
+  viewBox: "0 0 24 24",
+  fill: "currentColor"
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+  d: "M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"
+}))), onClick && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  className: "btnClose",
+  onClick: onClick,
+  "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Close", "image-gallery")
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  width: "20",
+  height: "20",
+  viewBox: "0 0 24 24",
+  fill: "currentColor"
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+  d: "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
+})))));
+const Gallery = ({
+  gallery = [],
+  slideSpeed,
+  columns,
+  isPopup = true,
+  editActiveIndex = null,
+  setEditActiveIndex = null,
+  activeAlbum = "*",
+  watermark = {},
+  disableRightClick = false,
+  enableLightbox = true,
+  showLightboxCounter = true,
+  showLightboxFullscreen = true,
+  showLightboxDownload = true,
+  showLightboxShare = true,
+  enableLoadMore = false,
+  imagesPerLoad = 10,
+  loadMoreBtnText = "Load More",
+  loadMoreBtnColors,
+  loadMoreBtnTypo
+}) => {
+  const galleryGridRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  const prevRectsRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(new Map());
+  const isFirstRenderRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(true);
+  const visibleItems = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
+    return gallery.map((item, originalIndex) => ({
+      ...item,
+      originalIndex
+    })).filter(item => {
+      if (!activeAlbum || activeAlbum === "*") return true;
+      return Array.isArray(item?.albs) && item.albs.includes(activeAlbum);
+    });
+  }, [gallery, activeAlbum]);
+  const [visibleCount, setVisibleCount] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(enableLoadMore ? imagesPerLoad : gallery.length);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    if (enableLoadMore) {
+      setVisibleCount(imagesPerLoad);
+    }
+  }, [enableLoadMore, imagesPerLoad, activeAlbum]); // Reset on album change too
+
+  const displayedItems = enableLoadMore ? visibleItems.slice(0, visibleCount) : visibleItems;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useLayoutEffect)(() => {
+    if (isFirstRenderRef.current) {
+      isFirstRenderRef.current = false;
+      return;
+    }
+    const container = galleryGridRef.current;
+    if (!container) return;
+    const prevRects = prevRectsRef.current;
+    const containerRect = container.getBoundingClientRect();
+    const itemEls = container.querySelectorAll(".galleryItem[data-item-key]");
+    if (prevRects && prevRects.size > 0) {
+      itemEls.forEach((el, visualIndex) => {
+        const key = el.dataset.itemKey;
+        const prevData = prevRects.get(key);
+        const newRect = el.getBoundingClientRect();
+        if (prevData) {
+          const dx = prevData.left - (newRect.left - containerRect.left);
+          const dy = prevData.top - (newRect.top - containerRect.top);
+          if (Math.abs(dx) > 1 || Math.abs(dy) > 1) {
+            el.style.transform = `translate(${dx}px, ${dy}px)`;
+            el.style.transition = "none";
+            el.getBoundingClientRect();
+            el.style.transition = "transform 0.4s cubic-bezier(0.2, 0, 0.2, 1)";
+            el.style.transform = "";
+          }
+        } else {
+          const delay = visualIndex * 30;
+          el.style.opacity = "0";
+          el.style.transform = "scale(0.85)";
+          el.style.transition = "none";
+          el.getBoundingClientRect();
+          el.style.transition = `transform 0.4s cubic-bezier(0.2, 0, 0.2, 1) ${delay}ms, opacity 0.4s ease ${delay}ms`;
+          el.style.opacity = "1";
+          el.style.transform = "scale(1)";
+        }
+      });
+    }
+    const nextRects = new Map();
+    itemEls.forEach(el => {
+      const key = el.dataset.itemKey;
+      nextRects.set(key, {
+        left: el.getBoundingClientRect().left - containerRect.left,
+        top: el.getBoundingClientRect().top - containerRect.top
+      });
+    });
+    prevRectsRef.current = nextRects;
+  }, [activeAlbum, displayedItems]);
+  const popupGallery = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  const popupGalleryItem = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  const popupImgContainer = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
+  const popupImgLoadCount = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(0);
+  // const popupTargetOffset = useRef([0, 0]);
+  const activeItemImgLength = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(0);
+  const [activeIndex, setActiveIndex] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  const [popupImgIndex, setPopupImgIndex] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
+  const popupItem = gallery[activeIndex];
+  activeItemImgLength.current = popupItem?.images?.length || 0;
+  const galleryImgIndexes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)([]);
+  const galleryImgContainerRefs = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)([]);
+  const galleryItemRefs = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)([]);
+  const galleryImgLoadCountRefs = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)([]);
+
+  // Grow the per-item ref arrays to match `gallery` (items can be appended
+  // -- e.g. bulk-adding from the Media Library -- after these refs were
+  // first created). Existing entries are left untouched so mounted items
+  // keep their refs; only missing slots are appended.
+  while (galleryImgIndexes.current.length < gallery.length) {
+    galleryImgIndexes.current.push(0);
+  }
+  while (galleryImgContainerRefs.current.length < gallery.length) {
+    galleryImgContainerRefs.current.push(react__WEBPACK_IMPORTED_MODULE_0___default().createRef());
+  }
+  while (galleryItemRefs.current.length < gallery.length) {
+    galleryItemRefs.current.push(react__WEBPACK_IMPORTED_MODULE_0___default().createRef());
+  }
+  while (galleryImgLoadCountRefs.current.length < gallery.length) {
+    galleryImgLoadCountRefs.current.push({
+      current: 0
+    });
+  }
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    const intervals = [];
+    gallery.forEach((item, index) => {
+      if (!item?.images || item.images.length <= 1) return;
+      intervals[index] = setInterval(() => {
+        galleryImgIndexes.current[index]++;
+        if (galleryImgIndexes.current[index] >= item.images.length) {
+          galleryImgIndexes.current[index] = 0;
+        }
+        const container = galleryImgContainerRefs.current[index]?.current;
+        if (container) {
+          container.childNodes.forEach((el, i) => {
+            el.classList.toggle("imageVisible", i === galleryImgIndexes.current[index]);
+          });
+        }
+      }, slideSpeed * 1000 + index * 200);
+    });
+    return () => intervals.forEach(clearInterval);
+  }, [gallery, slideSpeed]);
+  const {
+    start: startPopupInterval
+  } = useInterval(() => {
+    setPopupImgIndex(currentIndex => currentIndex >= activeItemImgLength.current - 1 ? 0 : currentIndex + 1);
+  }, slideSpeed * 1000, 0);
+  const selectImgIndex = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)((popupInterval, newIndex, reset = false) => {
+    reset && popupInterval();
+    const total = activeItemImgLength.current;
+    if (total <= 0) return;
+    const wrappedIndex = (newIndex % total + total) % total;
+    setPopupImgIndex(wrappedIndex);
+  }, []);
+  const navigateItem = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(direction => {
+    if (!displayedItems.length) return;
+    const currentIdx = displayedItems.findIndex(item => item.originalIndex === activeIndex);
+    if (currentIdx === -1) return;
+    const nextIdx = (currentIdx + direction + displayedItems.length) % displayedItems.length;
+    const nextOriginalIndex = displayedItems[nextIdx].originalIndex;
+    setActiveIndex(nextOriginalIndex);
+    setPopupImgIndex(0);
+    popupImgLoadCount.current = 0;
+  }, [displayedItems, activeIndex]);
+  const lastTriggerRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  const onClickGalleryItem = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(index => {
+    const item = gallery[index];
+    if (item?.link) {
+      window.location.href = item.link;
+      return;
+    }
+    if (!enableLightbox && isPopup) {
+      // In editor (when isPopup is false but it acts as editor), or if lightbox disabled, we still might want to set active index for editing
+      if (setEditActiveIndex) setEditActiveIndex(index);
+      return;
+    }
+    lastTriggerRef.current = galleryItemRefs.current[index]?.current || null;
+    setActiveIndex(index);
+    setEditActiveIndex && setEditActiveIndex(index);
+    isPopup && popupGallery.current?.classList.add("active");
+  }, [gallery, enableLightbox, isPopup, setEditActiveIndex]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    if (isPopup && activeIndex !== null && popupGallery.current) {
+      requestAnimationFrame(() => {
+        popupGallery.current?.classList.add("active");
+      });
+    }
+  }, [isPopup, activeIndex]);
+  const [isFullscreen, setIsFullscreen] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(Boolean(document.fullscreenElement));
+    };
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    return () => {
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+    };
+  }, []);
+  const toggleFullscreen = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(() => {
+    if (!document.fullscreenElement) {
+      popupGallery.current?.requestFullscreen?.();
+    } else {
+      document.exitFullscreen?.();
+    }
+  }, []);
+  const [toastMessage, setToastMessage] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  const touchStartPos = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)({
+    x: 0,
+    y: 0
+  });
+  const onTouchStart = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(e => {
+    if (e.touches && e.touches.length === 1) {
+      touchStartPos.current = {
+        x: e.touches[0].clientX,
+        y: e.touches[0].clientY
+      };
+    }
+  }, []);
+  const onTouchEnd = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(e => {
+    if (!e.changedTouches || e.changedTouches.length === 0) return;
+    const deltaX = e.changedTouches[0].clientX - touchStartPos.current.x;
+    const deltaY = e.changedTouches[0].clientY - touchStartPos.current.y;
+    if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) {
+      if (deltaX < 0) {
+        if (activeItemImgLength.current > 1) {
+          selectImgIndex(startPopupInterval, popupImgIndex + 1, true);
+        } else {
+          navigateItem(1);
+        }
+      } else {
+        if (activeItemImgLength.current > 1) {
+          selectImgIndex(startPopupInterval, popupImgIndex - 1, true);
+        } else {
+          navigateItem(-1);
+        }
+      }
+    }
+  }, [popupImgIndex, navigateItem, selectImgIndex, startPopupInterval]);
+  const handleDownload = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)((url, title) => {
+    if (!url) return;
+    fetch(url).then(res => res.blob()).then(blob => {
+      const blobUrl = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.style.display = "none";
+      a.href = blobUrl;
+      const ext = url.split(".").pop().split(/[#?]/)[0] || "jpg";
+      a.download = `${title ? title.replace(/[^a-z0-9]/gi, "_").toLowerCase() : "image"}.${ext}`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(blobUrl);
+      document.body.removeChild(a);
+    }).catch(() => {
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = title || "image";
+      a.target = "_blank";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    });
+  }, []);
+  const handleShare = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)((url, title) => {
+    if (!url) return;
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (isMobile && navigator.share) {
+      navigator.share({
+        title: title || document.title,
+        url
+      }).catch(() => {
+        setToastMessage((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Link copied to clipboard!", "image-gallery"));
+        setTimeout(() => setToastMessage(null), 2500);
+        if (navigator.clipboard?.writeText) {
+          navigator.clipboard.writeText(url).catch(() => {});
+        }
+      });
+      return;
+    }
+    setToastMessage((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Link copied to clipboard!", "image-gallery"));
+    setTimeout(() => setToastMessage(null), 2500);
+    if (navigator.clipboard?.writeText) {
+      navigator.clipboard.writeText(url).catch(() => {
+        const input = document.createElement("input");
+        input.value = url;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand("copy");
+        document.body.removeChild(input);
+      });
+    } else {
+      const input = document.createElement("input");
+      input.value = url;
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand("copy");
+      document.body.removeChild(input);
+    }
+  }, []);
+  const onClickClose = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(() => {
+    if (document.fullscreenElement) {
+      document.exitFullscreen?.().catch(() => {});
+    }
+    setIsFullscreen(false);
+    setTimeout(() => {
+      setActiveIndex(null);
+    }, 750);
+    popupGallery.current?.classList.remove("active");
+    popupImgLoadCount.current = 0;
+    lastTriggerRef.current?.focus?.();
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    if (!isPopup || activeIndex === null) return;
+    popupGallery.current?.querySelector(".btnClose")?.focus();
+    const handleKeyDown = e => {
+      if (e.key === "Escape") {
+        onClickClose();
+      } else if (e.key === "ArrowLeft") {
+        if (activeItemImgLength.current > 1) {
+          selectImgIndex(startPopupInterval, popupImgIndex - 1, true);
+        } else if (displayedItems.length > 1) {
+          navigateItem(-1);
+        }
+      } else if (e.key === "ArrowRight") {
+        if (activeItemImgLength.current > 1) {
+          selectImgIndex(startPopupInterval, popupImgIndex + 1, true);
+        } else if (displayedItems.length > 1) {
+          navigateItem(1);
+        }
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isPopup, activeIndex, popupImgIndex, onClickClose, selectImgIndex, startPopupInterval, displayedItems.length, navigateItem]);
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    ref: galleryGridRef,
+    className: `galleryItems columns-${columns?.desktop || 3} columns-tablet-${columns?.tablet || 2} columns-mobile-${columns?.mobile || 1}`,
+    onContextMenu: e => disableRightClick && e.preventDefault()
+  }, displayedItems.map(item => {
+    const originalIndex = item.originalIndex;
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      key: originalIndex,
+      "data-item-key": `item-${originalIndex}`,
+      className: `galleryItem ${editActiveIndex !== null && originalIndex === editActiveIndex ? "bPlNowEditing" : ""}`,
+      id: `galleryItem-${originalIndex}`,
+      onClick: () => onClickGalleryItem(originalIndex),
+      ref: galleryItemRefs.current[originalIndex],
+      role: isPopup ? "button" : undefined,
+      tabIndex: isPopup ? 0 : undefined,
+      "aria-label": isPopup ? item?.title || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Open image", "image-gallery") : undefined,
+      onKeyDown: isPopup ? e => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onClickGalleryItem(originalIndex);
+        }
+      } : undefined
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(GalleryImages, {
+      images: item?.images || [],
+      wrapper: galleryItemRefs.current[originalIndex],
+      container: galleryImgContainerRefs.current[originalIndex],
+      loadCount: galleryImgLoadCountRefs.current[originalIndex],
+      altText: item?.title || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Gallery image", "image-gallery"),
+      watermark: watermark,
+      location: "gallery"
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(GalleryLoader, null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(GalleryHeader, {
+      title: item?.title || "",
+      subtitle: item?.subtitle || ""
+    }));
+  })), enableLoadMore && visibleCount < visibleItems.length && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      textAlign: "center",
+      marginTop: "30px",
+      marginBottom: "30px"
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "bPlButton",
+    style: {
+      padding: "10px 24px",
+      cursor: "pointer",
+      background: loadMoreBtnColors?.bgType === "gradient" ? loadMoreBtnColors?.gradient : loadMoreBtnColors?.bg || "#146ef5",
+      color: loadMoreBtnColors?.color || "#fff",
+      border: "none",
+      borderRadius: `${loadMoreBtnTypo?.borderRadius !== undefined ? loadMoreBtnTypo.borderRadius : 4}px`,
+      fontSize: `${loadMoreBtnTypo?.fontSize !== undefined ? loadMoreBtnTypo.fontSize : 16}px`
+    },
+    onClick: () => setVisibleCount(prev => prev + imagesPerLoad)
+  }, loadMoreBtnText)), isPopup && enableLightbox && popupItem && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "popupGallery",
+    ref: popupGallery,
+    onTouchStart: onTouchStart,
+    onTouchEnd: onTouchEnd,
+    role: "dialog",
+    "aria-modal": "true",
+    "aria-label": popupItem?.title || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Image viewer", "image-gallery")
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "popupContent"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `galleryItem ${editActiveIndex !== null && activeIndex === editActiveIndex ? "nowEditing" : ""}`,
+    id: `galleryItem-${activeIndex}`,
+    ref: popupGalleryItem
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(GalleryImages, {
+    images: popupItem?.images || [],
+    imgIndex: popupImgIndex,
+    wrapper: popupGalleryItem,
+    container: popupImgContainer,
+    loadCount: popupImgLoadCount,
+    altText: popupItem?.title || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Gallery image", "image-gallery"),
+    eager: true,
+    watermark: watermark,
+    location: "popup"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(GalleryLoader, null), (() => {
+    const currentDisplayIndex = displayedItems.findIndex(item => item.originalIndex === activeIndex);
+    const isMultiImg = (popupItem?.images?.length || 0) > 1;
+    const activeImgObj = popupItem?.images?.[popupImgIndex] || popupItem?.images?.[0];
+    const activeImgUrl = typeof activeImgObj === "string" ? activeImgObj : activeImgObj?.url;
+    const counterText = showLightboxCounter ? isMultiImg ? `${popupImgIndex + 1} / ${popupItem.images.length}` : displayedItems.length > 0 && currentDisplayIndex !== -1 ? `${currentDisplayIndex + 1} / ${displayedItems.length}` : null : null;
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(GalleryHeader, {
+      title: popupItem?.title || "",
+      subtitle: popupItem?.subtitle || "",
+      onClick: onClickClose,
+      counter: counterText,
+      onFullscreen: showLightboxFullscreen ? toggleFullscreen : null,
+      isFullscreen: isFullscreen,
+      onDownload: showLightboxDownload && activeImgUrl ? () => handleDownload(activeImgUrl, popupItem?.title) : null,
+      onShare: showLightboxShare && activeImgUrl ? () => handleShare(activeImgUrl, popupItem?.title) : null
+    }), isMultiImg ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("footer", {
+      className: "galleryFooter"
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("nav", {
+      className: "controls"
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+      className: "control controlArrow",
+      "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Previous image", "image-gallery"),
+      onClick: () => selectImgIndex(startPopupInterval, popupImgIndex - 1, true)
+    }, "\u2190"), popupItem.images.map((_, i) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+      key: i,
+      className: `control controlDot ${i === popupImgIndex ? "controlDotActive" : ""}`,
+      "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.sprintf)(/* translators: %d: image number */
+      (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Go to image %d", "image-gallery"), i + 1),
+      "aria-current": i === popupImgIndex ? "true" : undefined,
+      onClick: () => selectImgIndex(startPopupInterval, i)
+    })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+      className: "control controlArrow",
+      "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Next image", "image-gallery"),
+      onClick: () => selectImgIndex(startPopupInterval, popupImgIndex + 1, true)
+    }, "\u2192"))) : displayedItems.length > 1 ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("footer", {
+      className: "galleryFooter"
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("nav", {
+      className: "controls"
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+      className: "control controlArrow",
+      "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Previous gallery item", "image-gallery"),
+      onClick: () => navigateItem(-1)
+    }, "\u2190"), displayedItems.map((item, i) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+      key: i,
+      className: `control controlDot ${i === currentDisplayIndex ? "controlDotActive" : ""}`,
+      "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.sprintf)(/* translators: %d: item number */
+      (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Go to item %d", "image-gallery"), i + 1),
+      "aria-current": i === currentDisplayIndex ? "true" : undefined,
+      onClick: () => {
+        const target = displayedItems[i];
+        if (target) {
+          setActiveIndex(target.originalIndex);
+          setPopupImgIndex(0);
+          popupImgLoadCount.current = 0;
+        }
+      }
+    })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+      className: "control controlArrow",
+      "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Next gallery item", "image-gallery"),
+      onClick: () => navigateItem(1)
+    }, "\u2192"))) : null);
+  })())), toastMessage && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "lightboxToast",
+    style: {
+      position: "absolute",
+      bottom: "32px",
+      left: "50%",
+      transform: "translateX(-50%)",
+      backgroundColor: "rgba(0, 0, 0, 0.8)",
+      color: "#ffffff",
+      padding: "8px 16px",
+      borderRadius: "8px",
+      fontSize: "14px",
+      fontWeight: "500",
+      zIndex: 50,
+      backdropFilter: "blur(6px)",
+      boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
+      pointerEvents: "none"
+    }
+  }, toastMessage)));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Gallery);
+
+/***/ }),
+
+/***/ "./src/Components/Common/ImageFilter.js":
+/*!**********************************************!*\
+  !*** ./src/Components/Common/ImageFilter.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+const ImageFilter = ({
+  albums = [],
+  filter = {},
+  activeAlbum = "*",
+  setActiveAlbum
+}) => {
+  if (!filter?.display || !Array.isArray(albums) || albums.length === 0) {
+    return null;
+  }
+  const {
+    allText = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("All", "image-gallery"),
+    align = "center",
+    margin = {}
+  } = filter;
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "igFilterBar",
+    style: {
+      textAlign: align,
+      marginBottom: margin?.bottom || "25px"
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    type: "button",
+    className: `igFilterBtn ${activeAlbum === "*" ? "active" : ""}`,
+    onClick: () => setActiveAlbum("*"),
+    "aria-pressed": activeAlbum === "*"
+  }, allText), albums.map((album, index) => {
+    if (!album || !album.trim()) return null;
+    const isCurrent = activeAlbum === album;
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+      key: index,
+      type: "button",
+      className: `igFilterBtn ${isCurrent ? "active" : ""}`,
+      onClick: () => setActiveAlbum(album),
+      "aria-pressed": isCurrent
+    }, album);
+  }));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ImageFilter);
+
+/***/ }),
+
+/***/ "./src/Components/Common/Modal.js":
+/*!****************************************!*\
+  !*** ./src/Components/Common/Modal.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Modal: () => (/* binding */ Modal)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lucide_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lucide-react */ "./node_modules/lucide-react/dist/esm/icons/share-2.js");
+/* harmony import */ var lucide_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lucide-react */ "./node_modules/lucide-react/dist/esm/icons/download.js");
+/* harmony import */ var lucide_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lucide-react */ "./node_modules/lucide-react/dist/esm/icons/minimize-2.js");
+/* harmony import */ var lucide_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lucide-react */ "./node_modules/lucide-react/dist/esm/icons/maximize-2.js");
+/* harmony import */ var lucide_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! lucide-react */ "./node_modules/lucide-react/dist/esm/icons/x.js");
+/* harmony import */ var lucide_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! lucide-react */ "./node_modules/lucide-react/dist/esm/icons/chevron-left.js");
+/* harmony import */ var lucide_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! lucide-react */ "./node_modules/lucide-react/dist/esm/icons/chevron-right.js");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Watermark__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Watermark */ "./src/Components/Common/Watermark.js");
+
+
+
+
+
+const Modal = ({
+  isOpen,
+  onClose,
+  currentImage,
+  currentIndex = 0,
+  totalImages = 0,
+  showCounter = true,
+  showFullscreen = true,
+  showDownload = true,
+  showShare = true,
+  onPrev,
+  onNext,
+  watermark = null
+}) => {
+  const modalRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  const closeBtnRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  const lastTriggerRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  const [isFullscreen, setIsFullscreen] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [toastMessage, setToastMessage] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  const touchStartPos = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)({
+    x: 0,
+    y: 0
+  });
+  const handleTouchStart = e => {
+    if (e.touches && e.touches.length === 1) {
+      touchStartPos.current = {
+        x: e.touches[0].clientX,
+        y: e.touches[0].clientY
+      };
+    }
+  };
+  const handleTouchEnd = e => {
+    if (!e.changedTouches || e.changedTouches.length === 0) return;
+    const deltaX = e.changedTouches[0].clientX - touchStartPos.current.x;
+    const deltaY = e.changedTouches[0].clientY - touchStartPos.current.y;
+    if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) {
+      if (deltaX < 0) {
+        onNext();
+      } else {
+        onPrev();
+      }
+    }
+  };
+  const handleDownload = (url, title) => {
+    if (!url) return;
+    fetch(url).then(res => res.blob()).then(blob => {
+      const blobUrl = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.style.display = "none";
+      a.href = blobUrl;
+      const ext = url.split(".").pop().split(/[#?]/)[0] || "jpg";
+      a.download = `${title ? title.replace(/[^a-z0-9]/gi, "_").toLowerCase() : "image"}.${ext}`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(blobUrl);
+      document.body.removeChild(a);
+    }).catch(() => {
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = title || "image";
+      a.target = "_blank";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    });
+  };
+  const handleShare = (url, title) => {
+    if (!url) return;
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (isMobile && navigator.share) {
+      navigator.share({
+        title: title || document.title,
+        url
+      }).catch(() => {
+        setToastMessage((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Link copied to clipboard!", "image-gallery"));
+        setTimeout(() => setToastMessage(null), 2500);
+        if (navigator.clipboard?.writeText) {
+          navigator.clipboard.writeText(url).catch(() => {});
+        }
+      });
+      return;
+    }
+    setToastMessage((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Link copied to clipboard!", "image-gallery"));
+    setTimeout(() => setToastMessage(null), 2500);
+    if (navigator.clipboard?.writeText) {
+      navigator.clipboard.writeText(url).catch(() => {
+        const input = document.createElement("input");
+        input.value = url;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand("copy");
+        document.body.removeChild(input);
+      });
+    } else {
+      const input = document.createElement("input");
+      input.value = url;
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand("copy");
+      document.body.removeChild(input);
+    }
+  };
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(Boolean(document.fullscreenElement));
+    };
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    return () => {
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+    };
+  }, []);
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      modalRef.current?.requestFullscreen?.();
+    } else {
+      document.exitFullscreen?.();
+    }
+  };
+  const handleClose = () => {
+    if (document.fullscreenElement) {
+      document.exitFullscreen?.().catch(() => {});
+    }
+    onClose();
+  };
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    const handleKeyDown = e => {
+      if (!isOpen) return;
+      if (e.key === "Escape") {
+        handleClose();
+      } else if (e.key === "ArrowLeft") {
+        onPrev();
+      } else if (e.key === "ArrowRight") {
+        onNext();
+      }
+    };
+    const handleClickOutside = e => {
+      if (modalRef.current && !modalRef.current.contains(e.target)) {
+        handleClose();
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen, onClose, onPrev, onNext]);
+
+  // Move focus into the dialog on open, and back to whatever opened it once
+  // it closes -- without this a keyboard user's focus is silently dropped
+  // onto the page body in both directions.
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    if (isOpen) {
+      lastTriggerRef.current = document.activeElement;
+      closeBtnRef.current?.focus();
+    } else {
+      lastTriggerRef.current?.focus?.();
+    }
+  }, [isOpen]);
+  if (!isOpen || !currentImage) return null;
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "fixed modal-container inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 transition-opacity duration-300",
+    role: "dialog",
+    "aria-modal": "true",
+    "aria-label": currentImage?.title || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Image viewer", "image-gallery")
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    ref: modalRef,
+    onTouchStart: handleTouchStart,
+    onTouchEnd: handleTouchEnd,
+    className: "relative max-w-5xl w-full max-h-screen overflow-hidden p-4 flex flex-col modal"
+  }, showCounter && totalImages > 0 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "polaroid-modal-counter",
+    style: {
+      position: "absolute",
+      top: "16px",
+      left: "16px",
+      zIndex: 20,
+      padding: "4px 12px",
+      backgroundColor: "rgba(0, 0, 0, 0.6)",
+      color: "#ffffff",
+      fontSize: "13px",
+      fontWeight: "600",
+      borderRadius: "9999px",
+      letterSpacing: "0.5px",
+      backdropFilter: "blur(4px)"
+    }
+  }, currentIndex + 1, " / ", totalImages), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "absolute top-4 right-4 z-10 flex items-center",
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: "8px",
+      top: "1rem",
+      right: "1rem",
+      zIndex: 20
+    }
+  }, showShare && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: () => handleShare(typeof currentImage === "string" ? currentImage : currentImage?.url, currentImage?.title),
+    "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Share image link", "image-gallery"),
+    className: "p-2 bg-black bg-opacity-50 icon-white rounded-full hover:bg-opacity-75 transition-all duration-200"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(lucide_react__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    size: 24
+  })), showDownload && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: () => handleDownload(typeof currentImage === "string" ? currentImage : currentImage?.url, currentImage?.title),
+    "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Download image", "image-gallery"),
+    className: "p-2 bg-black bg-opacity-50 icon-white rounded-full hover:bg-opacity-75 transition-all duration-200"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(lucide_react__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    size: 24
+  })), showFullscreen && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: toggleFullscreen,
+    "aria-label": isFullscreen ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Exit full screen", "image-gallery") : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Full screen", "image-gallery"),
+    className: "p-2 bg-black bg-opacity-50 icon-white rounded-full hover:bg-opacity-75 transition-all duration-200"
+  }, isFullscreen ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(lucide_react__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    size: 24
+  }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(lucide_react__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    size: 24
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    ref: closeBtnRef,
+    onClick: handleClose,
+    "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Close", "image-gallery"),
+    className: "p-2 bg-black bg-opacity-50 icon-white rounded-full hover:bg-opacity-75 transition-all duration-200"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(lucide_react__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    size: 24
+  }))), toastMessage && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "modalToast",
+    style: {
+      position: "absolute",
+      bottom: "24px",
+      left: "50%",
+      transform: "translateX(-50%)",
+      backgroundColor: "rgba(0, 0, 0, 0.8)",
+      color: "#ffffff",
+      padding: "8px 16px",
+      borderRadius: "8px",
+      fontSize: "14px",
+      fontWeight: "500",
+      zIndex: 50,
+      backdropFilter: "blur(6px)",
+      boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
+      pointerEvents: "none"
+    }
+  }, toastMessage), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "flex items-center justify-between w-full h-full"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: onPrev,
+    "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Previous image", "image-gallery"),
+    className: "p-2 bg-black bg-opacity-50 icon-white rounded-full hover:bg-opacity-75 transition-all duration-200"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(lucide_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    size: 32
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "overflow-hidden flex-1 mx-4 h-full flex items-center justify-center",
+    style: {
+      position: "relative"
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: currentImage?.url,
+    alt: currentImage?.title,
+    decoding: "async",
+    className: "max-h-[80vh] object-contain transition-transform duration-300"
+  }), watermark && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Watermark__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    watermark: watermark,
+    location: "popup"
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: onNext,
+    "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Next image", "image-gallery"),
+    className: "p-2 bg-black bg-opacity-50 icon-white rounded-full hover:bg-opacity-75 transition-all duration-200"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(lucide_react__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    size: 32
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "text-white text-center text-content pt-4"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+    className: "text-xl font-medium text-white title truncate"
+  }, currentImage?.title), currentImage?.description && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: "text-gray-300 mt-1 text-sm description"
+  }, currentImage?.description))));
+};
+
+/***/ }),
+
+/***/ "./src/Components/Common/PolaroidImageGallery/PolaroidImageGallary.js":
+/*!****************************************************************************!*\
+  !*** ./src/Components/Common/PolaroidImageGallery/PolaroidImageGallary.js ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Modal */ "./src/Components/Common/Modal.js");
+/* harmony import */ var _Watermark__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Watermark */ "./src/Components/Common/Watermark.js");
+
+
+
+
+
+const PolaroidImageGallary = ({
+  attributes,
+  activeAlbum = "*"
+}) => {
+  const {
+    imagesData,
+    styleSl,
+    watermark = {},
+    disableRightClick = false,
+    enableLightbox = true,
+    showLightboxCounter = true,
+    showLightboxFullscreen = true,
+    showLightboxDownload = true,
+    showLightboxShare = true,
+    enableLoadMore = false,
+    imagesPerLoad = 10,
+    loadMoreBtnText = "Load More",
+    loadMoreBtnColors,
+    loadMoreBtnTypo
+  } = attributes;
+  const rawImages = imagesData?.images || [];
+  const images = activeAlbum && activeAlbum !== "*" ? rawImages.filter(img => Array.isArray(img?.albs) && img.albs.includes(activeAlbum)) : rawImages;
+  const [isModalOpen, setIsModalOpen] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [currentImageIndex, setCurrentImageIndex] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
+  const [visibleCount, setVisibleCount] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(enableLoadMore ? imagesPerLoad : rawImages.length);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    if (enableLoadMore) {
+      setVisibleCount(imagesPerLoad);
+    }
+  }, [enableLoadMore, imagesPerLoad, activeAlbum]);
+  const displayedImages = enableLoadMore ? images.slice(0, visibleCount) : images;
+  const openModal = index => {
+    const item = displayedImages[index];
+    if (item?.link) {
+      window.location.href = item.link;
+      return;
+    }
+    if (!enableLightbox) return;
+    setCurrentImageIndex(index);
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+  const goToPrevious = () => {
+    setCurrentImageIndex(prevIndex => prevIndex === 0 ? images.length - 1 : prevIndex - 1);
+  };
+  const goToNext = () => {
+    setCurrentImageIndex(prevIndex => prevIndex === images.length - 1 ? 0 : prevIndex + 1);
+  };
+
+  // A tilt between -5 and 5 degrees, fixed per frame. Drawing it randomly at
+  // render time meant every re-render reshuffled every angle on the wall.
+  const getRotation = index => index * 7 % 11 - 5;
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `bigbImageGallery ${styleSl}`
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "my-8 polaroid-gallery",
+    onContextMenu: e => disableRightClick && e.preventDefault()
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "gap-8 justify-center polaroid-wrapper"
+  }, displayedImages?.map((image, index) => {
+    const rotation = getRotation(index);
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      key: image?.id,
+      className: "w-72 polaroid-container bg-white border-8 border-white shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer",
+      style: {
+        transform: `rotate(${rotation}deg)`,
+        transition: "transform 0.3s ease"
+      },
+      onClick: () => openModal(index),
+      role: "button",
+      tabIndex: 0,
+      "aria-label": image?.title || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Open image", "image-gallery"),
+      onKeyDown: e => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openModal(index);
+        }
+      },
+      onMouseEnter: e => {
+        e.currentTarget.style.transform = "rotate(0deg) scale(1.05)";
+        e.currentTarget.style.zIndex = "10";
+      },
+      onMouseLeave: e => {
+        e.currentTarget.style.transform = `rotate(${rotation}deg)`;
+        e.currentTarget.style.zIndex = "0";
+      }
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "polaroid-image overflow-hidden",
+      style: {
+        position: "relative"
+      }
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      src: image?.url,
+      alt: image?.title,
+      loading: "lazy",
+      decoding: "async",
+      className: "w-full h-full object-cover"
+    }), watermark && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Watermark__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      watermark: watermark,
+      location: "gallery"
+    })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "p-4 text-content bg-white"
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+      className: "title font-medium text-gray-900"
+    }, image?.title), image?.description && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+      className: "description text-sm text-gray-600 mt-1"
+    }, image.description), imagesData?.showDate && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+      className: "date text-xs text-gray-400 mt-2 font-mono"
+    }, image.date)));
+  })), enableLoadMore && visibleCount < images.length && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      textAlign: "center",
+      marginTop: "30px",
+      marginBottom: "30px"
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "bPlButton",
+    style: {
+      padding: "10px 24px",
+      cursor: "pointer",
+      background: loadMoreBtnColors?.bgType === "gradient" ? loadMoreBtnColors?.gradient : loadMoreBtnColors?.bg || "#146ef5",
+      color: loadMoreBtnColors?.color || "#fff",
+      border: "none",
+      borderRadius: `${loadMoreBtnTypo?.borderRadius !== undefined ? loadMoreBtnTypo.borderRadius : 4}px`,
+      fontSize: `${loadMoreBtnTypo?.fontSize !== undefined ? loadMoreBtnTypo.fontSize : 16}px`
+    },
+    onClick: () => setVisibleCount(prev => prev + imagesPerLoad)
+  }, loadMoreBtnText)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Modal__WEBPACK_IMPORTED_MODULE_2__.Modal, {
+    isOpen: isModalOpen,
+    onClose: closeModal,
+    currentImage: images[currentImageIndex],
+    currentIndex: currentImageIndex,
+    totalImages: images.length,
+    showCounter: showLightboxCounter,
+    showFullscreen: showLightboxFullscreen,
+    showDownload: showLightboxDownload,
+    showShare: showLightboxShare,
+    images: images,
+    onNext: goToNext,
+    onPrev: goToPrevious,
+    watermark: watermark
+  })));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PolaroidImageGallary);
+
+/***/ }),
+
+/***/ "./src/Components/Common/Style.js":
+/*!****************************************!*\
+  !*** ./src/Components/Common/Style.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../bpl-tools/utils/getCSS.js */ "../bpl-tools/utils/getCSS.js");
+/* harmony import */ var _bpl_tools_utils_data__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../bpl-tools/utils/data */ "../bpl-tools/utils/data.js");
+
+
+
+const Style = ({
+  attributes,
+  clientId
+}) => {
+  const {
+    gallery = [],
+    itemHeight,
+    aspectRatio = "original",
+    objectFit = "cover",
+    columnGap,
+    rowGap,
+    background,
+    shadow: galleryShadow,
+    hoverShadow: galleryHoverShadow,
+    titleTypo,
+    subtitleTypo,
+    styles,
+    imagesData,
+    styleSl,
+    filter,
+    filterBtnColors,
+    filterBtnActiveColors,
+    filterBtnTypo
+  } = attributes || {};
+  const {
+    title,
+    description,
+    container,
+    columns,
+    gap,
+    overlayColor,
+    shadow,
+    hoverShadow,
+    image,
+    modal,
+    date,
+    card,
+    slider,
+    button
+  } = styles || {};
+  const {
+    title: modalTitle,
+    description: modalDescription
+  } = modal || {};
+  const {
+    images
+  } = imagesData || {};
+  const {
+    shadow: cardShadow,
+    borderRadius,
+    alignItems,
+    height,
+    width,
+    gap: cardGap
+  } = card || {};
+  const {
+    dropShadow
+  } = styles?.images || {};
+
+  // Style Default
+  const gallerySl = `#bigbImageGallery-${clientId} .bigbImageGallery`;
+  const mainSl = `#bigbImageGallery-${clientId}`;
+
+  // Style One
+  const masonryWrapperBlockSl = `${mainSl} .bigbImageGallery.${styleSl}`;
+  const masonryMainBlockSl = `${masonryWrapperBlockSl} .masonry-gallery`;
+  const containerGridSl = `${masonryMainBlockSl} .grid`;
+  const imageContainerSl = `${containerGridSl} .image-container`;
+  const containerTitleSl = `${imageContainerSl} .title`;
+  const containerDescriptionSl = `${imageContainerSl} .description`;
+  const styleOneModalContainerSl = `${masonryMainBlockSl} .modal-container`;
+  const styleOneModalSl = `${styleOneModalContainerSl} .modal`;
+  const styleOneModalTextContent = `${styleOneModalSl} .text-content`;
+  const styleOneModalTitleSl = `${styleOneModalTextContent} .title`;
+  const styleOneModalDescriptionSl = `${styleOneModalTextContent} .description`;
+
+  // Style Two
+  const polaroidWrapperBlockSl = `${mainSl} .bigbImageGallery.${styleSl}`;
+  const polaroidMainBlockSl = `${polaroidWrapperBlockSl} .polaroid-gallery`;
+  const polaroidWrapperSl = `${polaroidMainBlockSl} .polaroid-wrapper`;
+  const polaroidContainerSl = `${polaroidWrapperSl} .polaroid-container`;
+  const polaroidImageSl = `${polaroidContainerSl} .polaroid-image`;
+  const polaroidTextContent = `${polaroidContainerSl} .text-content`;
+  const polaroidTitleSl = `${polaroidTextContent} .title`;
+  const polaroidDescriptionSl = `${polaroidTextContent} .description`;
+  const polaroidDateSl = `${polaroidTextContent} .date`;
+  const styleTwoModalContainerSl = `${polaroidMainBlockSl} .modal-container`;
+  const styleTwoModalSl = `${styleTwoModalContainerSl} .modal`;
+  const styleTwoModalTextContent = `${styleTwoModalSl} .text-content`;
+  const styleTwoModalTitleSl = `${styleTwoModalTextContent} .title`;
+  const styleTwoModalDescriptionSl = `${styleTwoModalTextContent} .description`;
+
+  // Style Three
+  const dynamicWrappderBlockSl = `${mainSl} .bigbImageGallery.${styleSl}`;
+  const dynamicMotionContainerSl = `${dynamicWrappderBlockSl} .gallery-container`;
+  const dynamicMotionContentSl = `${dynamicMotionContainerSl} .gallery-content`;
+  const dynamicMotionGridSl = `${dynamicMotionContentSl} .gallery-grid`;
+  const dynamicMotionItemSl = `${dynamicMotionGridSl} .gallery-item`;
+  const dynamicMotionItemContentSl = `${dynamicMotionItemSl} .gallery-item-content`;
+  const dynamicMotionOverlaySl = `${dynamicMotionItemContentSl} .gallery-overlay`;
+  const dynamicMotionTitleSl = `${dynamicMotionOverlaySl} .gallery-title`;
+  const dynamicMotionDescriptionSl = `${dynamicMotionOverlaySl} .gallery-description`;
+  const styleThreeModalContainerSl = `${dynamicMotionContainerSl} .modal-container`;
+  const styleThreeModalSl = `${styleThreeModalContainerSl} .modal`;
+  const styleThreeModalTextContent = `${styleThreeModalSl} .text-content`;
+  const styleThreeModalTitleSl = `${styleThreeModalTextContent} .title`;
+  const styleThreeModalDescriptionSl = `${styleThreeModalTextContent} .description`;
+
+  // Style Four
+  const threeDParallaxWrappderBlockSl = `${mainSl} .bigbImageGallery.${styleSl}`;
+  const mainContainerSl = `${threeDParallaxWrappderBlockSl} .tdpig__wrapper`;
+  const threeDParallaxBlockSl = `${mainSl} .tdpig__cards`;
+  const threeDParallaxCard = `${threeDParallaxBlockSl} .tdpig__card`;
+  const threeDParallaxCardText = `${threeDParallaxCard} .tdpig__card__text`;
+  const threeDParallaxCardTitle = `${threeDParallaxCardText} .tdpig__card__title`;
+
+  // Style Five
+  const threeDSliderWrappderBlockSl = `${mainSl} .bigbImageGallery.${styleSl}`;
+  // const threeDSliderMainSl = `${threeDSliderWrappderBlockSl} .wp-block-tdsig-threed-slider-image-gallery`;
+  const threeDSliderContainer = `${threeDSliderWrappderBlockSl} .tdsig-container`;
+  const threeDSlider = `${threeDSliderContainer} .tdsig-slider`;
+  const threeDCard = `${threeDSlider} .tdsig-card`;
+  const threeDCardTextSl = `${threeDCard} .text-content h1`;
+  const threeDCardTextAlignSl = `${threeDCard} .text-content`;
+
+  // Style Six
+  const hexagonMainWrapper = `${mainSl} .bigbImageGallery.${styleSl}`;
+  const haxagonContainerSl = `${hexagonMainWrapper} .hex-container`;
+  const hexagonMainSl = `${haxagonContainerSl} .hex-main`;
+  // const hexagonLinkSl = `${hexagonMainSl} .hex-link`;
+  // const hexagonImageSl = `${hexagonLinkSl} .hex-image`;
+
+  // Style Seven
+  const carouselMainWrapper = `${mainSl} .bigbImageGallery.${styleSl}`;
+  const imgCarouselContainerSl = `${carouselMainWrapper} .image-carousel-container`;
+  const imgCarouselSl = `${imgCarouselContainerSl} .image-carousel`;
+  const swiperWrapperSl = `${imgCarouselSl} .swiper-wrapper`;
+  const swiperSlideSl = `${swiperWrapperSl} .swiper-slide`;
+  const swiperButtonSl = `${imgCarouselSl} .swiper-button`;
+  const swiperButtonPrevSl = `${swiperButtonSl}.custom-prev`;
+  const swiperButtonNextSl = `${swiperButtonSl}.custom-next`;
+  const threeDParallaxShadowValue = cardShadow?.map(s => (0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getShadowCSS)(s, "box")).join(", ") || "none";
+  const toCssColor = color => {
+    if (!color) return "rgba(0, 0, 0, 0.55)";
+    if (typeof color === "string") return color;
+    if (typeof color === "object") {
+      const r = Number.isFinite(color.r) ? color.r : 0;
+      const g = Number.isFinite(color.g) ? color.g : 0;
+      const b = Number.isFinite(color.b) ? color.b : 0;
+      const a = Number.isFinite(color.a) ? color.a : 1;
+      return `rgba(${r}, ${g}, ${b}, ${a})`;
+    }
+    return "rgba(0, 0, 0, 0.55)";
+  };
+  const imageStyles = images?.map(styles => {
+    const {
+      width,
+      height,
+      left,
+      right,
+      top,
+      background,
+      id
+    } = styles;
+    return `
+
+        ${threeDParallaxCard}.tdpig__card-${id} .tdpig__card__img{
+		  ${width ? `width: ${width};` : ""}
+		  ${height ? `height: ${height};` : ""}
+		  ${left ? `left: ${left};` : ""}
+		  ${right ? `right: ${right};` : ""}
+		  ${top ? `top: ${top};` : ""}
+		}
+
+		${threeDParallaxCard}.tdpig__card-${id} .tdpig__card__bg {
+		  ${background ? `background: url(${background}) center / cover no-repeat;` : ""}
+	  	}
+
+
+        `;
+  }).join("\n");
+  const shadowValue = shadow?.map(s => (0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getShadowCSS)(s, "box")).join(", ") || "none";
+  const hoverShadowValue = hoverShadow?.map(s => (0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getShadowCSS)(s, "box")).join(", ") || "none";
+  const imgDropShadow = dropShadow?.map(sh => `drop-shadow(${sh.hOffset} ${sh.vOffset} ${sh.blur} ${sh.color})`).join(" ");
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
+    dangerouslySetInnerHTML: {
+      __html: `
+          
+            ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)("", titleTypo)?.googleFontLink || ""}
+            ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)("", subtitleTypo)?.googleFontLink || ""}
+          
+			${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)("", title?.typography)?.googleFontLink}
+			${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)("", description?.typography)?.googleFontLink}
+
+     
+      ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)("", date?.typography)?.googleFontLink}
+      ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)("", modalTitle?.typography)?.googleFontLink}
+      ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)("", modalDescription?.typography)?.googleFontLink}
+
+
+      ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)("", title?.typography)?.googleFontLink}
+
+   
+      ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)("", title?.typography)?.googleFontLink}
+       
+
+
+   
+      ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(`${gallerySl} .galleryHeader h3`, titleTypo)?.styles || ""}
+      ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(`${gallerySl} .galleryHeader h5`, subtitleTypo)?.styles || ""}
+
+  
+			${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(containerTitleSl, title?.typography)?.styles}
+			${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(containerDescriptionSl, description?.typography)?.styles}
+			${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(styleOneModalTitleSl, title?.typography)?.styles}
+			${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(styleOneModalDescriptionSl, description?.typography)?.styles}
+
+  
+      ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(polaroidTitleSl, title?.typography)?.styles}
+      ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(polaroidDescriptionSl, description?.typography)?.styles}
+      ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(polaroidDateSl, date?.typography)?.styles}
+      ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(styleTwoModalTitleSl, modalTitle?.typography)?.styles}
+      ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(styleTwoModalDescriptionSl, modalDescription?.typography)?.styles}
+
+      ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(dynamicMotionTitleSl, title?.typography)?.styles}
+      ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(dynamicMotionDescriptionSl, description?.typography)?.styles}
+      ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(styleThreeModalTitleSl, modalTitle?.typography)?.styles}
+      ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(styleThreeModalDescriptionSl, modalDescription?.typography)?.styles}
+
+       ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(threeDParallaxCardTitle, title?.typography)?.styles}
+
+
+      ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(threeDCardTextSl, title?.typography)?.styles}
+
+
+            ${gallerySl} .galleryItems {
+              grid-gap: ${rowGap} ${columnGap};
+            }
+
+            ${gallerySl} .galleryItem {
+              ${aspectRatio && aspectRatio !== "original" ? `aspect-ratio: ${aspectRatio}; height: auto !important;` : `height: ${itemHeight};`}
+              ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBackgroundCSS)(background)}
+              box-shadow: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getShadowCSS)(galleryShadow)};
+            }
+
+            ${aspectRatio && aspectRatio !== "original" ? `
+            ${gallerySl} .galleryItems .galleryImages img {
+              object-fit: ${objectFit || "cover"} !important;
+            }
+            ` : ""}
+
+            ${gallerySl} .galleryItem:hover,
+            ${gallerySl} .galleryItem.nowEditing {
+              box-shadow: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getShadowCSS)(galleryHoverShadow)};
+            }
+
+            ${mainSl} .igFilterBar {
+              ${filter?.align ? `justify-content: ${filter.align === 'left' ? 'flex-start' : filter.align === 'right' ? 'flex-end' : 'center'};` : ""}
+              ${filter?.margin?.bottom ? `margin-bottom: ${filter.margin.bottom};` : ""}
+            }
+
+            ${mainSl} .igFilterBar .igFilterBtn {
+              ${filterBtnColors?.color ? `color: ${filterBtnColors.color};` : ""}
+              ${filterBtnColors?.bg ? `background-color: ${filterBtnColors.bg};` : ""}
+              ${filterBtnTypo?.fontSize?.desktop ? `font-size: ${filterBtnTypo.fontSize.desktop}px;` : ""}
+            }
+
+            ${mainSl} .igFilterBar .igFilterBtn.active {
+              ${filterBtnActiveColors?.color ? `color: ${filterBtnActiveColors.color};` : ""}
+              ${filterBtnActiveColors?.bg ? `background-color: ${filterBtnActiveColors.bg};` : ""}
+            }
+
+
+       
+    ${containerGridSl}{
+		  grid-template-columns: repeat(${columns?.desktop}, minmax(0, 1fr));
+		  grid-auto-flow: dense;
+		  gap: ${gap?.desktop};
+		}
+
+		${imageContainerSl} .bg-gradient-to-t{
+		  background-image: linear-gradient(
+			to top,
+			${overlayColor?.desktop}, transparent
+		  );				
+		}
+
+		${imageContainerSl}{
+		  box-shadow: ${shadowValue};
+		  border-radius: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(image?.borderRadius?.desktop)};
+		}
+
+		${imageContainerSl}:hover{
+		  box-shadow: ${hoverShadowValue};
+		}
+
+		${styleOneModalTitleSl}{
+		  color: ${title?.color};
+		  margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(title?.margin?.desktop)};
+		}
+
+		${styleOneModalDescriptionSl}{
+		  color: ${description?.color};
+		  margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(description?.margin?.desktop)}; 
+		}
+		
+		${containerTitleSl}{
+		  color: ${title?.color};
+		  margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(title?.margin?.desktop)};
+		}
+
+		${containerDescriptionSl}{
+		  color: ${description?.color};
+		  margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(description?.margin?.desktop)};   
+		}
+
+		${masonryMainBlockSl}{
+		   ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBackgroundCSS)(container?.bg?.desktop)}
+       		border-radius: ${container?.borderRadius?.top} ${container?.borderRadius?.right} ${container?.borderRadius?.bottom} ${container?.borderRadius?.left};
+       		padding: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.padding?.desktop)};
+       		margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.margin?.desktop)};
+		}
+
+		${_bpl_tools_utils_data__WEBPACK_IMPORTED_MODULE_2__.tabBreakpoint}{
+			${containerTitleSl}{
+		  	  margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(title?.margin?.tablet)};
+			}
+
+			${containerDescriptionSl}{
+		  	  margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(description?.margin?.tablet)};   
+			}
+
+			${masonryMainBlockSl}{
+				${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBackgroundCSS)(container?.bg?.tablet)}
+				padding: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.padding?.tablet)};
+				margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.margin?.tablet)};
+			}
+
+			${containerGridSl}{
+		  		grid-template-columns: repeat(${columns?.tablet}, minmax(0, 1fr));
+				gap: ${gap?.tablet};
+			}
+
+      ${imageContainerSl} .bg-gradient-to-t{
+		    background-image: linear-gradient(
+			  to top, ${overlayColor?.tablet}, transparent);		
+		  }
+
+      ${imageContainerSl}{
+        border-radius: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(image?.borderRadius?.tablet)};	
+      }
+
+      ${styleOneModalDescriptionSl}{
+		    margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(description?.margin?.tablet)}; 
+		  }
+
+      ${styleOneModalTitleSl}{
+		    margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(title?.margin?.tablet)};
+		  }
+		}
+
+		${_bpl_tools_utils_data__WEBPACK_IMPORTED_MODULE_2__.mobileBreakpoint}{
+		  	${containerTitleSl}{
+		  	  margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(title?.margin?.mobile)};
+			}
+
+			${containerDescriptionSl}{
+		  	  margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(description?.margin?.mobile)};   
+			}
+
+			${masonryMainBlockSl}{
+				${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBackgroundCSS)(container?.bg?.mobile)}
+				padding: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.padding?.mobile)};
+				margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.margin?.mobile)};
+			}
+
+			${containerGridSl}{
+		  		grid-template-columns: repeat(${columns?.mobile}, minmax(0, 1fr));
+				gap: ${gap?.mobile};
+			}
+
+      ${imageContainerSl} .bg-gradient-to-t{
+		  background-image: linear-gradient(
+			to top,
+			${overlayColor?.mobile}, transparent
+		  );		
+		  }
+
+      ${imageContainerSl}{
+        border-radius: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(image?.borderRadius?.mobile)};	
+      }
+
+      ${styleOneModalDescriptionSl}{
+		    margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(description?.margin?.mobile)}; 
+		  }
+
+      ${styleOneModalTitleSl}{
+		    margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(title?.margin?.mobile)};
+		  }
+		}
+
+		${polaroidContainerSl}{
+		  box-shadow: ${shadowValue};
+		  width: ${width?.desktop};
+		  overflow: visible;
+		}
+
+		${polaroidImageSl}{
+		  height: ${height?.desktop};
+		}
+
+		${polaroidContainerSl}:hover{
+		  box-shadow: ${hoverShadowValue}
+		}
+			
+		${polaroidWrapperSl} {
+		  grid-template-columns: repeat(${columns?.desktop}, minmax(0, 300px));
+		  gap: ${cardGap?.desktop};
+		}
+
+		${styleTwoModalTitleSl}{
+			color: ${modalTitle?.color};
+			margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(title?.margin?.desktop)};
+		}
+
+		${styleTwoModalDescriptionSl}{
+			color: ${modalDescription?.color};
+			margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(description?.margin?.desktop)};
+		}
+
+		${polaroidTitleSl}{
+			color: ${title?.color};
+			margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(title?.margin?.desktop)};
+		}
+
+		${polaroidDescriptionSl}{
+			color: ${description?.color};
+			margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(description?.margin?.desktop)};
+		}
+
+		${polaroidDateSl}{
+			color: ${date?.color};
+			margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(date?.margin?.desktop)};
+		}
+
+		${polaroidMainBlockSl}{
+			${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBackgroundCSS)(container?.bg?.desktop)}
+				border-radius: ${container?.borderRadius?.top} ${container?.borderRadius?.right} ${container?.borderRadius?.bottom} ${container?.borderRadius?.left};
+			padding: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.padding?.desktop)};
+			margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.margin?.desktop)};
+		}
+
+
+		${_bpl_tools_utils_data__WEBPACK_IMPORTED_MODULE_2__.tabBreakpoint}{
+			${polaroidTitleSl}{
+			margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(title?.margin?.tablet)};
+			}
+
+			${polaroidDescriptionSl}{
+			margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(description?.margin?.tablet)};
+			}
+
+			${polaroidMainBlockSl}{
+				${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBackgroundCSS)(container?.bg?.tablet)}
+				padding: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.padding?.tablet)};
+				margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.margin?.tablet)};
+			}
+
+			${polaroidWrapperSl} {
+			  grid-template-columns: repeat(${columns?.tablet}, minmax(0, 300px));
+			  gap: ${cardGap?.tablet};
+			}
+
+			${polaroidContainerSl}{
+				width: ${width?.tablet};
+				overflow: visible;
+			}
+
+			${polaroidImageSl}{
+				height: ${height?.tablet};
+			}
+		}
+
+		${_bpl_tools_utils_data__WEBPACK_IMPORTED_MODULE_2__.mobileBreakpoint}{
+			${polaroidTitleSl}{
+			  margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(title?.margin?.mobile)};
+			}
+
+			${polaroidDescriptionSl}{
+			  margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(description?.margin?.mobile)};
+			}
+
+			${polaroidDateSl}{
+			  margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(date?.margin?.mobile)};
+			}
+
+			${polaroidMainBlockSl}{
+				${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBackgroundCSS)(container?.bg?.mobile)}
+				padding: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.padding?.mobile)};
+				margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.margin?.mobile)};
+			}
+
+			${polaroidWrapperSl} {
+			  grid-template-columns: repeat(${columns?.mobile}, minmax(0, 300px));
+			  gap: ${cardGap?.mobile};
+			}
+
+			${polaroidContainerSl}{
+			  width: ${width?.mobile};
+			  overflow: visible;
+			}
+
+			${polaroidImageSl}{
+				height: ${height?.mobile};
+			}
+		}
+
+
+
+
+    ${dynamicMotionOverlaySl}{
+		  background: linear-gradient(
+		    to top,
+		    ${image?.overlayColor?.desktop},
+		    ${image?.overlayColor?.desktop},
+		    transparent
+		  );
+		}
+
+		${dynamicMotionItemSl} {
+		  box-shadow: ${shadowValue};
+		  border-radius: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(image?.borderRadius?.desktop)};
+		}
+		
+			
+		${dynamicMotionGridSl} {
+		  grid-template-columns: repeat(${columns?.desktop}, 1fr);
+		}
+
+		${styleThreeModalTitleSl}{
+		  color: ${modalTitle?.color};
+		  margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(title?.margin?.desktop)};
+		}
+
+		${styleThreeModalDescriptionSl}{
+		  color: ${modalDescription?.color};
+		  margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(description?.margin?.desktop)};
+		}
+
+		${dynamicMotionTitleSl}{
+		  color: ${title?.color};
+		  margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(title?.margin?.desktop)};
+		}
+
+		${dynamicMotionDescriptionSl}{
+		  color: ${description?.color};
+		  margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(description?.margin?.desktop)};
+		}
+		
+
+		${dynamicMotionContainerSl}{
+		  ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBackgroundCSS)(container?.bg?.desktop)}
+		  border-radius: ${container?.borderRadius?.top} ${container?.borderRadius?.right} ${container?.borderRadius?.bottom} ${container?.borderRadius?.left};
+		  padding: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.padding?.desktop)};
+		  margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.margin?.desktop)};
+		  min-height: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.height?.desktop)};
+		}
+
+
+		${_bpl_tools_utils_data__WEBPACK_IMPORTED_MODULE_2__.tabBreakpoint}{
+		${styleThreeModalTitleSl}{
+		  margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(title?.margin?.tablet)};
+		}
+
+		  ${dynamicMotionTitleSl}{
+			margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(title?.margin?.tablet)};
+		  }
+
+		  ${dynamicMotionDescriptionSl}{
+			margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(description?.margin?.tablet)};
+		  }
+
+		  ${dynamicMotionContainerSl}{
+			${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBackgroundCSS)(container?.bg?.tablet)}
+			padding: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.padding?.tablet)};
+			margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.margin?.tablet)};
+			min-height: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.height?.desktop)};
+		  }
+
+		  ${dynamicMotionGridSl} {
+			grid-template-columns: repeat(${columns?.tablet}, 1fr);
+		  }
+
+		  ${dynamicMotionItemSl} {
+		  	border-radius: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(image?.borderRadius?.tablet)};
+		  }
+
+		  ${styleThreeModalDescriptionSl}{
+		  	margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(description?.margin?.tablet)};
+		  }
+		}
+
+		${_bpl_tools_utils_data__WEBPACK_IMPORTED_MODULE_2__.mobileBreakpoint}{
+		  ${styleThreeModalTitleSl}{
+			margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(title?.margin?.tablet)};
+		  }
+
+		  ${dynamicMotionTitleSl}{
+			margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(title?.margin?.mobile)};
+		  }
+
+		  ${dynamicMotionDescriptionSl}{
+			margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(description?.margin?.mobile)};
+		  }
+
+		  ${dynamicMotionContainerSl}{
+			${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBackgroundCSS)(container?.bg?.mobile)}
+			padding: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.padding?.mobile)};
+			margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.margin?.mobile)};
+			min-height: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.height?.desktop)};
+		  }
+
+		  ${dynamicMotionGridSl} {
+			grid-template-columns: repeat(${columns?.mobile}, 1fr);
+		  }
+
+		  ${dynamicMotionItemSl} {
+		  	border-radius: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(image?.borderRadius?.mobile)};
+		  }
+
+		  ${styleThreeModalDescriptionSl}{
+		  	margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(description?.margin?.mobile)};
+		  }
+		}
+
+      ${imageStyles}
+
+		${mainContainerSl} {
+		  ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBackgroundCSS)(container?.bg?.desktop)}
+		  border-radius: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.borderRadius?.desktop)};
+		  padding: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.padding?.desktop)};
+		  margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.margin?.desktop)};
+		  max-width: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.width?.desktop)};
+		  min-height: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.height?.desktop)};
+		  justify-content: ${alignItems};
+		}
+
+		${threeDParallaxBlockSl}{
+		  gap: ${cardGap?.desktop};
+		  justify-items: ${alignItems};
+		  grid-template-columns: repeat(${columns?.desktop}, minmax(200px, 1fr));  
+		  width: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(width?.desktop)};  
+		}
+
+
+		${threeDParallaxCardText} {
+    		background: linear-gradient(to bottom,rgba(0, 0, 0, 0) 0%, ${toCssColor(title?.overlayColor?.desktop) || "rgba(0,0,0,0.55)"} 100%);
+  		}
+		
+		
+		${threeDParallaxCardTitle} {
+		  color: ${title?.color || "inherit"};
+		  margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(title?.margin?.desktop)};
+		  padding: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(title?.padding?.desktop)};
+		}
+
+		${threeDParallaxCard} {
+		  box-shadow: ${threeDParallaxShadowValue};
+		  border-radius: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(borderRadius?.desktop)};
+		  width: 100%;
+		  height: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(height?.desktop)};
+	  	}
+
+
+		${_bpl_tools_utils_data__WEBPACK_IMPORTED_MODULE_2__.tabBreakpoint}{	
+		  ${threeDParallaxBlockSl}{
+			gap: ${cardGap?.tablet};
+			grid-template-columns: repeat(${columns?.tablet}, minmax(200px, 1fr)); 
+			width: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(width?.desktop)};
+		  }
+
+		  ${threeDParallaxCard} {
+		  	box-shadow: ${threeDParallaxShadowValue};
+			
+			height: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(height?.tablet)};
+			width: 100%;
+			border-radius: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(borderRadius?.tablet)};
+		  }
+
+		  ${threeDParallaxCardTitle} {
+			margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(title?.margin?.tablet)};
+			padding: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(title?.padding?.tablet)};
+		  }
+
+		  ${threeDParallaxCardText} {
+			background: linear-gradient(to bottom,rgba(0, 0, 0, 0) 0%, ${toCssColor(title?.overlayColor?.tablet) || "rgba(0, 0, 0, 0.55)"} 100%);
+		  }
+
+		  ${mainContainerSl} {
+			border-radius: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.borderRadius?.tablet)};
+			padding: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.padding?.tablet)};
+			margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.margin?.tablet)};
+			max-width: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.width?.tablet)};
+			min-height: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.height?.tablet)};
+			${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBackgroundCSS)(container?.bg?.tablet)}
+			justify-content: ${alignItems};
+		  }
+		}
+
+
+		${_bpl_tools_utils_data__WEBPACK_IMPORTED_MODULE_2__.mobileBreakpoint}{
+			${threeDParallaxBlockSl}{
+			  width: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(width?.desktop)};
+			  gap: ${cardGap?.mobile};
+			  grid-template-columns: repeat(${columns?.mobile}, minmax(200px, 1fr));
+			}
+
+			${threeDParallaxCard} {
+			  box-shadow: ${threeDParallaxShadowValue};
+			  width: 100%;
+			  height: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(height?.mobile)};
+			  border-radius: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(borderRadius?.mobile)};
+			}
+
+			${threeDParallaxCardTitle} {
+			  margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(title?.margin?.mobile)};
+			  padding: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(title?.padding?.mobile)};
+			}
+
+		  	${threeDParallaxCardText} {
+			  background: linear-gradient(to bottom,rgba(0, 0, 0, 0) 0%, ${toCssColor(title?.overlayColor?.mobile) || "rgba(0, 0, 0, 0.55)"} 100%);
+			}	
+		
+			${mainContainerSl} {
+			  border-radius: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.borderRadius?.mobile)};
+			  padding: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.padding?.mobile)};
+			  margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.margin?.mobile)};
+			  min-height: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.height?.mobile)};
+			  max-width: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.width?.mobile)};
+			  ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBackgroundCSS)(container?.bg?.mobile)}
+			  justify-content: ${alignItems};
+			}
+		}
+
+ 
+        ${threeDCardTextSl}{
+          color: ${title?.color};
+        }
+
+        ${threeDCardTextAlignSl}{
+         top: ${title?.verticalAlign?.desktop}%;
+         left: ${title?.horizontalAlign?.desktop}%;
+        }
+
+        ${threeDCard}{
+          border-radius: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(image?.borderRadius)};
+          width: ${image?.width?.desktop};
+          min-height: ${image?.height?.desktop};
+          left: ${image?.horizontalAlign?.desktop};
+          background-color: ${image?.overlayColor?.desktop};
+        }
+
+        ${threeDSlider}{
+          top: ${image?.verticalAlign?.desktop};
+          min-height: ${slider?.height?.desktop};
+        }
+
+        ${threeDSliderContainer}{
+          ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBackgroundCSS)(container?.bg?.desktop)}
+				  border-radius: ${container?.borderRadius?.top} ${container?.borderRadius?.right} ${container?.borderRadius?.bottom} ${container?.borderRadius?.left};
+			    min-height: ${container?.height?.desktop};
+			    margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.margin?.desktop)};
+        }
+
+        ${_bpl_tools_utils_data__WEBPACK_IMPORTED_MODULE_2__.tabBreakpoint}{
+          ${threeDSliderContainer}{
+            ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBackgroundCSS)(container?.bg?.tablet)}
+            min-height: ${container?.height?.tablet};
+            margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.margin?.tablet)};
+          }
+
+          ${threeDSlider}{
+            top: ${image?.verticalAlign?.tablet};
+            min-height: ${slider?.height?.tablet};
+          }
+
+          ${threeDCard}{
+            width: ${image?.width?.tablet};
+            min-height: ${image?.height?.tablet};
+            left: ${image?.horizontalAlign?.tablet};
+            background-color: ${image?.overlayColor?.tablet};
+          }
+
+          ${threeDCardTextAlignSl}{
+            top: ${title?.verticalAlign?.tablet}%;
+            left: ${title?.horizontalAlign?.tablet}%;
+          }
+
+        }
+
+        ${_bpl_tools_utils_data__WEBPACK_IMPORTED_MODULE_2__.mobileBreakpoint}{
+          ${threeDSliderContainer}{
+            ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBackgroundCSS)(container?.bg?.mobile)}
+            min-height: ${container?.height?.mobile};
+            margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.margin?.mobile)};
+          }
+
+          ${threeDSlider}{
+            top: ${image?.verticalAlign?.mobile};
+            min-height: ${slider?.height?.mobile};
+          }
+
+          ${threeDCard}{
+            width: ${image?.width?.mobile};
+            min-height: ${image?.height?.mobile};
+            left: ${image?.horizontalAlign?.mobile};
+            background-color: ${image?.overlayColor?.mobile};
+          }
+
+          ${threeDCardTextAlignSl}{
+            top: ${title?.verticalAlign?.mobile}%;
+            left: ${title?.horizontalAlign?.mobile}%;
+          }
+        }
+
+
+
+
+            ${haxagonContainerSl} {
+          border-radius: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.borderRadius?.desktop)};
+          padding: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.padding?.desktop)};
+          margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.margin?.desktop)};
+          ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBackgroundCSS)(container?.bg?.desktop)}
+        }
+        
+        ${hexagonMainSl}{
+          filter: ${imgDropShadow};
+          font: clamp(0.5rem, 2vw, ${styles?.images?.size?.desktop}) sans-serif;
+          grid-gap: calc(0.5 * ${styles?.images?.gap?.desktop} * 1.7320508076) ${styles?.images?.gap?.desktop};
+        }
+
+
+        ${_bpl_tools_utils_data__WEBPACK_IMPORTED_MODULE_2__.tabBreakpoint}{
+          ${hexagonMainSl}{
+          font: clamp(0.5rem, 2vw, ${styles?.images?.size?.tablet}) sans-serif;
+          grid-gap: calc(0.5 * ${styles?.images?.gap?.tablet} * 1.7320508076) ${styles?.images?.gap?.tablet};
+        }
+
+        ${haxagonContainerSl} {
+          border-radius: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.borderRadius?.tablet)};
+          padding: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.padding?.tablet)};
+          margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.margin?.tablet)};
+          ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBackgroundCSS)(container?.bg?.tablet)}
+        }
+        }
+
+        ${_bpl_tools_utils_data__WEBPACK_IMPORTED_MODULE_2__.mobileBreakpoint}{
+          ${hexagonMainSl}{
+          font: clamp(0.5rem, 2vw, ${styles?.images?.size?.mobile}) sans-serif;
+          grid-gap: calc(0.5 * ${styles?.images?.gap?.mobile} * 1.7320508076) ${styles?.images?.gap?.mobile};
+          }
+
+          ${haxagonContainerSl} {
+          border-radius: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.borderRadius?.mobile)};
+          padding: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.padding?.mobile)};
+          margin: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(container?.margin?.mobile)};
+          ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBackgroundCSS)(container?.bg?.mobile)}
+        }
+        }
+
+
+        ${swiperSlideSl} img{
+		  border-radius: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(image?.borderRadius?.desktop)};
+		}
+		
+		${swiperButtonPrevSl}, ${swiperButtonNextSl}{
+		 ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getColorsCSS)(button?.btnColor?.normal)};
+		  border-radius: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(button?.borderRadius?.desktop)};
+		  width: ${button?.size?.desktop?.width};
+		  height: ${button?.size?.desktop?.height};
+		}
+
+		${swiperButtonNextSl}{
+		  right: ${button?.horizontalPosition?.desktop};
+		  top: ${button?.verticalPosition?.desktop};
+		}
+
+		${swiperButtonPrevSl}{
+		  left: ${button?.horizontalPosition?.desktop};
+		  top: ${button?.verticalPosition?.desktop};
+		}
+
+		${swiperButtonPrevSl} svg, ${swiperButtonNextSl} svg {
+			fill: ${button?.btnColor?.normal?.color};
+			width: ${button?.iconSize?.desktop};
+			height: ${button?.iconSize?.desktop};
+		}
+
+		${swiperButtonPrevSl}:hover, ${swiperButtonNextSl}:hover{
+		  ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getColorsCSS)(button?.btnColor?.hover)};
+		  
+		}
+
+		${swiperButtonPrevSl}:hover svg, ${swiperButtonNextSl}:hover svg {
+		  fill: ${button?.btnColor?.hover?.color};
+		}
+
+		${imgCarouselContainerSl}{
+		  height: ${container?.height?.desktop};
+		}
+
+		${_bpl_tools_utils_data__WEBPACK_IMPORTED_MODULE_2__.tabBreakpoint}{
+			${swiperSlideSl} img{
+		  		border-radius: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(image?.borderRadius?.tablet)};
+			}
+
+			${swiperButtonPrevSl}, ${swiperButtonNextSl}{
+				border-radius: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(button?.borderRadius?.tablet)};
+				width: ${button?.size?.tablet?.width};
+				height: ${button?.size?.tablet?.height};
+			}
+
+			${swiperButtonPrevSl} svg, ${swiperButtonNextSl} svg {
+				width: ${button?.iconSize?.tablet};
+				height: ${button?.iconSize?.tablet};
+			}
+
+			${imgCarouselContainerSl}{
+		  		height: ${container?.height?.tablet};
+			}
+
+			${swiperButtonNextSl}{
+				right: ${button?.horizontalPosition?.tablet};
+				top: ${button?.verticalPosition?.tablet};
+			}
+
+			${swiperButtonPrevSl}{
+				left: ${button?.horizontalPosition?.tablet};
+				top: ${button?.verticalPosition?.tablet};
+			}
+		}
+
+
+		${_bpl_tools_utils_data__WEBPACK_IMPORTED_MODULE_2__.mobileBreakpoint}{
+			${swiperSlideSl} img{
+		  		border-radius: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(image?.borderRadius?.mobile)};
+			}
+
+			${swiperButtonPrevSl}, ${swiperButtonNextSl}{
+				border-radius: ${(0,_bpl_tools_utils_getCSS_js__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(button?.borderRadius?.mobile)};
+				width: ${button?.size?.mobile?.width};
+				height: ${button?.size?.mobile?.height};
+			}
+
+			${swiperButtonPrevSl} svg, ${swiperButtonNextSl} svg {
+				width: ${button?.iconSize?.mobile};
+				height: ${button?.iconSize?.mobile};
+			}
+
+			${imgCarouselContainerSl}{
+		  		height: ${container?.height?.mobile};
+			}
+
+			${swiperButtonNextSl}{
+				right: ${button?.horizontalPosition?.mobile};
+				top: ${button?.verticalPosition?.mobile};
+			}
+
+			${swiperButtonPrevSl}{
+				left: ${button?.horizontalPosition?.mobile};
+				top: ${button?.verticalPosition?.mobile};
+			}
+			
+		}
+          
+			
+          `.replace(/\s+/g, " ")
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
+    dangerouslySetInnerHTML: {
+      __html: gallery?.map((item, index) => {
+        const {
+          colors = {},
+          btnColors = {}
+        } = item;
+        const itemHeaderSl = `${gallerySl} #galleryItem-${index} .galleryHeader`;
+        const itemFooterSl = `${gallerySl} #galleryItem-${index} .galleryFooter`;
+        const headerBG = colors.bgType === "gradient" ? colors.gradient || "transparent" : colors.bg || "transparent";
+        const textColor = colors.color || "#000";
+        const btnColor = btnColors.color || "#fff";
+        const btnBG = btnColors.bgType === "gradient" ? btnColors.gradient || "transparent" : btnColors.bg || "transparent";
+        return `
+                ${itemHeaderSl}::before,
+                ${itemFooterSl}::before {
+                  background: ${headerBG};
+                }
+
+                ${itemHeaderSl} h3,
+                ${itemHeaderSl} h5 {
+                  color: ${textColor};
+                }
+
+                ${itemHeaderSl} .btnClose,
+                ${itemHeaderSl} .btnFullscreen,
+                ${itemHeaderSl} .btnDownload,
+                ${itemHeaderSl} .btnShare {
+                  color: ${btnColor};
+                  background: ${btnBG};
+                }
+
+                ${itemFooterSl} nav.controls .control,
+                ${itemFooterSl} nav.controls .controlDot {
+                  background: ${btnBG};
+                }
+
+                ${itemFooterSl} nav.controls .controlDot::after {
+                  background: ${btnColor};
+                }
+
+                ${itemFooterSl} nav.controls .controlArrow {
+                  color: ${btnColor};
+                }
+
+
+
+              `.replace(/\s+/g, " ");
+      }).join(" ")
+    }
+  }));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Style);
+
+/***/ }),
+
+/***/ "./src/Components/Common/Watermark.js":
+/*!********************************************!*\
+  !*** ./src/Components/Common/Watermark.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+const Watermark = ({
+  watermark,
+  location = "gallery"
+}) => {
+  if (!watermark || !watermark.enable) return null;
+  const {
+    type = "text",
+    text = "",
+    image = "",
+    position = "bottom-right",
+    opacity = 0.7,
+    fontSize = 14,
+    color = "#ffffff",
+    applyOn = "both"
+  } = watermark;
+
+  // Check if watermark should display at this location
+  if (applyOn === "gallery" && location === "popup") return null;
+  if (applyOn === "popup" && location === "gallery") return null;
+  const posClass = `igWatermark--${position}`;
+  const style = {
+    opacity: Number(opacity) || 0.7
+  };
+  if (type === "image" && image) {
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: `igWatermark igWatermark--image ${posClass}`,
+      style: style
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      src: image,
+      alt: "Watermark"
+    }));
+  }
+  if (text) {
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: `igWatermark igWatermark--text ${posClass}`,
+      style: {
+        ...style,
+        fontSize: `${fontSize || 14}px`,
+        color: color || "#ffffff"
+      }
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, text));
+  }
+  return null;
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Watermark);
+
+/***/ }),
+
+/***/ "./src/style.scss":
+/*!************************!*\
+  !*** ./src/style.scss ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "@wordpress/i18n":
+/*!******************************!*\
+  !*** external ["wp","i18n"] ***!
+  \******************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["i18n"];
+
+/***/ }),
+
+/***/ "react":
+/*!************************!*\
+  !*** external "React" ***!
+  \************************/
+/***/ ((module) => {
+
+module.exports = window["React"];
+
+/***/ }),
+
+/***/ "react-dom":
+/*!***************************!*\
+  !*** external "ReactDOM" ***!
+  \***************************/
+/***/ ((module) => {
+
+module.exports = window["ReactDOM"];
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
+(() => {
+/*!*********************!*\
+  !*** ./src/view.js ***!
+  \*********************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./src/style.scss");
+/* harmony import */ var _Components_Common_Style__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Components/Common/Style */ "./src/Components/Common/Style.js");
+/* harmony import */ var _Components_Common_Gallery__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Components/Common/Gallery */ "./src/Components/Common/Gallery.js");
+/* harmony import */ var _Components_Common_PolaroidImageGallery_PolaroidImageGallary__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Components/Common/PolaroidImageGallery/PolaroidImageGallary */ "./src/Components/Common/PolaroidImageGallery/PolaroidImageGallary.js");
+/* harmony import */ var _Components_Common_ImageFilter__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Components/Common/ImageFilter */ "./src/Components/Common/ImageFilter.js");
+
+
+
+
+
+
+
+
+const FrontendGallery = ({
+  attributes
+}) => {
+  const [activeAlbum, setActiveAlbum] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("*");
+  const {
+    cId,
+    gallery,
+    slideSpeed,
+    columns,
+    styleSl,
+    albums = [],
+    filter = {},
+    watermark = {}
+  } = attributes;
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Common_Style__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    attributes: attributes,
+    clientId: cId
+  }), styleSl === "styleDefault" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `bigbImageGallery ${styleSl}`
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Common_ImageFilter__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    albums: albums,
+    filter: filter,
+    activeAlbum: activeAlbum,
+    setActiveAlbum: setActiveAlbum
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Common_Gallery__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    gallery: gallery,
+    slideSpeed: slideSpeed,
+    columns: columns,
+    activeAlbum: activeAlbum,
+    watermark: watermark,
+    disableRightClick: attributes?.disableRightClick,
+    enableLightbox: attributes?.enableLightbox,
+    showLightboxCounter: attributes?.showLightboxCounter,
+    showLightboxFullscreen: attributes?.showLightboxFullscreen,
+    showLightboxDownload: attributes?.showLightboxDownload,
+    showLightboxShare: attributes?.showLightboxShare,
+    enableLoadMore: attributes?.enableLoadMore,
+    imagesPerLoad: attributes?.imagesPerLoad,
+    loadMoreBtnText: attributes?.loadMoreBtnText,
+    loadMoreBtnColors: attributes?.loadMoreBtnColors,
+    loadMoreBtnTypo: attributes?.loadMoreBtnTypo
+  })), styleSl === "styleOne" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Common_ImageFilter__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    albums: albums,
+    filter: filter,
+    activeAlbum: activeAlbum,
+    setActiveAlbum: setActiveAlbum
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Common_PolaroidImageGallery_PolaroidImageGallary__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    attributes: attributes,
+    activeAlbum: activeAlbum
+  })));
+};
+document.addEventListener("DOMContentLoaded", () => {
+  const allImageGallery = document.querySelectorAll(".wp-block-bigb-image-gallery");
+  allImageGallery.forEach(imageGallery => {
+    const raw = imageGallery?.dataset?.attributes;
+    if (!raw || raw === "undefined") return;
+    let attributes;
+    try {
+      attributes = JSON.parse(raw);
+    } catch (e) {
+      return e;
+    }
+    (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(imageGallery).render((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(FrontendGallery, {
+      attributes: attributes
+    }));
+    imageGallery?.removeAttribute("data-attributes");
+  });
+});
+})();
+
+/******/ })()
+;
+//# sourceMappingURL=view.js.map
