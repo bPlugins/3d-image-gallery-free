@@ -3,7 +3,7 @@
  * Plugin Name: Image Gallery Block
  * Description: Create and display photo gallery/photo album
  * Version: 2.4.0
- * Tested up to: 7.0
+ * Tested up to: 7.1
  * Requires PHP: 7.4
  * Author: bPlugins
  * Author URI: https://bplugins.com

@@ -53,7 +53,7 @@ export const dashboardInfo = (info) => {
     },
     changelogs: [
       {
-        version: "2.4.0 - 19 Sep 26",
+        version: "2.4.0 - 20 Sep 26",
         list: [
           "New (Pro): Media Highlights — Facebook-style story albums for photos & videos with a full-screen autoplay story viewer. Available in the Pro version.",
           "New: Reusable galleries — an Image Gallery post type with a [image_gallery id=123] shortcode you can place anywhere.",
@@ -76,6 +76,8 @@ export const dashboardInfo = (info) => {
           "Fix: The block had no usable inserter preview.",
           "Fix: Copy-to-clipboard messages used the wrong text domain and could not be translated.",
           "Fix: block asset caching now uses the plugin's real version so styles update immediately after an update.",
+          "New: activating the plugin now takes you straight to the Help & Demos page, so onboarding starts immediately instead of leaving you on the plugins list.",
+          "Fix: an update package built with the wrong internal name could install as a separate copy of the plugin instead of replacing the existing one, which then showed as &quot;Plugin could not be activated because it triggered a fatal error.&quot; Update packages are now always named to match.",
         ],
         type: "new",
       },
