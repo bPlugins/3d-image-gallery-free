@@ -53,6 +53,16 @@ export const dashboardInfo = (info) => {
     },
     changelogs: [
       {
+        version: "2.4.1 - 13 Oct 26",
+        list: [
+          "Update: Freemius SDK updated to 2.13.5.",
+          "Fix: After activating the plugin, the page no longer says you are not allowed to access it. The Freemius opt-in now opens first, then the first page of the plugin.",
+          "Fix: The Freemius opt-in for Image Gallery now opens its own dashboard instead of an error page.",
+          "Fix: Code checked with the WordPress.org Plugin Check. Output escaping and form data notes are cleaned up.",
+        ],
+        type: "fix",
+      },
+      {
         version: "2.4.0 - 20 Sep 26",
         list: [
           "New (Pro): Media Highlights — Facebook-style story albums for photos & videos with a full-screen autoplay story viewer. Available in the Pro version.",
