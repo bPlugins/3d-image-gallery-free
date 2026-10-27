@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { __ } from "@wordpress/i18n";
 import { Modal } from "../Modal";
 import Watermark from "../Watermark";
+import { safeNavigate } from "../../../utils/safeNav";
 
 const PolaroidImageGallary = ({ attributes, activeAlbum = "*" }) => {
   const { 
@@ -41,8 +42,7 @@ const PolaroidImageGallary = ({ attributes, activeAlbum = "*" }) => {
 
   const openModal = (index) => {
     const item = displayedImages[index];
-    if (item?.link) {
-      window.location.href = item.link;
+    if (item?.link && safeNavigate(item.link)) {
       return;
     }
     if (!enableLightbox) return;

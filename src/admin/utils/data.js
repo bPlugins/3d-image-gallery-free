@@ -53,6 +53,20 @@ export const dashboardInfo = (info) => {
     },
     changelogs: [
       {
+        version: "2.4.3 - 26 Oct 26",
+        list: [
+          "Security: Further hardened gallery item link handling so only http(s) URLs are followed.",
+        ],
+        type: "fix",
+      },
+      {
+        version: "2.4.2 - 25 Oct 26",
+        list: [
+          "Security: Fixed stored XSS through javascript: gallery item links.",
+        ],
+        type: "fix",
+      },
+      {
         version: "2.4.1 - 13 Oct 26",
         list: [
           "Update: Freemius SDK updated to 2.13.5.",

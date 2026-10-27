@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import { __, sprintf } from "@wordpress/i18n";
 import Watermark from "./Watermark";
+import { safeNavigate } from "../../utils/safeNav";
 
 const useInterval = (callback, time, delay) => {
   const intervalRef = useRef();
@@ -460,8 +461,7 @@ const Gallery = ({
   const onClickGalleryItem = useCallback(
     (index) => {
       const item = gallery[index];
-      if (item?.link) {
-        window.location.href = item.link;
+      if (item?.link && safeNavigate(item.link)) {
         return;
       }
       if (!enableLightbox && isPopup) {
