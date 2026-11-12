@@ -141,3 +141,6 @@ require_once BIGB_DIR_PATH . '/includes/attribute-migration.php';
 
 // Ready-made sections for the inserter.
 require_once BIGB_DIR_PATH . '/includes/patterns.php';
+
+// One polite, dismissible review request (admins only, after a week).
+require_once BIGB_DIR_PATH . '/includes/review-notice.php';

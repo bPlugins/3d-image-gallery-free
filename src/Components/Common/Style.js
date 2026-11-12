@@ -1,3 +1,4 @@
+import { safeStyleHtml } from "../../utils/sanitizeStyleTag";
 import {
   getBackgroundCSS,
   getShadowCSS,
@@ -210,7 +211,7 @@ const Style = ({ attributes, clientId }) => {
     <>
       {/* Typography & Layout Styles */}
       <style
-        dangerouslySetInnerHTML={{
+        dangerouslySetInnerHTML={safeStyleHtml({
           __html: `
           
             ${getTypoCSS("", titleTypo)?.googleFontLink || ""}
@@ -1030,12 +1031,12 @@ const Style = ({ attributes, clientId }) => {
           
 			
           `.replace(/\s+/g, " "),
-        }}
+        })}
       />
 
       {/* Per-Item Styles */}
       <style
-        dangerouslySetInnerHTML={{
+        dangerouslySetInnerHTML={safeStyleHtml({
           __html: gallery
             ?.map((item, index) => {
               const { colors = {}, btnColors = {} } = item;
@@ -1093,7 +1094,7 @@ const Style = ({ attributes, clientId }) => {
               `.replace(/\s+/g, " ");
             })
             .join(" "),
-        }}
+        })}
       />
     </>
   );
