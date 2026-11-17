@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { X, ChevronLeft, ChevronRight, Maximize2, Minimize2, Download, Share2 } from "lucide-react";
 import { __ } from "@wordpress/i18n";
 import Watermark from "./Watermark";
+import { resolveAlt } from "../../utils/imageModel";
 
 export const Modal = ({
   isOpen,
@@ -289,7 +290,7 @@ export const Modal = ({
           <div className="overflow-hidden flex-1 mx-4 h-full flex items-center justify-center" style={{ position: "relative" }}>
             <img
               src={currentImage?.url}
-              alt={currentImage?.title}
+              alt={resolveAlt(currentImage, currentImage?.title)}
               decoding="async"
               className="max-h-[80vh] object-contain transition-transform duration-300"
             />

@@ -5,6 +5,7 @@ import {
   PanelRow,
   __experimentalUnitControl as UnitControl,
   TextControl,
+  ToggleControl,
   SelectControl,
   RangeControl,
   CheckboxControl,
@@ -18,7 +19,9 @@ import {
 } from "../../../../../../bpl-tools/Components";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { metaToItemFields } from "../../../../utils/imageModel";
+import { lookupAttachmentMetaDebounced } from "../../../../utils/attachmentLookup";
 import { format } from "date-fns";
 import { BControlPro } from "../../../../../../bpl-tools/ProControls";
 
@@ -45,6 +48,36 @@ const GalleryPanel = ({
     return !isNaN(existingDate.getTime()) ? existingDate : new Date();
   });
   const [dateFormat, setDateFormat] = useState(attributes?.globalDateFormat || "MM-dd-yyyy");
+
+  const attributesRef = useRef(attributes);
+  attributesRef.current = attributes;
+
+  // A new image URL invalidates the previous image's attachment data; then
+  // look up whether the URL is a Media Library image and store its id/size
+  // (and alt, only if none has been written yet).
+  const changeImageUrl = (url) => {
+    const items = attributes[arrKey];
+    if (!items?.[index]) return;
+    const newItems = produce(items, (draft) => {
+      draft[index].url = url;
+      delete draft[index].attachmentId;
+      delete draft[index].naturalWidth;
+      delete draft[index].naturalHeight;
+    });
+    setAttributes({ [arrKey]: newItems });
+    if (setActiveIndex) setActiveIndex(index);
+
+    lookupAttachmentMetaDebounced(`item:${arrKey}:${index}`, url).then((meta) => {
+      if (!meta.attachmentId) return;
+      const cur = attributesRef.current[arrKey];
+      if (cur?.[index]?.url !== url) return;
+      const fields = metaToItemFields(meta);
+      if (cur[index].alt) delete fields.alt;
+      setAttributes({
+        [arrKey]: cur.map((it, i) => (i === index ? { ...it, ...fields } : it)),
+      });
+    });
+  };
 
   const updateGalleryItems = (property, val, childProperty = null) => {
     const items = attributes[arrKey];
@@ -97,7 +130,7 @@ const GalleryPanel = ({
       <InlineMediaComponent
         label={__("Image", "image-gallery")}
         value={items[index]?.url}
-        onChange={(image) => updateGalleryItems("url", image)}
+        onChange={changeImageUrl}
         type="image"
         size="full"
         Component={InlineMediaUpload}
@@ -177,6 +210,23 @@ const GalleryPanel = ({
         </>
       )}
 
+      <div style={{ marginTop: "20px" }}></div>
+
+      <TextControl
+        label={__("Alt Text", "image-gallery")}
+        value={items[index]?.alt || ""}
+        disabled={Boolean(items[index]?.decorative)}
+        onChange={(val) => updateGalleryItems("alt", val)}
+        help={__(
+          "Describes the image for screen readers and search engines.",
+          "image-gallery",
+        )}
+      />
+      <ToggleControl
+        label={__("Decorative image (no alt text)", "image-gallery")}
+        checked={Boolean(items[index]?.decorative)}
+        onChange={(val) => updateGalleryItems("decorative", val)}
+      />
       <div style={{ marginTop: "20px" }}></div>
 
       {(styleSl === "styleOne" ||

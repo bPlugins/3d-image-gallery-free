@@ -9,6 +9,11 @@ import React, {
 import { __, sprintf } from "@wordpress/i18n";
 import Watermark from "./Watermark";
 import { safeNavigate } from "../../utils/safeNav";
+import {
+  resolveAlt,
+  responsiveProps,
+  buildSizes,
+} from "../../utils/imageModel";
 
 const useInterval = (callback, time, delay) => {
   const intervalRef = useRef();
@@ -44,6 +49,9 @@ const GalleryImages = ({
   container,
   loadCount,
   altText = "",
+  imageMeta = [],
+  responsive = null,
+  sizes,
   eager = false,
   watermark = null,
   location = "gallery",
@@ -58,7 +66,11 @@ const GalleryImages = ({
           key={i}
           className={imgIndex === i ? "imageVisible" : ""}
           src={image}
-          alt={images.length > 1 ? `${altText} ${i + 1}`.trim() : altText}
+          {...responsiveProps({ responsive }, image, sizes)}
+          alt={resolveAlt(
+            imageMeta?.[i],
+            images.length > 1 ? `${altText} ${i + 1}`.trim() : altText,
+          )}
           loading={eager ? "eager" : "lazy"}
           decoding="async"
           onLoad={() => {
@@ -255,6 +267,7 @@ const Gallery = ({
   gallery = [],
   slideSpeed,
   columns,
+  responsive = null,
   isPopup = true,
   editActiveIndex = null,
   setEditActiveIndex = null,
@@ -705,6 +718,9 @@ const Gallery = ({
               }>
               <GalleryImages
                 images={item?.images || []}
+                imageMeta={item?.imageMeta}
+                responsive={responsive}
+                sizes={buildSizes(columns)}
                 wrapper={galleryItemRefs.current[originalIndex]}
                 container={galleryImgContainerRefs.current[originalIndex]}
                 loadCount={galleryImgLoadCountRefs.current[originalIndex]}
@@ -775,6 +791,7 @@ const Gallery = ({
               ref={popupGalleryItem}>
               <GalleryImages
                 images={popupItem?.images || []}
+                imageMeta={popupItem?.imageMeta}
                 imgIndex={popupImgIndex}
                 wrapper={popupGalleryItem}
                 container={popupImgContainer}

@@ -9,9 +9,11 @@ import {
 import {
   galleryAttr,
   generalStyleTabs,
+  getNewItemByStyle,
   styleItems,
   toolTipPresets,
 } from "../../../utils/options";
+import { switchStyle } from "../../../utils/styleSwitch";
 import General from "./General/General";
 import Style from "./Style/Style";
 import BPlBlockPreview from "../Panel/BplBlockPreview/BplBlockPreview";
@@ -59,24 +61,14 @@ const Settings = ({
     setActiveIndex(newGallery.length - 1);
   };
 
+  // Shared non-destructive switch (utils/styleSwitch.js).
   const updateStyle = (newStyle) => {
-    if (newStyle === "styleDefault") {
-      setAttributes({
-        ...attributes,
-        styleSl: newStyle,
-        gallery: galleryAttr || {},
-        imagesData: { images: [] },
-        styles: {},
-      });
-    } else {
-      setAttributes({
-        ...attributes,
-        styleSl: newStyle,
-        gallery: [],
-        imagesData: styleItems[newStyle]?.imagesData || { images: [] },
-        styles: styleItems[newStyle]?.styles || {},
-      });
-    }
+    const patch = switchStyle(attributes, newStyle, {
+      styleItems,
+      galleryAttr,
+      getNewItemByStyle,
+    });
+    if (Object.keys(patch).length) setAttributes(patch);
   };
 
   return (

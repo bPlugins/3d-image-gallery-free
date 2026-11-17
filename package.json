@@ -5,8 +5,19 @@
   "license": "GPL-2.0-or-later",
   "main": "build/index.js",
   "author": "Wasek Bellah, Himangsu Roy",
+  "files": [
+    "assets",
+    "build",
+    "includes",
+    "languages",
+    "index.php",
+    "uninstall.php",
+    "readme.txt",
+    "readme.md"
+  ],
   "scripts": {
     "packages-update": "wp-scripts packages-update",
+    "test": "node --test tests/*.test.mjs",
     "lint": "eslint src",
     "lint:css": "wp-scripts lint-style",
     "lint:js": "wp-scripts lint-js",

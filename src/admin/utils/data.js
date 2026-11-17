@@ -53,11 +53,14 @@ export const dashboardInfo = (info) => {
     },
     changelogs: [
       {
-        version: "2.4.3 - 26 Oct 26",
+        version: "2.4.3 - 17 Nov 26",
         list: [
+          "Improvement: Optimized gallery image loading with responsive image attributes (srcset and sizes) for faster page rendering.",
+          "Tweak: Enhanced block attribute migration and backward compatibility across gallery styles.",
+          "Fix: Improved gallery item settings panel and layout controls in the block editor.",
           "Security: Further hardened gallery item link handling so only http(s) URLs are followed.",
         ],
-        type: "fix",
+        type: "update",
       },
       {
         version: "2.4.2 - 25 Oct 26",

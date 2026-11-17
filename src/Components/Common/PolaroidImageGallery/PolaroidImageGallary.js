@@ -3,8 +3,19 @@ import { __ } from "@wordpress/i18n";
 import { Modal } from "../Modal";
 import Watermark from "../Watermark";
 import { safeNavigate } from "../../../utils/safeNav";
+import { responsiveProps, cssLengthToPx } from "../../../utils/imageModel";
+import { resolveAlt } from "../../../utils/imageModel";
 
 const PolaroidImageGallary = ({ attributes, activeAlbum = "*" }) => {
+  // Card width is fixed by the card style, so size hints come from it; if it
+  // cannot be read (%, calc...) fall back to 100vw, which can never blur.
+  const cardW = attributes?.styles?.card?.width || {};
+  const wDesk = cssLengthToPx(cardW.desktop);
+  const wMob = cssLengthToPx(cardW.mobile);
+  const polaroidSizes =
+    wDesk && wMob
+      ? `(max-width: 767px) ${wMob}px, ${wDesk}px`
+      : "100vw";
   const { 
     imagesData, 
     styleSl, 
@@ -108,7 +119,8 @@ const PolaroidImageGallary = ({ attributes, activeAlbum = "*" }) => {
                 <div className="polaroid-image overflow-hidden" style={{ position: "relative" }}>
                   <img
                     src={image?.url}
-                    alt={image?.title}
+                    {...responsiveProps(attributes, image?.url, polaroidSizes)}
+                    alt={resolveAlt(image, image?.title)}
                     loading="lazy"
                     decoding="async"
                     className="w-full h-full object-cover"

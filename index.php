@@ -138,9 +138,14 @@ require_once BIGB_DIR_PATH . '/includes/PostType.php';
 require_once BIGB_DIR_PATH . '/includes/BlockEditor.php';
 require_once BIGB_DIR_PATH . '/includes/admin/SubMenu.php';
 require_once BIGB_DIR_PATH . '/includes/attribute-migration.php';
+require_once BIGB_DIR_PATH . '/includes/AttachmentInfo.php';
+require_once BIGB_DIR_PATH . '/includes/responsive-images.php';
 
 // Ready-made sections for the inserter.
 require_once BIGB_DIR_PATH . '/includes/patterns.php';
 
 // One polite, dismissible review request (admins only, after a week).
 require_once BIGB_DIR_PATH . '/includes/review-notice.php';
+
+// BFCM promotional banner and action link.
+require_once BIGB_DIR_PATH . '/includes/bfcm-notice.php';

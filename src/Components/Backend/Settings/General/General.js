@@ -1,4 +1,4 @@
-import { useState } from "@wordpress/element";
+import { useState, useRef } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import { ItemsPanel } from "../../../../../../bpl-tools/Components";
 import GalleryPanel from "../GalleryItemPanel/GalleryItemPanel";
@@ -45,6 +45,13 @@ import {
   getNewItemByStyle,
   styleItems,
 } from "../../../../utils/options";
+import { switchStyle } from "../../../../utils/styleSwitch";
+import {
+  metaFromMedia,
+  metaToItemFields,
+  realignImageMeta,
+} from "../../../../utils/imageModel";
+import { lookupAttachmentMetaDebounced } from "../../../../utils/attachmentLookup";
 
 const General = ({
   attributes,
@@ -138,6 +145,7 @@ const General = ({
       title: item?.title || `Title ${startCount + i + 1}`,
       subtitle: "",
       images: [item?.url],
+      imageMeta: [metaFromMedia(item)],
       colors: { color: "#fff", bgType: "solid", bg: "#505a64d9" },
       btnColors: { color: "#fff", bgType: "solid", bg: "#000a1480" },
       albs: [],
@@ -171,6 +179,7 @@ const General = ({
         ...template,
         id: `${item?.id || Math.random().toString(36).substring(2, 9)}`,
         url: item?.url,
+        ...metaToItemFields(metaFromMedia(item)),
         title: item?.title || template.title || "Title",
         description: item?.caption || item?.alt || template.description || "",
         date: dateStr.slice(0, 10),
@@ -183,7 +192,66 @@ const General = ({
   };
 
   // Update gallery item safely
+  // Always-current gallery for async callbacks (attachment lookups).
+  const galleryRef = useRef(gallery);
+  galleryRef.current = gallery;
+
+  // Replace one group's image URLs in a single update, keeping each URL's
+  // attachment meta attached to it. `extraMeta` maps url -> meta for new picks.
+  const setGroupImages = (groupIndex, urls, extraMeta = {}) => {
+    const g = galleryRef.current[groupIndex];
+    if (!g) return;
+    const aligned = realignImageMeta(g.images || [], g.imageMeta || [], urls);
+    const imageMeta = aligned.map((m, i) => ({ ...m, ...(extraMeta[urls[i]] || {}) }));
+    setAttributes({
+      gallery: galleryRef.current.map((x, i) =>
+        i === groupIndex ? { ...x, images: urls, imageMeta } : x,
+      ),
+    });
+  };
+
+  // After a URL is typed/picked, find out whether it is a Media Library
+  // image and store its id/alt/size (external URLs resolve to nothing).
+  const attachMetaToUrl = (groupIndex, url, slot) => {
+    lookupAttachmentMetaDebounced(`group:${groupIndex}:${slot}`, url).then((meta) => {
+      if (!meta.attachmentId) return;
+      const g = galleryRef.current[groupIndex];
+      // Target the exact slot that was edited (the same URL may appear twice).
+      const idx = g?.images?.[slot] === url ? slot : (g?.images?.indexOf(url) ?? -1);
+      if (idx < 0) return;
+      // Copy per slot (NOT realigned by URL: duplicate URLs would share meta).
+      const imageMeta = [...(g.imageMeta || [])];
+      while (imageMeta.length < g.images.length) imageMeta.push({});
+      const old = imageMeta[idx] || {};
+      imageMeta[idx] = {
+        ...old,
+        ...meta,
+        alt: old.alt !== undefined ? old.alt : meta.alt,
+      };
+      setAttributes({
+        gallery: galleryRef.current.map((x, i) =>
+          i === groupIndex ? { ...x, imageMeta } : x,
+        ),
+      });
+    });
+  };
+
+  // Set one meta field (alt / decorative) on a single image slot.
+  const setImageMetaField = (groupIndex, imgIndex, field, value) => {
+    const g = galleryRef.current[groupIndex];
+    if (!g) return;
+    const imageMeta = [...(g.imageMeta || [])];
+    while (imageMeta.length < (g.images || []).length) imageMeta.push({});
+    imageMeta[imgIndex] = { ...(imageMeta[imgIndex] || {}), [field]: value };
+    setAttributes({
+      gallery: galleryRef.current.map((x, i) =>
+        i === groupIndex ? { ...x, imageMeta } : x,
+      ),
+    });
+  };
+
   const updateGallery = (type, val, otherIndex = false) => {
+    const prevGroup = gallery[activeIndex];
     const newGallery = produce(gallery, (draft) => {
       // Guard clause: exit if activeIndex invalid
       if (
@@ -205,8 +273,25 @@ const General = ({
       } else {
         draft[activeIndex][type] = val;
       }
+
+      // Keep per-image meta aligned with its URL when the list changes.
+      if (type === "images" && prevGroup) {
+        draft[activeIndex].imageMeta = realignImageMeta(
+          prevGroup.images || [],
+          prevGroup.imageMeta || [],
+          draft[activeIndex].images || [],
+        );
+        // A URL typed into one slot is a different image: it must not inherit
+        // the metadata of an identical URL elsewhere in the list.
+        if (false !== otherIndex && typeof val === "string") {
+          draft[activeIndex].imageMeta[otherIndex] = {};
+        }
+      }
     });
     setAttributes({ gallery: newGallery });
+    if (type === "images" && false !== otherIndex && typeof val === "string") {
+      attachMetaToUrl(activeIndex, val, otherIndex);
+    }
   };
 
   // Duplicate gallery item
@@ -260,21 +345,12 @@ const General = ({
   } = activeItem;
 
   const updateStyle = (newStyle) => {
-    if (newStyle === "styleDefault") {
-      setAttributes({
-        styleSl: newStyle,
-        gallery: galleryAttr || {},
-        imagesData: { images: [] },
-        styles: {},
-      });
-    } else {
-      setAttributes({
-        styleSl: newStyle,
-        gallery: [],
-        imagesData: styleItems[newStyle]?.imagesData || { images: [] },
-        styles: styleItems[newStyle]?.styles || {},
-      });
-    }
+    const patch = switchStyle(attributes, newStyle, {
+      styleItems,
+      galleryAttr,
+      getNewItemByStyle,
+    });
+    if (Object.keys(patch).length) setAttributes(patch);
   };
 
   return (
@@ -467,7 +543,8 @@ const General = ({
 
                   <Label>{__("Images:", "image-gallery")}</Label>
                   {images?.map((img, i) => (
-                    <PanelRow key={i}>
+                    <div key={i} className="igbImageRow">
+                    <PanelRow>
                       <InlineMediaUpload
                         value={img}
                         types={["image"]}
@@ -494,6 +571,30 @@ const General = ({
                         </Button>
                       </Tooltip>
                     </PanelRow>
+                    {img && (
+                      <>
+                        <TextControl
+                          label={__("Alt text", "image-gallery")}
+                          value={activeItem?.imageMeta?.[i]?.alt || ""}
+                          disabled={Boolean(activeItem?.imageMeta?.[i]?.decorative)}
+                          onChange={(val) =>
+                            setImageMetaField(activeIndex, i, "alt", val)
+                          }
+                          help={__(
+                            "Describes this image for screen readers and search engines.",
+                            "image-gallery",
+                          )}
+                        />
+                        <ToggleControl
+                          label={__("Decorative image (no alt text)", "image-gallery")}
+                          checked={Boolean(activeItem?.imageMeta?.[i]?.decorative)}
+                          onChange={(val) =>
+                            setImageMetaField(activeIndex, i, "decorative", val)
+                          }
+                        />
+                      </>
+                    )}
+                    </div>
                   ))}
 
                   <div
@@ -510,13 +611,16 @@ const General = ({
                       <MediaUpload
                         onSelect={(media) => {
                           const items = Array.isArray(media) ? media : [media];
-                          const newUrls = items
-                            .map((m) => m?.url)
-                            .filter(Boolean);
-                          updateGallery("images", [
-                            ...images.filter(Boolean),
-                            ...newUrls,
-                          ]);
+                          const picked = items.filter((m) => m?.url);
+                          const extraMeta = {};
+                          picked.forEach((m) => {
+                            extraMeta[m.url] = metaFromMedia(m);
+                          });
+                          setGroupImages(
+                            activeIndex,
+                            [...images.filter(Boolean), ...picked.map((m) => m.url)],
+                            extraMeta,
+                          );
                         }}
                         allowedTypes={["image"]}
                         multiple="add"

@@ -2184,3 +2184,30 @@ $primaryColor: #146ef5;
   }
 }
 
+
+/* Keyboard focus ring (IG-008). :focus-visible only, so mouse and touch users
+   see no change. Covers every clickable gallery card, the filter and load-more
+   buttons, and every control inside the lightbox. */
+.wp-block-bigb-image-gallery {
+  .galleryItem[role="button"]:focus-visible,
+  .polaroid-container:focus-visible,
+  .masonry-gallery .image-container:focus-visible,
+  .gallery-item[role="button"]:focus-visible,
+  .tdpig__card[role="button"]:focus-visible {
+    outline: 3px solid #146ef5;
+    outline-offset: 3px;
+    position: relative;
+    z-index: 2;
+  }
+
+  button:focus-visible,
+  .popupGallery button:focus-visible {
+    outline: 3px solid #146ef5;
+    outline-offset: 2px;
+  }
+
+  .popupGallery button:focus-visible {
+    outline-color: #fff;
+    box-shadow: 0 0 0 5px #146ef5;
+  }
+}

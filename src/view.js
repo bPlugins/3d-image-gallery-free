@@ -35,6 +35,7 @@ const FrontendGallery = ({ attributes }) => {
             gallery={gallery}
             slideSpeed={slideSpeed}
             columns={columns}
+            responsive={attributes?.responsive}
             activeAlbum={activeAlbum}
             watermark={watermark}
             disableRightClick={attributes?.disableRightClick}

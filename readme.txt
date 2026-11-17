@@ -256,7 +256,10 @@ As the external service functionality is handled by bpl-tools as a third-party l
 
 == Changelog ==
 
-= 2.4.3 - 26 October 2026 =
+= 2.4.3 - 17 November 2026 =
+* Improvement: Optimized gallery image loading with responsive image attributes (srcset and sizes) for faster page rendering.
+* Tweak: Enhanced block attribute migration and backward compatibility across gallery styles.
+* Fix: Improved gallery item settings panel and layout controls in the block editor.
 * Security: Further hardened gallery item link handling so only http(s) URLs are followed.
 
 = 2.4.2 - 25 October 2026 =
