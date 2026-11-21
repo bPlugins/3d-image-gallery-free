@@ -72,7 +72,7 @@ if ( function_exists( 'ig_fs' ) ) {
 
 			// The Freemius opt-in screen hides this plugin's menu until it is answered, so the page below
 			// would say "not allowed". Let Freemius show its opt-in first; it opens the first page after.
-			if ( function_exists( 'ig_fs' ) && ig_fs()->is_activation_mode() ) {
+			if ( function_exists( 'ig_fs' ) && ( method_exists( ig_fs(), 'is_activation_mode' ) ? ig_fs()->is_activation_mode() : ( ! get_option( '3d-image-gallery-redirect', false ) || ( isset( $_GET['page'] ) && '3d-image-gallery-opt-in' === sanitize_text_field( wp_unslash( $_GET['page'] ) ) ) ) ) ) {
 				return;
 			}
 
@@ -137,6 +137,8 @@ if ( function_exists( 'ig_fs' ) ) {
 require_once BIGB_DIR_PATH . '/includes/PostType.php';
 require_once BIGB_DIR_PATH . '/includes/BlockEditor.php';
 require_once BIGB_DIR_PATH . '/includes/admin/SubMenu.php';
+require_once BIGB_DIR_PATH . '/includes/admin/Pricing.php';
+new BIGB\Pricing();
 require_once BIGB_DIR_PATH . '/includes/attribute-migration.php';
 require_once BIGB_DIR_PATH . '/includes/AttachmentInfo.php';
 require_once BIGB_DIR_PATH . '/includes/responsive-images.php';
