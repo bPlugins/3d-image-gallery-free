@@ -41,3 +41,20 @@ if ( !defined( 'ABSPATH' ) ) { exit; }
         } );
         do_action('ig_fs_loaded');
     }
+
+// Temporary bridge for a bPlugins lite SDK bug: its Plugins-page script looks up
+// the "Opt In" link with `.optInBtn.<slug>`, and a slug that starts with a digit
+// ("3d-image-gallery") is not a valid CSS selector, so the script stops and the
+// link does nothing. Until the SDK escapes the slug itself, rewrite exactly that
+// one selector to its escaped form; every other selector passes through as is.
+// Delete this block once the SDK ships the fix (plugin-tasks #128).
+add_action( 'admin_enqueue_scripts', function ( $hook ) {
+	if ( 'plugins.php' !== $hook || ! wp_script_is( 'bsdk-opt-in', 'enqueued' ) ) {
+		return;
+	}
+	$js = '(function(){var p=Document.prototype,q=p.querySelector,s=".optInBtn.3d-image-gallery";'
+		. 'if(q.bigbOptInFix||!window.CSS||!CSS.escape)return;'
+		. 'var f=function(sel){return q.call(this,sel===s?".optInBtn."+CSS.escape("3d-image-gallery"):sel);};'
+		. 'f.bigbOptInFix=true;p.querySelector=f;})();';
+	wp_add_inline_script( 'bsdk-opt-in', $js, 'before' );
+}, 100 );
